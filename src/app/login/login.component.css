@@ -1,0 +1,136 @@
+.login-wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1A1729;
+    position: relative;
+}
+
+.login-wrapper .login-form{
+    width: 600px;
+    height: 300px;
+    background: #2E2E2E;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 6px;
+    position: relative;
+    z-index: 5;
+    padding-top: 20px;
+}
+
+
+
+.login-form input{
+    width: 90%;
+    height: 50px;
+    background: none;
+    border: none;
+    color: white;
+    border-bottom: 2px solid white;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.login-form input:focus-visible{
+    outline: none;
+}
+
+
+.moon{
+    position: absolute;
+    left: 0;
+    top: -200px;
+    width: 500px;
+    z-index: 10;
+}
+
+.moon *{
+    transition: 1.5s fill;
+}
+
+.moon:hover *{
+    fill: white;
+}
+
+
+.owl{
+    position: absolute;
+    left: 90%;
+    top: -100px;  
+    transition: 2s transform; 
+    z-index: 10;
+}
+
+.owl:hover{
+    transform: translate(0px , -200px)
+}
+
+@keyframes move_wave {
+    0% {
+        transform: translateX(0) translateZ(0) scaleY(1)
+    }
+    50% {
+        transform: translateX(-25%) translateZ(0) scaleY(0.55)
+    }
+    100% {
+        transform: translateX(-50%) translateZ(0) scaleY(1)
+    }
+}
+.waveWrapper {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+}
+.waveWrapperInner {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    bottom: -1px;
+}
+.bgTop {
+    opacity: 0.5;
+}
+.bgMiddle {
+    opacity: 0.75;
+}
+.bgBottom {
+}
+.wave {
+    position: absolute;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background-repeat: repeat no-repeat;
+    background-position: 0 bottom;
+    transform-origin: center bottom;
+}
+.waveTop {
+    background-size: 50% 100px;
+}
+.waveAnimation .waveTop {
+  animation: move-wave 3s;
+   -webkit-animation: move-wave 3s;
+   -webkit-animation-delay: 1s;
+   animation-delay: 1s;
+}
+.waveMiddle {
+    background-size: 50% 120px;
+}
+.waveAnimation .waveMiddle {
+    animation: move_wave 10s linear infinite;
+}
+.waveBottom {
+    background-size: 50% 100px;
+}
+.waveAnimation .waveBottom {
+    animation: move_wave 15s linear infinite;
+}

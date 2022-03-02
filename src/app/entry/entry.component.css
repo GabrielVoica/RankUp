@@ -1,0 +1,281 @@
+.entry-page {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.svg-top {
+  position: absolute;
+  top: 0;
+}
+
+.svg-top path {
+  fill: var(--primary-color);
+}
+
+.svg-bottom {
+  position: absolute;
+  bottom: 0;
+}
+
+.svg-bottom path {
+  fill: var(--primary-color);
+}
+
+.user-type-container {
+  height: 900px;
+  width: 890px;
+  background: rgba(255, 255, 255, 0.8);
+  position: relative;
+  z-index: 2;
+  box-shadow: 0px 5px 11px 3px #00000029;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.user-type-container-title {
+  width: 100%;
+  height: 100px;
+  background: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 45px;
+  color: white;
+}
+
+.user-type-select {
+  height: 80%;
+  width: 90%;
+  background: white;
+  margin-top: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-type-select > div {
+  width: 49%;
+  background-color: white;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: 0px 5px 11px 3px #00000017;
+}
+
+.user-type-select div .type-texture {
+  width: 100%;
+  height: 50px;
+  background: url("src/assets/textures/entry-texture.png");
+  background-size: 100%;
+  background-position: center;
+}
+
+.user-type-select div .type-image {
+  height: 170px;
+  width: 170px;
+  border-radius: 100%;
+  background: white;
+  position: relative;
+  bottom: 30px;
+  box-shadow: 0px 5px 11px 3px #00000013;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.type-student .user-illustration {
+  position: relative;
+  top: 45px;
+  transition: 1s transform;
+
+}
+
+.user-type-select div .type-image .hat-illustration {
+  position: absolute;
+  top: -100px;
+  z-index: 3;
+  transition: 1s transform;
+}
+
+
+
+
+.user-type-select .type-student:hover .hat-illustration {
+  transform: translateY(135px);
+}
+
+
+
+.user-shirt {
+  transition: 0.5s fill;
+}
+
+.user-type-select .type-student:hover .user-shirt {
+  fill: #2b3568;
+}
+
+
+.type-title{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.entry-button{
+    position: absolute;
+    bottom: 50px;
+}
+
+
+.user-type-select .type-student:hover .type-select-info{
+    display: block;
+}
+
+
+.type-select-info{
+    height: 200px;
+    width: 90%;
+    animation: appear 2s forwards;
+    opacity: 0;
+    margin-top: 100px;
+}
+
+.student-robe{
+  position: absolute;
+  z-index: 3;
+  top: 170px;
+  transition: 0.5s top;
+}
+
+.user-type-select .type-student:hover .student-robe{
+  top: 139px;
+}
+
+
+
+.type-teacher .teacher-illustration{
+  position: relative;
+  top: 45px;
+  transition: 1s transform;
+  z-index: 2;
+}
+
+.teacher-bar{
+position: absolute;
+left: 45px;
+transform: rotate(-30deg);
+top: 180px;
+transition: 0.1s top;
+z-index: 3;
+}
+
+.teacher-star{
+  position: absolute;
+  right: 70px;
+  top: 107px;
+  z-index: 3;
+  
+  transition: 1s transform;
+}
+
+.blackboard{
+  position: absolute;
+  z-index: 0;
+  transition: 0.5s opacity, 0.5s top;
+  top: 300px;
+}
+
+
+
+.type-teacher:hover .teacher-star{
+transform: scale(2) rotate(1200deg);
+}
+
+.type-teacher:hover .teacher-bar{
+  top: 120px;
+}
+
+.type-teacher:hover .blackboard{
+  top: 0;
+}
+
+
+
+
+.type-student ul{
+  opacity: 0;
+  transition: 0.5s opacity;
+}
+
+.type-teacher ul{
+  opacity: 0;
+  transition: 0.5s opacity;
+}
+
+.type-student:hover ul{
+  opacity: 1;
+}
+
+.type-teacher:hover ul{
+  opacity: 1;
+}
+
+@keyframes appear{
+    to{
+        opacity: 1;
+    }
+}
+
+.type-select-info ul{
+    width: 100%;
+    height: 100%;
+}
+
+.type-select-info ul li{
+    list-style-type: square;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.user-type-select .type-student .type-image{
+  transition: 0.5s background;
+}
+
+.user-type-select .type-student:hover .type-image{
+ background: rgb(158, 158, 241);
+}
+
+
+
+.ellipse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0px 5px 11px 3px #00000029;
+  border-radius: 100%;
+  left: 170px;
+  top: 150px;
+  z-index: 1;
+}
+
+.rectangle {
+  position: absolute;
+  top: 0;
+  box-shadow: 0px 5px 11px 3px #00000029;
+  left: 70%;
+  top: 500px;
+  z-index: 1;
+  background: white;
+  height: 300px;
+  width: 300px;
+  transform: rotate(120deg);
+}

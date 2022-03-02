@@ -1,0 +1,137 @@
+.landing-page{
+width: 100%;
+height: 100%;
+}
+
+.header{
+    width: 100%;
+    height: 100px;
+    background: var(--primary-color);
+    z-index: 15;
+    position: relative;
+}
+
+.header ul{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.header ul li{
+    list-style-type: none;
+    color: white;
+    height: 50px;
+    width: 120px;
+    margin-right: 20px;
+}
+
+.header ul li a{
+ height: 100%;
+ width: 100%;
+ text-decoration: none;
+ border-radius: 6px;
+ margin-right: 10px;
+ transition: transform 0.5s;
+ position: relative;
+ overflow: hidden;
+}
+
+
+
+
+.header ul li a:hover{
+    transform: scaleX(0.9) scaleY(1.1);
+}
+
+.header h2{
+    color: white;
+    cursor: default;
+    font-size: 30px;
+}
+
+
+
+.section{
+    width: 100%;
+    height: 700px;
+}
+
+.banner{
+ background: rgb(97, 252, 110);
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+
+.banner .banner-info{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px;
+    margin-left: 300px;
+    
+}
+
+.banner .banner-info .banner-body{
+    width: 500px;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    
+}
+
+.banner .banner-info a{
+    border-radius: 0px;
+    border-radius: 6px;
+}
+
+.banner-title{
+    font-size: 90px;
+    margin-bottom: 20px;
+     color: var(--primary-color);
+     text-transform: uppercase;
+}
+
+
+.banner .banner-decoration{
+    margin-right: 200px;
+    margin-top: 50px;
+}
+
+
+.banner .banner-decoration g rect{
+    position: relative;
+}
+
+
+.banner .banner-decoration g .name-1{
+   transform: translate(80px, 13px);
+}
+
+.banner .banner-decoration g .name-2{
+   transform: translate(75px, 120px);
+}
+
+.banner .banner-decoration g .name-3{
+   transform: translate(75px, 225px);
+}
+
+.banner .banner-decoration g .name-4{
+   transform: translate(75px, 330px);
+}
+
+
+.anim-ball{
+    position: absolute;
+    top: 400px;
+    left: 100px;
+    height: 35px;
+    width: 35px;
+    border-radius: 100%;
+    z-index: 0;
+}
