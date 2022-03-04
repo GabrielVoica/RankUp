@@ -25,11 +25,12 @@ export class EntryService {
 
     let response = this.http.post(
       this.apiUrl + 'app/entry?user_type=' + httpUser,
-      { withCredentials: true }
+      null,
+      {withCredentials: true} 
     );
 
     response.subscribe((data) =>{
-      console.log(data);
+      this.router.navigate(['login']);
     })
 
   }

@@ -1,65 +1,202 @@
 <div class="login-wrapper">
-
-    <div class="login-form">
-        <input type="text" placeholder="Email">
-        <input type="text" placeholder="Contraseña">
-        <a href="#" class="btn">Entrar</a>
-        
+  <form (ngSubmit)="login()" class="login-form">
+    <h2 class="form-title">Bienvenido de nuevo</h2>
+    <input type="text" [(ngModel)]="email" name="email" placeholder="Email" />
+    <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" />
+    <div class="remember-me">
+      <input type="checkbox">
+      <span>Recuerdame</span>
     </div>
+    <a href="#" class="forgot-password">¿Has olvidado la contraseña?</a>
+    <button class="login-btn">Entrar</button>
+    <a href="#" class="no-account">No tienes una cuenta? <span>Registrate</span></a>
+  </form>
 
-    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="754" height="785" viewBox="0 0 754 785" fill="none">
-<g filter="url(#filter0_d_65_163)">
-<path d="M364.169 774.168C145.371 753.106 -14.7541 556.878 6.52 335.881C27.7941 114.884 172.703 -18.4023 391.501 2.66013C38.7384 400.689 339.463 783.266 749.15 440.947C727.876 661.944 582.967 795.23 364.169 774.168Z" fill="#FFD914" fill-opacity="0.35" shape-rendering="crispEdges"/>
-</g>
-<defs>
-<filter id="filter0_d_65_163" x="0.623047" y="0.48291" width="752.527" height="783.862" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_65_163"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_65_163" result="shape"/>
-</filter>
-</defs>
-</svg>
+  <svg
+    class="moon"
+    xmlns="http://www.w3.org/2000/svg"
+    width="754"
+    height="785"
+    viewBox="0 0 754 785"
+    fill="none"
+  >
+    <g filter="url(#filter0_d_65_163)">
+      <path
+        d="M364.169 774.168C145.371 753.106 -14.7541 556.878 6.52 335.881C27.7941 114.884 172.703 -18.4023 391.501 2.66013C38.7384 400.689 339.463 783.266 749.15 440.947C727.876 661.944 582.967 795.23 364.169 774.168Z"
+        fill="#FFD914"
+        fill-opacity="0.35"
+        shape-rendering="crispEdges"
+      />
+    </g>
+    <defs>
+      <filter
+        id="filter0_d_65_163"
+        x="0.623047"
+        y="0.48291"
+        width="752.527"
+        height="783.862"
+        filterUnits="userSpaceOnUse"
+        color-interpolation-filters="sRGB"
+      >
+        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feColorMatrix
+          in="SourceAlpha"
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+          result="hardAlpha"
+        />
+        <feOffset dy="4" />
+        <feGaussianBlur stdDeviation="2" />
+        <feComposite in2="hardAlpha" operator="out" />
+        <feColorMatrix
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+        />
+        <feBlend
+          mode="normal"
+          in2="BackgroundImageFix"
+          result="effect1_dropShadow_65_163"
+        />
+        <feBlend
+          mode="normal"
+          in="SourceGraphic"
+          in2="effect1_dropShadow_65_163"
+          result="shape"
+        />
+      </filter>
+    </defs>
+  </svg>
 
-<svg class="owl" xmlns="http://www.w3.org/2000/svg" width="157" height="193" viewBox="0 0 157 193" fill="none">
-<path d="M19.5068 98.8153C19.5068 106.002 22.9599 131.57 19.5068 131.57C16.0537 131.57 7.00195 106.002 7.00195 98.8153C7.00195 91.6288 9.80126 92.9822 13.2544 92.9822C16.7075 92.9822 19.5068 91.6288 19.5068 98.8153Z" fill="#432800"/>
-<ellipse rx="59.7606" ry="84.5865" transform="matrix(0.981678 0.190546 -0.234486 0.972119 78.4992 93.6153)" fill="#935634"/>
-<path d="M72.9787 123.922L75.2295 129.979L77.2358 141.209L61.5246 138.366L68.4769 127.511L72.9787 123.922Z" fill="#583B10"/>
-<path d="M32.9742 159.639L61.2406 164.245L51.7697 176.787L39.5149 185.986L34.7631 173.422L32.9742 159.639Z" fill="#935634"/>
-<path d="M61.7576 168.379L90.4611 167.292L85.2826 180.377L75.7788 191.819L66.7754 180.377L61.7576 168.379Z" fill="#935634"/>
-<ellipse rx="6.9972" ry="3.36854" transform="matrix(0.996743 0.0806414 -0.100036 0.994984 54.8288 110.257)" fill="#D0A25E"/>
-<ellipse rx="6.99419" ry="3.37033" transform="matrix(0.994964 0.100235 -0.124223 0.992254 74.8372 112.053)" fill="#D0A25E"/>
-<ellipse rx="6.99629" ry="3.36908" transform="matrix(0.996208 0.0870033 -0.107897 0.994162 95.5281 113.773)" fill="#D0A25E"/>
-<path d="M60.9417 111.937C60.8182 113.371 57.9059 114.338 54.4367 114.097C50.9676 113.857 48.2554 112.5 48.3789 111.066C48.5024 109.633 50.9674 109.466 54.4365 109.707C57.9056 109.947 61.0652 110.504 60.9417 111.937Z" fill="#935634"/>
-<path d="M80.8115 113.846C80.688 115.279 77.7756 116.247 74.3065 116.006C70.8374 115.766 68.1252 114.409 68.2487 112.975C68.3721 111.542 70.8372 110.812 74.3063 111.053C77.7754 111.293 80.9349 112.413 80.8115 113.846Z" fill="#935634"/>
-<path d="M126.785 115.29C124.976 122.291 115.175 146.5 118.539 147.199C121.903 147.899 137.158 124.825 138.967 117.824C140.776 110.823 140.416 105.695 137.052 104.996C133.688 104.296 128.595 108.29 126.785 115.29Z" fill="#432800"/>
-<ellipse cx="50.2696" cy="139.77" rx="15.2559" ry="11.4418" fill="#AA834A"/>
-<ellipse cx="87.7833" cy="144.706" rx="15.2559" ry="11.4418" fill="#AA834A"/>
-<ellipse cx="49.5179" cy="145.379" rx="16.0062" ry="13.461" fill="#D2D2D2"/>
-<ellipse cx="47.5178" cy="147.846" rx="5.50213" ry="4.71134" fill="black"/>
-<ellipse cx="46.0162" cy="148.744" rx="1.50058" ry="1.12175" fill="white"/>
-<ellipse cx="87.0336" cy="149.866" rx="16.0062" ry="13.461" fill="#D5D2D2"/>
-<ellipse cx="87.0314" cy="152.333" rx="5.50213" ry="4.71134" fill="black"/>
-<ellipse cx="85.5318" cy="153.231" rx="1.50058" ry="1.12175" fill="white"/>
-<path d="M40.3691 171.648L49.1288 174.801L40.5836 180.113L40.3691 171.648Z" fill="#804F23"/>
-<path d="M70.8991 177.925L80.3043 177.215L75.3269 185.402L70.8991 177.925Z" fill="#804F23"/>
-<path d="M105.726 118.468C105.513 121.245 100.49 123.119 94.5076 122.653C88.5247 122.187 83.8472 119.558 84.0602 116.781C84.2731 114.004 90.2015 112.591 96.1843 113.057C102.167 113.523 105.939 115.691 105.726 118.468Z" fill="#935634"/>
-</svg>
+  <svg
+    class="owl"
+    xmlns="http://www.w3.org/2000/svg"
+    width="157"
+    height="193"
+    viewBox="0 0 157 193"
+    fill="none"
+  >
+    <path
+      d="M19.5068 98.8153C19.5068 106.002 22.9599 131.57 19.5068 131.57C16.0537 131.57 7.00195 106.002 7.00195 98.8153C7.00195 91.6288 9.80126 92.9822 13.2544 92.9822C16.7075 92.9822 19.5068 91.6288 19.5068 98.8153Z"
+      fill="#432800"
+    />
+    <ellipse
+      rx="59.7606"
+      ry="84.5865"
+      transform="matrix(0.981678 0.190546 -0.234486 0.972119 78.4992 93.6153)"
+      fill="#935634"
+    />
+    <path
+      d="M72.9787 123.922L75.2295 129.979L77.2358 141.209L61.5246 138.366L68.4769 127.511L72.9787 123.922Z"
+      fill="#583B10"
+    />
+    <path
+      d="M32.9742 159.639L61.2406 164.245L51.7697 176.787L39.5149 185.986L34.7631 173.422L32.9742 159.639Z"
+      fill="#935634"
+    />
+    <path
+      d="M61.7576 168.379L90.4611 167.292L85.2826 180.377L75.7788 191.819L66.7754 180.377L61.7576 168.379Z"
+      fill="#935634"
+    />
+    <ellipse
+      rx="6.9972"
+      ry="3.36854"
+      transform="matrix(0.996743 0.0806414 -0.100036 0.994984 54.8288 110.257)"
+      fill="#D0A25E"
+    />
+    <ellipse
+      rx="6.99419"
+      ry="3.37033"
+      transform="matrix(0.994964 0.100235 -0.124223 0.992254 74.8372 112.053)"
+      fill="#D0A25E"
+    />
+    <ellipse
+      rx="6.99629"
+      ry="3.36908"
+      transform="matrix(0.996208 0.0870033 -0.107897 0.994162 95.5281 113.773)"
+      fill="#D0A25E"
+    />
+    <path
+      d="M60.9417 111.937C60.8182 113.371 57.9059 114.338 54.4367 114.097C50.9676 113.857 48.2554 112.5 48.3789 111.066C48.5024 109.633 50.9674 109.466 54.4365 109.707C57.9056 109.947 61.0652 110.504 60.9417 111.937Z"
+      fill="#935634"
+    />
+    <path
+      d="M80.8115 113.846C80.688 115.279 77.7756 116.247 74.3065 116.006C70.8374 115.766 68.1252 114.409 68.2487 112.975C68.3721 111.542 70.8372 110.812 74.3063 111.053C77.7754 111.293 80.9349 112.413 80.8115 113.846Z"
+      fill="#935634"
+    />
+    <path
+      d="M126.785 115.29C124.976 122.291 115.175 146.5 118.539 147.199C121.903 147.899 137.158 124.825 138.967 117.824C140.776 110.823 140.416 105.695 137.052 104.996C133.688 104.296 128.595 108.29 126.785 115.29Z"
+      fill="#432800"
+    />
+    <ellipse
+      cx="50.2696"
+      cy="139.77"
+      rx="15.2559"
+      ry="11.4418"
+      fill="#AA834A"
+    />
+    <ellipse
+      cx="87.7833"
+      cy="144.706"
+      rx="15.2559"
+      ry="11.4418"
+      fill="#AA834A"
+    />
+    <ellipse
+      cx="49.5179"
+      cy="145.379"
+      rx="16.0062"
+      ry="13.461"
+      fill="#D2D2D2"
+    />
+    <ellipse cx="47.5178" cy="147.846" rx="5.50213" ry="4.71134" fill="black" />
+    <ellipse cx="46.0162" cy="148.744" rx="1.50058" ry="1.12175" fill="white" />
+    <ellipse
+      cx="87.0336"
+      cy="149.866"
+      rx="16.0062"
+      ry="13.461"
+      fill="#D5D2D2"
+    />
+    <ellipse cx="87.0314" cy="152.333" rx="5.50213" ry="4.71134" fill="black" />
+    <ellipse cx="85.5318" cy="153.231" rx="1.50058" ry="1.12175" fill="white" />
+    <path
+      d="M40.3691 171.648L49.1288 174.801L40.5836 180.113L40.3691 171.648Z"
+      fill="#804F23"
+    />
+    <path
+      d="M70.8991 177.925L80.3043 177.215L75.3269 185.402L70.8991 177.925Z"
+      fill="#804F23"
+    />
+    <path
+      d="M105.726 118.468C105.513 121.245 100.49 123.119 94.5076 122.653C88.5247 122.187 83.8472 119.558 84.0602 116.781C84.2731 114.004 90.2015 112.591 96.1843 113.057C102.167 113.523 105.939 115.691 105.726 118.468Z"
+      fill="#935634"
+    />
+  </svg>
 
-<div class="waveWrapper waveAnimation">
-  <div class="waveWrapperInner bgTop">
-    <div class="wave waveTop" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+  <div class="waveWrapper waveAnimation">
+    <div class="waveWrapperInner bgTop">
+      <div
+        class="wave waveTop"
+        style="
+          background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png');
+        "
+      ></div>
+    </div>
+    <div class="waveWrapperInner bgMiddle">
+      <div
+        class="wave waveMiddle"
+        style="
+          background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png');
+        "
+      ></div>
+    </div>
+    <div class="waveWrapperInner bgBottom">
+      <div
+        class="wave waveBottom"
+        style="
+          background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png');
+        "
+      ></div>
+    </div>
   </div>
-  <div class="waveWrapperInner bgMiddle">
-    <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
-  </div>
-  <div class="waveWrapperInner bgBottom">
-    <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"></div>
-  </div>
-</div>
-
 </div>

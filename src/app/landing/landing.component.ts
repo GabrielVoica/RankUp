@@ -55,7 +55,7 @@ export class LandingComponent implements OnInit {
 
       if(this.ballWidth > 150){
         this.ballWidth = 150;
-        this.ballHeight = 80;
+        this.ballHeight = 150;
       }
     
 
