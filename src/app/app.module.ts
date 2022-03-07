@@ -13,6 +13,7 @@ import { LandingComponent } from './landing/landing.component';
 import { SecondComponent } from './landing/second/second.component';
 import { RegisterComponent } from './register/register.component';
 import { CookieModule } from 'ngx-cookie';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
@@ -31,7 +32,8 @@ const routes: Routes = [
     CanvasComponent,
     LandingComponent,
     SecondComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

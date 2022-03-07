@@ -1,19 +1,58 @@
-import { HttpClient } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaderResponse,
+  HttpHeaders,
+  HttpParams,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private cookie: CookieService
+  ) {}
 
-  constructor(private router: Router, private http: HttpClient, private cookie: CookieService) { }
+  apiUrl = environment.apiURL;
+
+  checkLogin(data) {
+    let userMail = data.email;
+    const myheader = new HttpHeaders().set('Content-Type', 'application/json');
+    let body = new HttpParams();
+    body = body.set('username', data.email);
+    body = body.set('password', data.password);
+    let loginResult = null;
+
+    this.http
+      .post(
+        this.apiUrl +
+          'app/login?email=' +
+          data.email +
+          '&password=' +
+          data.password,
+        {},
+        { headers: myheader }
+      )
+      .subscribe((data) => {
+        this.createSession(data,userMail);
+      });
+  }
 
 
-  checkLogin(){
-    this.cookie.set('user_type','fewfw');
-   let user =  this.cookie.get('user_type');
-    console.log(user);
+  createSession(data,email){
+    if(data['code'] == 200){
+      this.http.get(this.apiUrl + 'app/session/' + email ,{}).subscribe(data =>{
+        this.cookie.set('SESSION_ID',data['message']['id']);
+      });
+    }
+    else if(data['code'] == 404){
+      console.log('b');
+    }
   }
 }

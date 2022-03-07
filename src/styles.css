@@ -63,6 +63,21 @@ h1{
   text-decoration: none;
 }
 
+.btn:hover{
+  background: #5A5A5A;
+  color: #FFD600;
+}
+
+.btn-blue{
+  background: rgb(37, 74, 241);
+  color: white;
+  border-radius: 6px;
+}
+
+.btn-blue:hover{
+  background: rgb(109, 135, 250);
+  color: white;
+}
 
 
 .btn:before{
@@ -79,10 +94,6 @@ h1{
     box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 0.303);
 }
 
-.btn:hover{
-  background: #5A5A5A;
-  color: #FFD600;
-}
 
 .btn:hover:before{
   left: 120%;

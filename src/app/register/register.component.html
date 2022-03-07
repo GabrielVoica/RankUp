@@ -1,3 +1,49 @@
 <div class="register-wrapper">
-    
+    <form class="register-form" (ngSubmit)="register()" >
+        <h1 class="form-header">Registrate <span>ahora</span></h1>
+        <input type="text" [(ngModel)]="username" name="username" id="username" placeholder="Nombre de usuario">
+        <input type="email" [(ngModel)]="email" name="email" name="email" placeholder="Correo">
+        <input type="text" [(ngModel)]="center" name="center" id="center" placeholder="Centro">
+        <input type="password" [(ngModel)]="password" name="password" id="password" placeholder="Contraseña">
+        <input type="password" [(ngModel)]="passwordConfirm" name="password" id="password" placeholder="Confirmar contraseña">
+        <button type="submit" class="btn btn-blue">Crear cuenta</button>
+    </form>
+
+    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="812" height="804" viewBox="0 0 812 804" fill="none">
+<g filter="url(#filter0_d_64_9)">
+<ellipse cx="406" cy="398" rx="402" ry="398" fill="#FFD600" fill-opacity="0.35" shape-rendering="crispEdges"/>
+</g>
+<defs>
+<filter id="filter0_d_64_9" x="0" y="0" width="812" height="804" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_64_9"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_64_9" result="shape"/>
+</filter>
+</defs>
+</svg>
+
+<svg class="boat" xmlns="http://www.w3.org/2000/svg" width="1000" height="1567" viewBox="0 0 1895 1567" fill="none">
+<path d="M687.444 1516.53L14.9872 1516.19L14.9416 1427.83L14.8298 1207.83L14.9872 1021.44C14.9872 1021.44 -57.9111 1090.02 728.041 1117.31C882.416 1122.67 1521.89 1108.01 1623.76 1080.63C1725.63 1053.25 1894.71 976.954 1894.71 976.954C1894.71 976.954 1864.43 1472.78 1575.08 1516.97C1285.73 1561.16 687.444 1516.53 687.444 1516.53Z" fill="#665D5D"/>
+<path d="M956.672 93.4382H984.672L836.672 1193.44H816.672L956.672 93.4382Z" fill="#665D5D"/>
+<g filter="url(#filter0_d_70_55)">
+<path d="M983.986 92.8165L1502.68 812.868L875.897 973.631L983.986 92.8165Z" fill="#FFD600" fill-opacity="0.35" shape-rendering="crispEdges"/>
+</g>
+<defs>
+<filter id="filter0_d_70_55" x="871.897" y="92.8165" width="634.782" height="888.814" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_70_55"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_70_55" result="shape"/>
+</filter>
+</defs>
+</svg>
 </div>
