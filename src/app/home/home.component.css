@@ -1,0 +1,9 @@
+.home{
+    background: rgb(198, 160, 209);
+    position: relative;
+}
+.content{
+    position: absolute;
+    left: 300px;
+    top:0;
+}

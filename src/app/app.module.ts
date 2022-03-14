@@ -24,8 +24,9 @@ const routes: Routes = [
   { path: '', component: LandingComponent },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'home', component: HomeComponent},
+  {path: 'home', component: HomeComponent, children: [{path: 'profile', component: ProfileComponent}]}
 ];
+
 
 
 @NgModule({
