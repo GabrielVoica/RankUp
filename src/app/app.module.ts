@@ -20,7 +20,9 @@ const routes: Routes = [
   { path: 'entry', component: EntryComponent },
   { path: '', component: LandingComponent },
   {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: 'home', component: HomeComponent}
+
 ];
 
 

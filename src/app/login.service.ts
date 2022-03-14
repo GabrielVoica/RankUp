@@ -49,10 +49,11 @@ export class LoginService {
     if(data['code'] == 200){
       this.http.get(this.apiUrl + 'app/session/' + email ,{}).subscribe(data =>{
         this.cookie.set('SESSION_ID',data['message']['id']);
+         this.router.navigate(['/home']);
       });
     }
     else if(data['code'] == 404){
-      console.log('b');
+      
     }
   }
 }
