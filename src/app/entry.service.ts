@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵɵqueryRefresh } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -14,7 +14,6 @@ export class EntryService {
 
   entry(userType: string) {
     this.cookies.set('user_type',userType);
-
     this.router.navigate(['/login']);
   }
 }
