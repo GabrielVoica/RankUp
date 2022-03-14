@@ -14,6 +14,9 @@ import { SecondComponent } from './landing/second/second.component';
 import { RegisterComponent } from './register/register.component';
 import { CookieModule } from 'ngx-cookie';
 import { HomeComponent } from './home/home.component';
+import { SidebarComponent } from './home/sidebar/sidebar.component';
+import { ContentComponent } from './home/content/content.component';
+import { ProfileComponent } from './home/content/profile/profile.component';
 
 
 const routes: Routes = [
@@ -21,8 +24,7 @@ const routes: Routes = [
   { path: '', component: LandingComponent },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'home', component: HomeComponent}
-
+  {path: 'home', component: HomeComponent},
 ];
 
 
@@ -35,7 +37,10 @@ const routes: Routes = [
     LandingComponent,
     SecondComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    SidebarComponent,
+    ContentComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

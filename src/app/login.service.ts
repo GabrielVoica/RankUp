@@ -44,7 +44,6 @@ export class LoginService {
       });
   }
 
-
   createSession(data,email){
     if(data['code'] == 200){
       this.http.get(this.apiUrl + 'app/session/' + email ,{}).subscribe(data =>{
