@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { SidebarComponent } from './home/sidebar/sidebar.component';
 import { ContentComponent } from './home/content/content.component';
 import { ProfileComponent } from './home/content/profile/profile.component';
+import { DashboardComponent } from './home/content/dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,11 @@ const routes: Routes = [
   { path: '', component: LandingComponent },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'home', component: HomeComponent, children: [{path: 'profile', component: ProfileComponent}]}
+  {path: 'home', component: HomeComponent, 
+  children: [
+    {path: 'profile', component: ProfileComponent},
+    {path: 'dashboard',component: DashboardComponent}
+  ]}
 ];
 
 

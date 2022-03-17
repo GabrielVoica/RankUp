@@ -1,5 +1,27 @@
 <div class="home">
-     <a class="nav-link" routerLink="profile" routerLinkActive="active">Users</a>
+  <div class="sidebar">
+    <div class="close">
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+    <div class="brand"></div>
+    <div class="sidebar-link">
+      <i class="fa-solid fa-house-fire"></i>
+      <a class="nav-link" routerLink="dashboard" routerLinkActive="active"
+        >Dashboard</a
+      >
+    </div>
+    <div class="sidebar-link">
+      <i class="fa-solid fa-user fa-1x icon"></i>
+    <a class="nav-link" routerLink="profile" routerLinkActive="active"
+      >Perfil</a
+    >
+    </div>
+    <div class="sidebar-link">
+      <i class="fa-solid fa-ranking-star"></i>
+    <a class="nav-link" routerLink="profile" routerLinkActive="active"
+      >Rankings</a
+    >
+    </div>
+  </div>
+  <router-outlet></router-outlet>
 </div>
-
-<router-outlet></router-outlet>

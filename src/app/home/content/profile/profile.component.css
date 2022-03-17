@@ -1,0 +1,27 @@
+.profile{
+    width: 100%;
+    padding: 50px 100px;
+    background: #f5e7fd;
+    height: 100%;
+}
+
+.header{
+    color: #333;
+}
+
+.subheader{
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    color: rgb(90, 90, 90);
+    margin-left: 3px;
+}
+
+.header-info{
+    width: 70%;
+    min-height: 500px;
+    background: rgb(201, 161, 224);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
