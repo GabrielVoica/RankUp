@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2, HostListener } from '@angular/core';
 import { Routes, RouterModule,Router } from '@angular/router';
 
 
@@ -10,15 +10,24 @@ import { Routes, RouterModule,Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   router: Router;
+  renderer: Renderer2;
+  closed: Boolean = true;
 
-  constructor(router: Router) { 
+  constructor(router: Router, element: ElementRef, renderer: Renderer2) { 
     this.router = router;
+    this.renderer = renderer;
   }
+
+  @ViewChild('sidebar') sidebar: ElementRef;
 
   ngOnInit(): void {
-    this.router.navigate(['/home/dashboard']);
+    this.router.navigate(['/home/']);
   }
 
+  closeSideBar(){
+    this.renderer.setAttribute(this.sidebar.nativeElement,'class',this.closed ? 'sidebar' : 'sidebar closed');
+    this.closed = !this.closed;
+  }
 
   
 

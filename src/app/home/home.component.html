@@ -1,12 +1,12 @@
 <div class="home">
-  <div class="sidebar">
-    <div class="close">
-      <i class="fa-solid fa-xmark"></i>
+  <div class="sidebar closed" #sidebar>
+    <div class="close" (click)="closeSideBar()">
+      <i class="fa-solid fa-arrow-right fa-1x"></i>
     </div>
     <div class="brand"></div>
     <div class="sidebar-link">
       <i class="fa-solid fa-house-fire"></i>
-      <a class="nav-link" routerLink="dashboard" routerLinkActive="active"
+      <a class="nav-link" routerLink="/home" routerLinkActive="active"
         >Dashboard</a
       >
     </div>

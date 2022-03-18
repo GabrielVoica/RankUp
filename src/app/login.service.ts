@@ -24,9 +24,6 @@ export class LoginService {
   checkLogin(data) {
     let userMail = data.email;
     const myheader = new HttpHeaders().set('Content-Type', 'application/json');
-    let body = new HttpParams();
-    body = body.set('username', data.email);
-    body = body.set('password', data.password);
     let loginResult = null;
 
     this.http

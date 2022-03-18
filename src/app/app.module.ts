@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { EntryComponent } from './entry/entry.component';
@@ -28,7 +29,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent, 
   children: [
     {path: 'profile', component: ProfileComponent},
-    {path: 'dashboard',component: DashboardComponent}
+    {path: '',component: DashboardComponent}
   ]}
 ];
 
