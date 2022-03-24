@@ -1,4 +1,5 @@
 <div class="login-wrapper">
+  <app-spinner  [ngStyle]="loader()"></app-spinner>
   <form (ngSubmit)="login()" class="login-form">
     <h2 class="form-title">Bienvenido de nuevo</h2>
     <input type="text" [(ngModel)]="email" name="email" placeholder="Email" />

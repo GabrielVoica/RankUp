@@ -45,8 +45,9 @@ export class RegisterService {
       .subscribe((data) => {
         if (data['code'] == 200) {
           this.createSession(data, values.email);
-          console.log(data);
+          
         } else {
+          environment.loading = false;
           console.log(data);
         }
       });
@@ -77,6 +78,9 @@ export class RegisterService {
   }
 
   saveGlobalState(data) {
-    environment.session.id = '';
+    environment.session.username = data.username;
+    environment.session.email = data.email;
+    environment.session.center = data.center;
+    environment.session.picture = data.picture;
   }
 }

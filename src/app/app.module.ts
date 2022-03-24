@@ -19,6 +19,7 @@ import { SidebarComponent } from './home/sidebar/sidebar.component';
 import { ContentComponent } from './home/content/content.component';
 import { ProfileComponent } from './home/content/profile/profile.component';
 import { DashboardComponent } from './home/content/dashboard/dashboard.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 const routes: Routes = [
@@ -47,7 +48,8 @@ const routes: Routes = [
     HomeComponent,
     SidebarComponent,
     ContentComponent,
-    ProfileComponent
+    ProfileComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

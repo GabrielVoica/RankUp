@@ -98,3 +98,61 @@ h1{
   left: 120%;
 }
 
+app-spinner{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(201, 75, 255, 0.651);
+  z-index: 100000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: 1s opacity;
+  visibility: hidden;
+}
+
+
+app-spinner .spinner-circle{
+  width: 150px;
+  height: 100px;
+  display: flex;
+}
+
+
+app-spinner .spinner-circle .dot{
+  animation: 1s resize infinite linear; 
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  margin: 10px;
+  border: 3px solid rgb(255, 255, 255);
+}
+
+app-spinner .spinner-circle .dot-1{
+  animation-delay: 0.1s;
+}
+
+app-spinner .spinner-circle .dot-2{
+  animation-delay: 0.2s;
+
+}
+
+app-spinner .spinner-circle .dot-3{
+  animation-delay: 0.3s;
+}
+
+
+@keyframes resize{
+  0%{
+    transform: scale(0);
+  }
+  50%{
+    transform: scale(1);
+  }
+  100%{
+    transform: scale(0);
+  }
+}

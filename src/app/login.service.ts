@@ -49,7 +49,7 @@ export class LoginService {
       });
     }
     else if(data['code'] == 404){
-      
+      environment.loading = false;
     }
   }
 }
