@@ -20,6 +20,8 @@ import { ContentComponent } from './home/content/content.component';
 import { ProfileComponent } from './home/content/profile/profile.component';
 import { DashboardComponent } from './home/content/dashboard/dashboard.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { RankingsComponent } from './home/content/rankings/rankings.component';
+import { RankingComponent } from './home/content/ranking/ranking.component';
 
 
 const routes: Routes = [
@@ -30,7 +32,9 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent, 
   children: [
     {path: 'profile', component: ProfileComponent},
-    {path: '',component: DashboardComponent}
+    {path: '',component: DashboardComponent},
+    {path: 'rankings', component: RankingsComponent},
+    {path: 'ranking/:code', component: RankingComponent}
   ]}
 ];
 

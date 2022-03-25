@@ -104,7 +104,7 @@ app-spinner{
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(201, 75, 255, 0.651);
+  background: rgba(206, 119, 247, 0.493);
   z-index: 100000;
   display: flex;
   justify-content: center;
@@ -116,7 +116,7 @@ app-spinner{
 
 
 app-spinner .spinner-circle{
-  width: 150px;
+  width: 200px;
   height: 100px;
   display: flex;
 }
@@ -128,7 +128,7 @@ app-spinner .spinner-circle .dot{
   width: 30px;
   border-radius: 100%;
   margin: 10px;
-  border: 3px solid rgb(255, 255, 255);
+  border: 3px solid white;
 }
 
 app-spinner .spinner-circle .dot-1{
@@ -136,12 +136,12 @@ app-spinner .spinner-circle .dot-1{
 }
 
 app-spinner .spinner-circle .dot-2{
-  animation-delay: 0.2s;
+  animation-delay: 0.3s;
 
 }
 
 app-spinner .spinner-circle .dot-3{
-  animation-delay: 0.3s;
+  animation-delay: 0.5s;
 }
 
 

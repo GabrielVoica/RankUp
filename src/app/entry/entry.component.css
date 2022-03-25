@@ -74,7 +74,6 @@
 .user-type-select div .type-texture {
   width: 100%;
   height: 50px;
-  background: url("src/assets/textures/entry-texture.png");
   background-size: 100%;
   background-position: center;
 }
