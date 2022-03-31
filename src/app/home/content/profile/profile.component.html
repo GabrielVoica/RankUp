@@ -3,7 +3,20 @@
     <h2 class="subheader">Edita tu perfil y tu cuenta</h2>
     <section class="header-info user-image ">
         <h3>Imagen de perfil</h3>
-        <div class="user-photo"></div>
+        <div class="user-photo">
+
+            <label for="file">Seleccionar imagen</label>
+            <input (change)="onFileChange($event)" id="file" type="file" />
+            <button
+              [disabled]="!status"
+              class="btn btn-primary"
+              type="submit"
+              (click)="submit()"
+            >
+              Guardar
+            </button>
+
+        </div>
     </section>
 
     <section class="header-info user-info ">
