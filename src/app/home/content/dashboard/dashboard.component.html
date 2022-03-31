@@ -1,6 +1,16 @@
+
+
 <div class="dashboard">
-    <div class="enter-ranking">
-        <input type="text" name="rankingCode" (keydown)="updateCode($event)"  #codeInput  class="enter-button" placeholder="Código ranking">
-        <button class="btn" (click)="viewRanking()">Entrar</button>
+<ng-template [ngIf]="userType == 'student'">
+ <div class="enter-ranking">
+        <input type="text" name="rankingCode" (keyup)="updateCode($event)"  #codeInput  class="enter-button" placeholder="Código ranking">
+        <button class="btn"  (click)="viewRanking()">Entrar</button>
     </div>
+    <div class="">
+
+    </div>
+</ng-template>
+
+   
 </div>
+

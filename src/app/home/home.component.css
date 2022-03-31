@@ -2,6 +2,7 @@
     height: fit-content;
     background: #f5e7fd;
     position: relative;
+    height: 100%;
 }
 
 .sidebar{
@@ -16,6 +17,7 @@
     padding-top: 150px;
     transition: width 0.5s, 0.5s padding;
     z-index: 5;
+    box-shadow: 0px 0px 14px 3px #0000002e;
 }
 
 .sidebar.closed{

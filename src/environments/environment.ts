@@ -11,7 +11,8 @@ export const environment = {
     username: '',
     email: '',
     center: '',
-    picture: ''
+    picture: '',
+    type: ''
   },
   loading: false
 };

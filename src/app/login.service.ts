@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'src/environments/environment';
+import { SessionDataService } from './session-data.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,15 +17,18 @@ export class LoginService {
   constructor(
     private router: Router,
     private http: HttpClient,
-    private cookie: CookieService
+    private cookie: CookieService,
+    private sessionData: SessionDataService
   ) {}
 
   apiUrl = environment.apiURL;
+  userType;
 
   checkLogin(data) {
     let userMail = data.email;
     const myheader = new HttpHeaders().set('Content-Type', 'application/json');
     let loginResult = null;
+    this.userType = data.type;
 
     this.http
       .post(
@@ -45,11 +49,34 @@ export class LoginService {
     if(data['code'] == 200){
       this.http.get(this.apiUrl + 'app/session/' + email ,{}).subscribe(data =>{
         this.cookie.set('SESSION_ID',data['message']['id']);
-         this.router.navigate(['/home']);
       });
+
+      this.saveGlobalState(data['data']['id']);
+
     }
     else if(data['code'] == 404){
       environment.loading = false;
-    }
+    } 
+  }
+
+
+  saveGlobalState(id) {
+
+    this.http.get(this.apiUrl + 'app/user/' + id,{}).subscribe(data =>{
+      this.sessionData.setId(data['data']['id']);
+      this.sessionData.setUsername(data['data']['nick_name']);
+      this.sessionData.setEmail(data['data']['email']);
+      this.sessionData.setCenter(data['data']['center']);
+      this.sessionData.setImage(data['data']['image']);
+
+      if(data['data']['user_type'] == 1){
+       this.sessionData.setType('teacher');
+      }
+      else if(data['data']['user_type'] == 0){
+        this.sessionData.setType('student');
+      }
+
+       this.router.navigate(['/home']);
+    });
   }
 }

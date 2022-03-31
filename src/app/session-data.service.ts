@@ -13,7 +13,14 @@ import {
 })
 export class SessionDataService {
 
- private userData = [];
+ private userData = {
+   id: '',
+   username: '',
+   email: '',
+   center: '',
+   image: '',
+   type : ''
+ };
 
  
   constructor(
@@ -24,7 +31,59 @@ export class SessionDataService {
 
   }
 
+  setId(id){
+   localStorage.setItem('id',id);
+   this.userData.id = id;
+  }
 
+  setUsername(username){
+    localStorage.setItem('username',username);
+    this.userData.username = username;
+  }
+
+  setEmail(email){
+    localStorage.setItem('email',email);
+    this.userData.email = email;
+  }
+
+  setCenter(center){
+    localStorage.setItem('center',center);
+    this.userData.center = center;
+  }
+
+  setImage(image){
+    localStorage.setItem('image',image);
+    this.userData.image = image;
+  }
+
+  setType(type){
+    localStorage.setItem('type',type);
+    this.userData.type = type;
+  }
+
+  getId(){
+  return localStorage.getItem('id');
+  }
+
+  getUsername(){
+   return localStorage.getItem('username');
+  }
+
+  getEmail(){
+   return localStorage.getItem('email');
+  }
+
+  getCenter(){
+   return localStorage.getItem('center');
+  }
+
+  getImage(){
+   return localStorage.getItem('image');
+  }
+
+  getType(){
+   return localStorage.getItem('type');
+  }
 
 
 }

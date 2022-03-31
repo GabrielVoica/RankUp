@@ -5,6 +5,7 @@
     height: 100%;
     margin-left: 200px;
     max-width: 1500px;
+    overflow-y: hidden;
 }
 
 .header{

@@ -104,7 +104,7 @@ app-spinner{
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(206, 119, 247, 0.493);
+  background: rgba(139, 54, 179, 0.644);
   z-index: 100000;
   display: flex;
   justify-content: center;
@@ -119,6 +119,8 @@ app-spinner .spinner-circle{
   width: 200px;
   height: 100px;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 

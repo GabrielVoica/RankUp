@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {

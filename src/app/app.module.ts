@@ -22,7 +22,8 @@ import { DashboardComponent } from './home/content/dashboard/dashboard.component
 import { SpinnerComponent } from './spinner/spinner.component';
 import { RankingsComponent } from './home/content/rankings/rankings.component';
 import { RankingComponent } from './home/content/ranking/ranking.component';
-
+import { CommonModule } from '@angular/common';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
   { path: 'entry', component: EntryComponent },
@@ -34,10 +35,12 @@ const routes: Routes = [
     {path: 'profile', component: ProfileComponent},
     {path: '',component: DashboardComponent},
     {path: 'rankings', component: RankingsComponent},
-    {path: 'ranking/:code', component: RankingComponent}
-  ]}
-];
 
+    {path: 'ranking/:code', component: RankingComponent}
+  ]},
+  {path: '404', component: NotfoundComponent},
+  {path: '**', redirectTo: '/404'}
+];
 
 
 @NgModule({
@@ -53,15 +56,20 @@ const routes: Routes = [
     SidebarComponent,
     ContentComponent,
     ProfileComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    DashboardComponent,
+    RankingComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
     CookieModule.forRoot(),
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
+
   providers: [
     CookieService
   ],

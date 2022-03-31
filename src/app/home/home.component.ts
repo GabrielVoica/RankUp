@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2, HostListener } from '@angular/core';
 import { Routes, RouterModule,Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { SessionDataService } from '../session-data.service';
 
 
 @Component({
@@ -12,8 +14,10 @@ export class HomeComponent implements OnInit {
   router: Router;
   renderer: Renderer2;
   closed: Boolean = true;
+  userType;
 
-  constructor(router: Router, element: ElementRef, renderer: Renderer2) { 
+
+  constructor(router: Router, element: ElementRef, renderer: Renderer2, private session: SessionDataService) { 
     this.router = router;
     this.renderer = renderer;
   }
@@ -21,7 +25,8 @@ export class HomeComponent implements OnInit {
   @ViewChild('sidebar') sidebar: ElementRef;
 
   ngOnInit(): void {
-    
+    environment.loading = false;
+    this.userType = this.session.getType();
   }
 
   closeSideBar(){
@@ -29,6 +34,15 @@ export class HomeComponent implements OnInit {
     this.closed = !this.closed;
   }
 
+
+  loader(){
+    if(environment.loading == true){
+      return {opacity: '1', visibility: 'visible'}
+    }
+    else{
+      return {opacity: '0', visibility: 'hidden'}
+    }
+  }
   
 
 }

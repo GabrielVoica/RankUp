@@ -21,6 +21,7 @@ export class RegisterService {
 
   apiUrl = environment.apiURL;
   userSessionData = environment.session;
+  userType;
 
   registerUser({ ...values }) {
     let errors = {};
@@ -31,19 +32,20 @@ export class RegisterService {
 
     const myheader = new HttpHeaders().set('Content-Type', 'application/json');
 
-    let userType = this.cookie.get('user_type') == 'student' ? 0 : 1;
+    this.userType = this.cookie.get('user_type') == 'student' ? 0 : 1;
 
-    let template = `app/register?nick_name=${values.username}&email=${values.email}&password=${values.password}&user_type=${userType}`;
+    let template = `app/register?nick_name=${values.username}&email=${values.email}&password=${values.password}&user_type=${this.userType}`;
 
     this.http
       .post(
         this.apiUrl +
-          `app/register?nick_name=${values.username}&email=${values.email}&password=${values.password}&user_type=${userType}`,
+          `app/register?nick_name=${values.username}&email=${values.email}&password=${values.password}&user_type=${this.userType}&conf_passwd=${values.password}`,
         {},
         { headers: myheader }
       )
       .subscribe((data) => {
         if (data['code'] == 200) {
+          console.log(data);
           this.createSession(data, values.email);
           
         } else {
@@ -82,5 +84,12 @@ export class RegisterService {
     environment.session.email = data.email;
     environment.session.center = data.center;
     environment.session.picture = data.picture;
+
+    if(this.userType == 1){
+      environment.session.type = 'teacher';
+    }
+    else{
+      environment.session.type = 'student';
+    }
   }
 }

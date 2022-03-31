@@ -4,24 +4,50 @@
       <i class="fa-solid fa-arrow-right fa-1x"></i>
     </div>
     <div class="brand"></div>
-    <div class="sidebar-link">
+    <ng-template [ngIf]="userType == 'student'">
+      <div class="sidebar-link">
       <i class="fa-solid fa-house-fire"></i>
       <a class="nav-link" routerLink="/home" routerLinkActive="active"
         >Dashboard</a
       >
     </div>
-    <div class="sidebar-link">
+      <div class="sidebar-link">
       <i class="fa-solid fa-user fa-1x icon"></i>
     <a class="nav-link" routerLink="profile" routerLinkActive="active"
       >Perfil</a
     >
     </div>
-    <div class="sidebar-link">
+     <div class="sidebar-link">
       <i class="fa-solid fa-ranking-star"></i>
     <a class="nav-link" routerLink="rankings" routerLinkActive="active"
       >Rankings</a
     >
     </div>
+    </ng-template>
+
+    <ng-template [ngIf]="userType == 'teacher'">
+       <div class="sidebar-link">
+      <i class="fa-solid fa-house-fire"></i>
+      <a class="nav-link" routerLink="/home" routerLinkActive="active"
+        >Dashboard</a
+      >
+    </div>
+      <div class="sidebar-link">
+      <i class="fa-solid fa-user fa-1x icon"></i>
+    <a class="nav-link" routerLink="profile" routerLinkActive="active"
+      >Perfil</a
+    >
+    </div>
+     <div class="sidebar-link">
+      <i class="fa-solid fa-ranking-star"></i>
+    <a class="nav-link" routerLink="rankings" routerLinkActive="active"
+      >Rankings</a
+    >
+    </div>
+    </ng-template>
+    
+   
   </div>
   <router-outlet></router-outlet>
+  <app-spinner  [ngStyle]="loader()"></app-spinner>
 </div>
