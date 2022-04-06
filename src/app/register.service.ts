@@ -39,8 +39,8 @@ export class RegisterService {
     this.http
       .post(
         this.apiUrl +
-          `app/register?nick_name=${values.username}&email=${values.email}&password=${values.password}&user_type=${this.userType}&conf_passwd=${values.password}`,
-        {},
+          `app/register?nick_name=${values.username}&email=${values.email}&password=${values.password}&user_type=${this.userType}&conf_passwd=${values.password}&image=image`,
+          {'image':values.imageSrc},
         { headers: myheader }
       )
       .subscribe((data) => {

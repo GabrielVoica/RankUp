@@ -6,7 +6,9 @@
         <input type="email" [(ngModel)]="email" name="email" name="email" placeholder="Correo">
         <input type="text" [(ngModel)]="center" name="center" id="center" placeholder="Centro">
         <input type="password" [(ngModel)]="password" name="password" id="password" placeholder="Contraseña">
-        <input type="password" [(ngModel)]="passwordConfirm" name="password" id="password" placeholder="Confirmar contraseña">
+        <input type="password" [(ngModel)]="passwordConfirm" name="password" id="password" placeholder="Confirmar contraseña"> 
+        <label for="file">Seleccionar imagen</label>
+        <input (change)="onFileChange($event)" id="file" type="file" />
         <button type="submit" class="btn btn-blue" (click)="register">Crear cuenta</button>
     </form>
 

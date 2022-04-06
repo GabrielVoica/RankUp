@@ -1,26 +1,61 @@
 <div class="profile">
-    <h1 class="header">Tu perfil</h1>
-    <h2 class="subheader">Edita tu perfil y tu cuenta</h2>
-    <section class="header-info user-image ">
-        <h3>Imagen de perfil</h3>
-        <div class="user-photo">
+  <h1 class="header">Tu perfil</h1>
+  <h2 class="subheader">Edita tu perfil y tu cuenta</h2>
+  <section class="header-info user-image ">
+    <h3>Imagen de perfil</h3>
+    <div class="user-photo">
 
-            <label for="file">Seleccionar imagen</label>
-            <input (change)="onFileChange($event)" id="file" type="file" />
-            <button
-              [disabled]="!status"
-              class="btn btn-primary"
-              type="submit"
-              (click)="submit()"
-            >
-              Guardar
-            </button>
+      <div class="container_image">
+        <div class="container_image_profile">
+          <label for="file-input">
+            <div class="img_container">
+              <img class="picture_profile" src="{{pic}}" />
+              <div class="user_info">
+                <p class="username">Usuario: {{user}}</p>
+                <p class="username"> {{mail}}</p>
+                <div class="inputWrapper">
+                  Seleccionar archivo <input class="fileInput" (change)="onFileChange($event)" type="file" />
+                </div>
+              </div>
+            </div>
+          </label>
+
+
 
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section class="header-info user-info ">
-        <h3>Información de la cuenta</h3>
-    </section>
+  <section class="header-info user-info">
+    <h3>Información de la cuenta</h3>
+
+
+    <form>
+      <div class="form_section">
+        <div class="input_s">
+          <label for="name">Nombre</label>
+          <input type="text" name="name" [(ngModel)]="name">
+        </div>
+        <div class="input_s">
+          <label for="lastname">Apellidos</label>
+          <input type="text" name="lastname" [(ngModel)]="lastname">
+        </div>
+        <div class="input_s">
+          <label for="email">Nick</label>
+          <input type="text" name="username" [(ngModel)]="username">
+        </div>
+        <div class="input_s">
+          <label for="email">Email</label>
+          <input type="email" name="email"  [(ngModel)]="email">
+        </div>
+        <button class="inputWrapper" type="submit" (click)="submit()"> Guardar </button>
+      </div>
+    </form>
+
+
+
+
+    <!-- [disabled]="!status" -->
+  </section>
 </div>
-
