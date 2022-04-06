@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'src/environments/environment';
+import { SessionDataService } from './session-data.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,8 @@ export class RegisterService {
   constructor(
     private router: Router,
     private http: HttpClient,
-    private cookie: CookieService
+    private cookie: CookieService,
+    private session: SessionDataService
   ) {}
 
   apiUrl = environment.apiURL;
@@ -40,25 +42,19 @@ export class RegisterService {
       .post(
         this.apiUrl +
           `app/register?nick_name=${values.username}&email=${values.email}&password=${values.password}&user_type=${this.userType}&conf_passwd=${values.password}&image=image`,
-          {'image':values.imageSrc},
+        { image: values.imageSrc },
         { headers: myheader }
       )
       .subscribe((data) => {
         if (data['code'] == 200) {
-          console.log(data);
           this.createSession(data, values.email);
-          
+          console.log(data);
         } else {
           environment.loading = false;
-          console.log(data);
         }
       });
 
     const isEmpty = Object.keys(errors).length === 0;
-
-    if (isEmpty) {
-      this.saveGlobalState(values);
-    }
   }
 
   checkPasswords(password, passwordConfirm) {
@@ -73,23 +69,30 @@ export class RegisterService {
     this.http
       .get(this.apiUrl + 'app/session/' + email, {})
       .subscribe((data) => {
-        console.log(data);
         this.cookie.set('SESSION_ID', data['message']['id']);
-        this.router.navigate(['/home']);
+        this.setUserData(data['message']['user_id']);
       });
   }
 
-  saveGlobalState(data) {
-    environment.session.username = data.username;
-    environment.session.email = data.email;
-    environment.session.center = data.center;
-    environment.session.picture = data.picture;
+  setUserData(id){
+     this.http
+          .get(this.apiUrl + 'app/user/' + id, {})
+          .subscribe((data) => {
+            this.session.setId(data['data']['id']);
+            this.session.setUsername(data['data']['nick_name']);
+            this.session.setEmail(data['data']['email']);
+            this.session.setCenter(data['data']['center']);
+            this.session.setImage(data['data']['image']);
 
-    if(this.userType == 1){
-      environment.session.type = 'teacher';
-    }
-    else{
-      environment.session.type = 'student';
-    }
+            if (this.userType == 1) {
+              this.session.setType('teacher');
+            } else {
+              this.session.setType('student');
+            }
+
+            this.router.navigate(['/home']);
+          });
   }
 }
+
+
