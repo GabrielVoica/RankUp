@@ -22,10 +22,99 @@
 
 .header-info{
     width: 100%;
-    min-height: 500px;
+    min-height: 300px;
     border-radius: 6px;
     margin-bottom: 20px;
     background: white;
     box-shadow: 1px 3px 7px 2px #00000017;
 }
 
+
+.user-photo{
+  margin-top: 3%;
+}
+
+
+.img_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.picture_profile{
+  width: 10%;
+  border-radius: 20%;
+box-shadow: 1px 3px 7px 2px #00000017;
+}
+
+.container_image_profile>input {
+  display: none;
+}
+
+.user_info{
+  display: flex;
+  flex-direction: column;
+  margin-left: 1%;
+}
+.username{
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.fileInput {
+  cursor: pointer;
+  height: 100%;
+  position:absolute;
+  top: 0;
+  right: 0;
+  z-index: 99;
+  /*This makes the button huge. If you want a bigger button, increase the font size*/
+  font-size:50px;
+  /*Opacity settings for all browsers*/
+  opacity: 0;
+  -moz-opacity: 0;
+  filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0)
+}
+.inputWrapper {
+
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  background-color: #6A0AA1;
+  color: white;
+  box-shadow: 1px 3px 7px 2px #00000017;
+  padding: 10px;
+  height: 50px;
+
+font-weight: bolder;
+font-size: 20px;
+  border-radius: 10px;
+}
+
+form{
+  display: flex;
+  justify-content: center;
+}
+
+.form_section{
+  display: flex;
+  margin-top: 3%;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.input_s{
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  align-items: center;
+
+}
+
+input{
+  border: 1px solid #000000;
+  background-color: #ffffff;
+  padding: 5px;
+  border-radius: 10px;
+  outline: none;
+  margin: 5px;
+}
