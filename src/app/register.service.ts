@@ -84,6 +84,8 @@ export class RegisterService {
             this.session.setCenter(data['data']['center']);
             this.session.setImage(data['data']['image']);
 
+            console.log(data['data']['image']);
+
             if (this.userType == 1) {
               this.session.setType('teacher');
             } else {
