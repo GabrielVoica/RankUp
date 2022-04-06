@@ -4,6 +4,9 @@ import { Routes, RouterModule,Router } from '@angular/router';
 import { AfterViewInit } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { SessionDataService } from 'src/app/session-data.service';
+import { RankingComponent } from '../ranking/ranking.component';
+import { RankingService } from 'src/app/ranking.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js'; 
 
 
 @Component({
@@ -13,11 +16,12 @@ import { SessionDataService } from 'src/app/session-data.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private router: Router, private session: SessionDataService) {
+  constructor(private router: Router, private session: SessionDataService, private rankingService: RankingService) {
   }
 
    rankingCode: string = "";
    userType = this.session.getType();
+   rankingExists: boolean;
 
   @ViewChild('codeInput') codeInput: ElementRef;
 
@@ -34,7 +38,19 @@ export class DashboardComponent implements OnInit {
   viewRanking(){
    if(!(this.rankingCode == "")){
      environment.loading = true;
-     this.router.navigate(['home/ranking/', this.rankingCode]);
+     let response = this.rankingService.loadRanking(this.rankingCode);
+response.subscribe((data)=>{
+ if(data['code'] == 200){
+  this.router.navigate(['home/ranking/', this.rankingCode]);
+ }
+ else if(data['code'] == 404){
+   environment.loading = false;
+   Swal.fire({
+     title: 'El ranking no existe',
+     icon: 'error'
+   });
+ }
+});
    }
    else{
      this.codeInput.nativeElement.style.animation = 'input-error 0.5s forwards';

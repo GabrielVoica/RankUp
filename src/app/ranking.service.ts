@@ -12,11 +12,19 @@ export class RankingService {
   constructor(private http: HttpClient) {}
 
   myheader = new HttpHeaders().set('Content-Type', 'application/json');
+  
   loadRanking(code) {
     return this.http
       .get(
         environment.apiURL + 'app/ranking/' + code,
         {}
       ) 
+  }
+
+  loadRankingData(code){
+    return this.http.get(
+      environment.apiURL + 'app/rankingdata/' + code,
+      {}
+    )
   }
 }

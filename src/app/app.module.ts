@@ -24,6 +24,7 @@ import { RankingsComponent } from './home/content/rankings/rankings.component';
 import { RankingComponent } from './home/content/ranking/ranking.component';
 import { CommonModule } from '@angular/common';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { SessionDataService } from './session-data.service';
 
 const routes: Routes = [
   { path: 'entry', component: EntryComponent },
@@ -71,7 +72,8 @@ const routes: Routes = [
   ],
 
   providers: [
-    CookieService
+    CookieService,
+    SessionDataService
   ],
   bootstrap: [AppComponent]
 })

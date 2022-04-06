@@ -5,16 +5,36 @@
     <div></div>
   </div>
   <div class="ranking-content">
-     <div class="ranking-content-positions">
-       <div class="ranking-content-positions-wrapper" *ngFor="let item of data">
-        <div class="data-row">
-
+    <div class="ranking-content-positions">
+      <div class="ranking-content-positions-wrapper">
+        <div
+          class="data-row"
+          *ngFor="let item of rankingPositionsData; let indexOfElement = index"
+          [ngStyle]="loggedUserInRanking(item.id, indexOfElement)"
+          (click)="studentBadged = item.id"
+        >
+          <span class="position">{{ indexOfElement + 1 }}</span>
+          <div class="user-image" [ngStyle]="setUserImage(item.image, item.nick_name)"></div>
+          <p class="user-username">{{ item.nick_name }}</p>
+          <p class="user-points">{{ item.points }}</p>
         </div>
-       </div>
-      
-     </div>
-      <div class="ranking-content-badges">
-
       </div>
+    </div>
+    <div class="ranking-content-badges">
+      <div class="badges-wrapper">
+        <div class="badge-container" (click)="setBadge('responsability')">
+          Responsabilidad
+        </div>
+        <div class="badge-container" (click)="setBadge('')">Cooperación</div>
+        <div class="badge-container">Autonomía e iniciativa</div>
+        <div class="badge-container">Gestión emocional</div>
+        <div class="badge-container">Habilidades de pensamiento</div>
+      </div>
+
+      <div class="select-user"></div>
+      <div class="points-user"></div>
+      <div class="comments"></div>
+      <div class="submit"></div>
+    </div>
   </div>
 </div>
