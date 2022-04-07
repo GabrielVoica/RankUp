@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
   registerService: RegisterService;
   loading = environment.loading;
   imageSrc:any = '';
+  value_img: string;
   status:boolean = false
 
   onFileChange(event:any) {
@@ -42,8 +43,17 @@ export class RegisterComponent implements OnInit {
   passwordConfirm: string;
 
 
+
+
   register(){
-    this.registerService.registerUser({username: this.username, email: this.email, center: this.center, password: this.password, passwordConfirm: this.passwordConfirm, imageSrc: this.imageSrc});
+
+    if(this.imageSrc == ''){
+this.value_img = 'null'
+    }else{
+      this.value_img = 'image'
+    }
+
+    this.registerService.registerUser({username: this.username, email: this.email, center: this.center, password: this.password, passwordConfirm: this.passwordConfirm, imageSrc: this.imageSrc, value_img: this.value_img});
     environment.loading = true;
   }
 
