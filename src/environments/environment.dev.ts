@@ -3,11 +3,12 @@ export const environment = {
   title: 'Dev Environment Heading',
   apiURL: 'http://localhost/API_InfoAction/',
   session: {
-    id :'',
+    id: '',
     username: '',
     email: '',
     center: '',
     password: '',
-    picture: ''
-  }
+    picture: '',
+  },
+  loading: false,
 };
