@@ -16,6 +16,9 @@
                 <div class="inputWrapper">
                   Seleccionar archivo <input class="fileInput" (change)="onFileChange($event)" type="file" />
                 </div>
+                <div class="inputWrapper deletebutton">
+                  Eliminar imagen <input class="fileInput" (click)="deleteimage()" />
+                </div>
               </div>
             </div>
           </label>

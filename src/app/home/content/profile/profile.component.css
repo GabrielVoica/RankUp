@@ -89,6 +89,9 @@ font-weight: bolder;
 font-size: 20px;
   border-radius: 10px;
 }
+.deletebutton{
+  background-color: #ff0000;
+}
 
 form{
   display: flex;

@@ -38,11 +38,16 @@ export class ProfileComponent implements OnInit {
     }
   }
   submit(){
-    this.http.put(this.apiURL+`app/user?nick_name=${this.username}&name=${this.name}&lastname=${this.lastname}&email=${this.email}&image=image&id=${this.id}`, {'image':this.imageSrc})
+    this.http.put(this.apiURL+`app/user?image=image&id=${this.id}`, {'image':this.imageSrc})
       .subscribe(res => {
         console.log(res);
-        alert('Uploaded Successfully.');
       })
+  }
+  deleteimage(){
+    this.http.put(this.apiURL+`app/user?image=null&id=${this.id}`, {'image':this.imageSrc})
+    .subscribe(res => {
+      console.log(res);
+    })
   }
 }
 
