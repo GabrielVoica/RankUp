@@ -18,16 +18,22 @@ export class ProfileComponent implements OnInit {
   apiURL = environment.apiURL;
   imageSrc: any = '';
 
-  username: string;
-  email: string;
-  name: string;
-  lastname: string;
-
   status: boolean = false;
   id = this.session.getId();
   pic = this.session.getImage();
-  user = this.session.getUsername();
-  mail = this.session.getEmail();
+
+  username = this.session.getUsername();
+  nickname = this.username;
+
+  email = this.session.getEmail();
+  mail = this.email;
+
+  name = this.session.getName();
+  nme = this.name;
+
+  lastname = this.session.getLastname();
+  last = this.lastname;
+
   ngOnInit(): void {}
   onFileChange(event: any) {
     this.status = false;
@@ -43,15 +49,60 @@ export class ProfileComponent implements OnInit {
   }
   submit() {
     environment.loading = true;
-    this.http
-      .put(this.apiURL + `app/user?nick_name=${this.username}&name=${this.name}&lastname=${this.lastname}&email=${this.email}&image=image&id=${this.id}`, {
-        image: this.imageSrc,
-      })
-      .subscribe((res) => {
-        this.dataUpdate.update(this.id);
-      });
-    
+    if (this.username == this.nickname && this.email == this.mail) {
+      this.http
+        .put(
+          this.apiURL +
+            `app/user?name=${this.name}&lastname=${this.lastname}&image=image&id=${this.id}`,
+          {
+            image: this.imageSrc,
+          }
+        )
+        .subscribe((res) => {
+          this.dataUpdate.update(this.id);
+        });
+    }
+    if (this.email == this.mail) {
+      this.http
+        .put(
+          this.apiURL +
+            `app/user?nick_name=${this.username}&name=${this.name}&lastname=${this.lastname}&image=image&id=${this.id}`,
+          {
+            image: this.imageSrc,
+          }
+        )
+        .subscribe((res) => {
+          this.dataUpdate.update(this.id);
+        });
+    }
+    if (this.username == this.nickname) {
+      this.http
+        .put(
+          this.apiURL +
+            `app/user?name=${this.name}&lastname=${this.lastname}&email=${this.email}&image=image&id=${this.id}`,
+          {
+            image: this.imageSrc,
+          }
+        )
+        .subscribe((res) => {
+          this.dataUpdate.update(this.id);
+        });
+    } else {
+      this.http
+        .put(
+          this.apiURL +
+            `app/user?nick_name=${this.username}&name=${this.name}&lastname=${this.lastname}&email=${this.email}&image=image&id=${this.id}`,
+          {
+            image: this.imageSrc,
+          }
+        )
+        .subscribe((res) => {
+          this.dataUpdate.update(this.id);
+          console.log(res);
+        });
+    }
   }
+
   deleteimage() {
     this.http
       .put(this.apiURL + `app/user?image=null&id=${this.id}`, {
@@ -60,6 +111,5 @@ export class ProfileComponent implements OnInit {
       .subscribe((res) => {
         this.dataUpdate.update(this.id);
       });
-
   }
 }

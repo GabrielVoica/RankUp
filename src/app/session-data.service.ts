@@ -9,81 +9,87 @@ import {
 } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SessionDataService {
+  private userData = {
+    id: '',
+    username: '',
+    email: '',
+    center: '',
+    image: '',
+    type: '',
+    name: '',
+    lastname: '',
+  };
 
- private userData = {
-   id: '',
-   username: '',
-   email: '',
-   center: '',
-   image: '',
-   type : ''
- };
+  constructor(private http: HttpClient, private cookie: CookieService) {}
 
- 
-  constructor(
-   private http: HttpClient,
-   private cookie: CookieService
-  ) 
-  {
-
+  setId(id) {
+    localStorage.setItem('id', id);
+    this.userData.id = id;
   }
 
-  setId(id){
-   localStorage.setItem('id',id);
-   this.userData.id = id;
-  }
-
-  setUsername(username){
-    localStorage.setItem('username',username);
+  setUsername(username) {
+    localStorage.setItem('username', username);
     this.userData.username = username;
   }
 
-  setEmail(email){
-    localStorage.setItem('email',email);
+  setEmail(email) {
+    localStorage.setItem('email', email);
     this.userData.email = email;
   }
 
-  setCenter(center){
-    localStorage.setItem('center',center);
+  setCenter(center) {
+    localStorage.setItem('center', center);
     this.userData.center = center;
   }
 
-  setImage(image){
-    localStorage.setItem('image',image);
+  setImage(image) {
+    localStorage.setItem('image', image);
     this.userData.image = image;
   }
 
-  setType(type){
-    localStorage.setItem('type',type);
+  setType(type) {
+    localStorage.setItem('type', type);
     this.userData.type = type;
   }
-
-  getId(){
-  return localStorage.getItem('id');
+  setName(name) {
+    localStorage.setItem('name', name);
+    this.userData.name = name;
+  }
+  setLastname(lastname) {
+    localStorage.setItem('lastname', lastname);
+    this.userData.lastname = lastname;
   }
 
-  getUsername(){
-   return localStorage.getItem('username');
+  getId() {
+    return localStorage.getItem('id');
   }
 
-  getEmail(){
-   return localStorage.getItem('email');
+  getUsername() {
+    return localStorage.getItem('username');
   }
 
-  getCenter(){
-   return localStorage.getItem('center');
+  getEmail() {
+    return localStorage.getItem('email');
   }
 
-  getImage(){
-   return localStorage.getItem('image');
+  getCenter() {
+    return localStorage.getItem('center');
   }
 
-  getType(){
-   return localStorage.getItem('type');
+  getImage() {
+    return localStorage.getItem('image');
   }
 
-
+  getType() {
+    return localStorage.getItem('type');
+  }
+  getName() {
+    return localStorage.getItem('name');
+  }
+  getLastname() {
+    return localStorage.getItem('lastname');
+  }
 }

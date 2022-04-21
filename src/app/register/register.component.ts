@@ -39,6 +39,8 @@ export class RegisterComponent implements OnInit {
   username: string;
   email: string;
   center: string;
+  name: string;
+  lastname: string;
   password: string;
   passwordConfirm: string;
 
@@ -53,7 +55,7 @@ this.value_img = 'null'
       this.value_img = 'image'
     }
 
-    this.registerService.registerUser({username: this.username, email: this.email, center: this.center, password: this.password, passwordConfirm: this.passwordConfirm, imageSrc: this.imageSrc, value_img: this.value_img});
+    this.registerService.registerUser({username: this.username, email: this.email, center: this.center, name:this.name, lastname: this.lastname, password: this.password, passwordConfirm: this.passwordConfirm, imageSrc: this.imageSrc, value_img: this.value_img});
     environment.loading = true;
   }
 
