@@ -43,6 +43,11 @@ export class HomeComponent implements OnInit {
       return {opacity: '0', visibility: 'hidden'}
     }
   }
+
+  exit(){
+    this.router.navigate(['/']);
+    this.session
+  }
   
 
 }

@@ -37,12 +37,12 @@ export class RankingComponent implements OnInit {
   messageBadged;
 
   ngOnInit(): void {
+    environment.loading = true;
     this.code = this.route.snapshot.paramMap.get('code');
     this.userId = this.session.getId();
     this.data = this.ranking.loadRankingData(this.code);
     this.data.subscribe((data) => {
       this.rankingData = data['data'];
-      console.log(this.rankingData);
     });
 
     this.data = this.ranking.loadRanking(this.code);

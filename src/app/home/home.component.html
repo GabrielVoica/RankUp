@@ -6,48 +6,64 @@
     <div class="brand"></div>
     <ng-template [ngIf]="userType == 'student'">
       <div class="sidebar-link">
-      <i class="fa-solid fa-house-fire"></i>
-      <a class="nav-link" routerLink="/home" routerLinkActive="active"
-        >Dashboard</a
-      >
-    </div>
+        <i class="fa-solid fa-house-fire"></i>
+        <a class="nav-link" routerLink="/home" routerLinkActive="active"
+          >Dashboard</a
+        >
+      </div>
       <div class="sidebar-link">
-      <i class="fa-solid fa-user fa-1x icon"></i>
-    <a class="nav-link" routerLink="profile" routerLinkActive="active"
-      >Perfil</a
-    >
-    </div>
-     <div class="sidebar-link">
-      <i class="fa-solid fa-ranking-star"></i>
-    <a class="nav-link" routerLink="rankings" routerLinkActive="active"
-      >Rankings</a
-    >
-    </div>
+        <i class="fa-solid fa-user fa-1x icon"></i>
+        <a class="nav-link" routerLink="profile" routerLinkActive="active"
+          >Perfil</a
+        >
+      </div>
+      <div class="sidebar-link">
+        <i class="fa-solid fa-ranking-star"></i>
+        <a class="nav-link" routerLink="rankings" routerLinkActive="active"
+          >Rankings</a
+        >
+      </div>
+      <div class="sidebar-link" (click)="exit()" style="cursor: pointer">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <a class="nav-link"
+          >Salir</a
+        >
+      </div>
     </ng-template>
 
     <ng-template [ngIf]="userType == 'teacher'">
-       <div class="sidebar-link">
-      <i class="fa-solid fa-house-fire"></i>
-      <a class="nav-link" routerLink="/home" routerLinkActive="active"
-        >Dashboard</a
-      >
-    </div>
       <div class="sidebar-link">
-      <i class="fa-solid fa-user fa-1x icon"></i>
-    <a class="nav-link" routerLink="profile" routerLinkActive="active"
-      >Perfil</a
-    >
-    </div>
-     <div class="sidebar-link">
-      <i class="fa-solid fa-ranking-star"></i>
-    <a class="nav-link" routerLink="rankings" routerLinkActive="active"
-      >Rankings</a
-    >
-    </div>
+        <i class="fa-solid fa-home"></i>
+        <a class="nav-link" routerLink="/home" routerLinkActive="active"
+          >Home</a
+        >
+      </div>
+      <div class="sidebar-link">
+        <i class="fa-solid fa-user fa-1x icon"></i>
+        <a class="nav-link" routerLink="profile" routerLinkActive="active"
+          >Perfil</a
+        >
+      </div>
+       <div class="sidebar-link">
+        <i class="fa-solid fa-ranking-star"></i>
+        <a class="nav-link" routerLink="rankings" routerLinkActive="active"
+          >Rankings</a
+        >
+      </div>
+      <div class="sidebar-link">
+        <i class="fa-solid fa-briefcase"></i>
+        <a class="nav-link" routerLink="rankings" routerLinkActive="active"
+          >Prácticas</a
+        >
+      </div>
+      <div class="sidebar-link" (click)="exit()" style="cursor: pointer">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <a class="nav-link" 
+          >Salir</a
+        >
+      </div>
     </ng-template>
-    
-   
   </div>
   <router-outlet></router-outlet>
-  <app-spinner  [ngStyle]="loader()"></app-spinner>
+  <app-spinner [ngStyle]="loader()"></app-spinner>
 </div>

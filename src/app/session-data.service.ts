@@ -86,4 +86,14 @@ export class SessionDataService {
   }
 
 
+  deleteAll(){
+    localStorage.removeItem('id');
+    localStorage.removeItem('username');
+    localStorage.removeItem('email');
+    localStorage.removeItem('center');
+    localStorage.removeItem('image');
+    localStorage.removeItem('type');
+  }
+
+
 }

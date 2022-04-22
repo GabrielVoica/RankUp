@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { EntryComponent } from './entry/entry.component';
@@ -36,13 +35,11 @@ const routes: Routes = [
     {path: 'profile', component: ProfileComponent},
     {path: '',component: DashboardComponent},
     {path: 'rankings', component: RankingsComponent},
-
     {path: 'ranking/:code', component: RankingComponent}
   ]},
   {path: '404', component: NotfoundComponent},
   {path: '**', redirectTo: '/404'}
 ];
-
 
 @NgModule({
   declarations: [

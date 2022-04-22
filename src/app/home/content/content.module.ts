@@ -5,13 +5,15 @@ import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContentComponent } from './content.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { TeacherRankingsComponent } from './teacher-rankings/teacher-rankings.component';
 
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    ContentComponent
+    ContentComponent,
+    TeacherRankingsComponent
   ],
   imports: [
     CommonModule,

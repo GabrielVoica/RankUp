@@ -7,6 +7,7 @@ import { SessionDataService } from 'src/app/session-data.service';
 import { RankingComponent } from '../ranking/ranking.component';
 import { RankingService } from 'src/app/ranking.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js'; 
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -16,18 +17,38 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private router: Router, private session: SessionDataService, private rankingService: RankingService) {
+  constructor(private router: Router, private session: SessionDataService, private rankingService: RankingService, private http: HttpClient) {
   }
 
    rankingCode: string = "";
    userType = this.session.getType();
    rankingExists: boolean;
+   rankingCodes: Array<String> = [];
+   rankingData: Array<{}> = [];
 
   @ViewChild('codeInput') codeInput: ElementRef;
 
 
 
   ngOnInit(): void {
+    this.http.get(environment.apiURL + "app/user/" + this.session.getId(),{}).subscribe((data) =>{
+      let rankings = data['data']['ranking_name'];
+
+      rankings.forEach(element => {
+        this.rankingCodes.push(element);
+      });
+
+      this.rankingCodes.forEach((code)=>{
+        this.http.get(environment.apiURL + "app/rankingdata/" + code,{}).subscribe((data)=>{
+          let dataArr = {code : null, name: null, description: null};
+          dataArr.code = data['data']['code'];
+          dataArr.name = data['data']['ranking_name'];
+          dataArr.description = data['data']['description'];
+          this.rankingData.push(dataArr);
+          console.log(this.rankingData);
+        })
+      })
+    });
   }
 
   ngAfterViewInit(){

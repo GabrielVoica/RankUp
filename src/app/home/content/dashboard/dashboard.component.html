@@ -1,16 +1,33 @@
-
-
 <div class="dashboard">
-<ng-template [ngIf]="userType == 'student'">
- <div class="enter-ranking">
-        <input type="text" name="rankingCode" (keyup)="updateCode($event)"  #codeInput  class="enter-button" placeholder="Código ranking">
-        <button class="btn"  (click)="viewRanking()">Entrar</button>
+  <ng-template [ngIf]="userType == 'student'">
+    <div class="enter-ranking">
+      <input
+        type="text"
+        name="rankingCode"
+        (keyup)="updateCode($event)"
+        #codeInput
+        class="enter-button"
+        placeholder="Código ranking"
+      />
+      <button class="btn" (click)="viewRanking()">Entrar</button>
     </div>
-    <div class="">
-
+    <div class=""></div>
+  </ng-template>
+  <ng-template [ngIf]="userType == 'teacher'">
+    <div class="teacher-rankings">
+      <div class="rankings-list">
+        <h1 class="rankings-header">Rankings</h1>
+        <div class="rankings-wrapper">
+          <div class="ranking-wrapper" *ngFor="let ranking of rankingData">
+            <p class="ranking-title">{{ ranking["name"] }}</p>
+            <p class="ranking-description">{{ ranking["description"] }}</p>
+            <a
+              class="ranking-code"
+              href="home/ranking/{{ ranking['code'] }}"
+            ></a>
+          </div>
+        </div>
+      </div>
     </div>
-</ng-template>
-
-   
+  </ng-template>
 </div>
-
