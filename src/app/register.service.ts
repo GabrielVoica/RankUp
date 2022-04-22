@@ -36,12 +36,12 @@ export class RegisterService {
 
     this.userType = this.cookie.get('user_type') == 'student' ? 0 : 1;
 
-    let template = `app/register?nick_name=${values.username}&email=${values.email}&password=${values.password}&user_type=${this.userType}`;
+    let template = `app/register?nick_name=${values.username}&email=${values.email}&name=${values.name}&lastname=${values.lastname}&password=${values.password}&user_type=${this.userType}`;
 
     this.http
       .post(
         this.apiUrl +
-          `app/register?nick_name=${values.username}&email=${values.email}&password=${values.password}&user_type=${this.userType}&conf_passwd=${values.password}&image=${values.value_img}`,
+          `app/register?nick_name=${values.username}&email=${values.email}&name=${values.name}&lastname=${values.lastname}&password=${values.password}&user_type=${this.userType}&conf_passwd=${values.password}&image=${values.value_img}`,
         { image: values.imageSrc },
         { headers: myheader }
       )

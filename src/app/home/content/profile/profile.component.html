@@ -11,8 +11,8 @@
             <div class="img_container">
               <img class="picture_profile" src="{{pic}}" />
               <div class="user_info">
-                <p class="username">Usuario: {{user}}</p>
-                <p class="username"> {{mail}}</p>
+                <p class="username">Usuario: {{username}}</p>
+                <p class="username"> {{email}}</p>
                 <div class="inputWrapper">
                   Seleccionar archivo <input class="fileInput" (change)="onFileChange($event)" type="file" />
                 </div>
@@ -38,19 +38,19 @@
       <div class="form_section">
         <div class="input_s">
           <label for="name">Nombre</label>
-          <input type="text" name="name" [(ngModel)]="name">
+          <input type="text" value="{{this.name}}" name="name" [(ngModel)]="name">
         </div>
         <div class="input_s">
           <label for="lastname">Apellidos</label>
-          <input type="text" name="lastname" [(ngModel)]="lastname">
+          <input type="text" value="{{this.lastname}}" name="lastname" [(ngModel)]="lastname">
         </div>
         <div class="input_s">
           <label for="email">Nick</label>
-          <input type="text" name="username" [(ngModel)]="username">
+          <input type="text" value="{{this.username}}" name="username" [(ngModel)]="username">
         </div>
         <div class="input_s">
           <label for="email">Email</label>
-          <input type="email" name="email"  [(ngModel)]="email">
+          <input type="email"  value="{{this.email}}" name="email"  [(ngModel)]="email">
         </div>
         <button class="inputWrapper" type="submit" (click)="submit()"> Guardar </button>
       </div>
