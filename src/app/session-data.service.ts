@@ -71,6 +71,14 @@ export class SessionDataService {
     return localStorage.getItem('username');
   }
 
+  getName() {
+    return localStorage.getItem('name');
+  }
+
+  getLastname() {
+    return localStorage.getItem('lastname');
+  }
+
   getEmail() {
     return localStorage.getItem('email');
   }
@@ -83,8 +91,11 @@ export class SessionDataService {
     return localStorage.getItem('image');
   }
 
-<<<<<<< HEAD
-  deleteAll(){
+  getType() {
+    return localStorage.getItem('type');
+  }
+
+  deleteAll() {
     localStorage.removeItem('id');
     localStorage.removeItem('username');
     localStorage.removeItem('email');
@@ -92,17 +103,4 @@ export class SessionDataService {
     localStorage.removeItem('image');
     localStorage.removeItem('type');
   }
-
-
-=======
-  getType() {
-    return localStorage.getItem('type');
-  }
-  getName() {
-    return localStorage.getItem('name');
-  }
-  getLastname() {
-    return localStorage.getItem('lastname');
-  }
->>>>>>> 7975e4b002e1cbbe0f89799f4db226ea22e7830e
 }
