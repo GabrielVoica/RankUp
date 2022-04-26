@@ -1,8 +1,24 @@
 <div class="ranking-page">
+  <ng-template [ngIf]="userType == 'teacher'">
+    <div class="teacher-controls">
+      <h1 class="teacher-controls-title">Añadir puntos alumno</h1>
+      <h3 class="teacher">{{selectedUser}}</h3>
+    </div>
+  </ng-template>
   <div class="ranking-headers">
-    <div></div>
-    <div></div>
-    <div></div>
+    <div class="teacher-info">
+      <h2 class="teacher-info-header">Profesor</h2>
+      <h3 class="teacher-info-name">{{teacherName}}</h3>
+      <i class="teacher-info-icon" class="fa-solid fa-graduation-cap fa-2x"></i>
+    </div>
+       <div class="ranking-title-name">
+      <h1 class="ranking-title">{{rankingName}}</h1>
+    </div>
+    <div class="ranking-first-position">
+      <i class="fa-solid fa-trophy fa-3x"></i>
+      <h2 class="first-position-user">{{rankingPositionsData[0]['nick_name']}}</h2>
+      
+    </div>
   </div>
   <div class="ranking-content">
     <div class="ranking-content-positions">
@@ -11,11 +27,11 @@
           class="data-row"
           *ngFor="let item of rankingPositionsData; let indexOfElement = index"
           [ngStyle]="loggedUserInRanking(item.id, indexOfElement)"
-          (click)="studentBadged = item.id"
+          (click)="selectUser(item.id,item.nick_name)"
         >
           <span class="position">{{ indexOfElement + 1 }}</span>
           <div class="user-image" [ngStyle]="setUserImage(item.image, item.nick_name)"></div>
-          <p class="user-username">{{ item.nick_name }}</p>
+          <p class="user-username" >{{ item.nick_name }}</p>
           <p class="user-points">{{ item.points }}</p>
         </div>
       </div>

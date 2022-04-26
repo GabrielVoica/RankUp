@@ -1,15 +1,22 @@
 <div class="login-wrapper">
-  <app-spinner  [ngStyle]="loader()"></app-spinner>
+  <app-spinner [ngStyle]="loader()"></app-spinner>
   <form (ngSubmit)="login()" class="login-form">
     <h2 class="form-title">Bienvenido de nuevo</h2>
     <input type="text" [(ngModel)]="email" name="email" placeholder="Email" />
-    <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" />
+    <input
+      type="password"
+      [(ngModel)]="password"
+      name="password"
+      placeholder="Contraseña"
+    />
     <div class="remember-me">
-      <input type="checkbox">
+      <input type="checkbox" />
       <span>Recuerdame</span>
     </div>
     <button class="login-btn">Entrar</button>
-    <a href="/register" class="no-account">No tienes una cuenta? <span>Registrate</span></a>
+    <a href="/register" class="no-account"
+      >No tienes una cuenta? <span>Registrate</span></a
+    >
   </form>
 
   <svg

@@ -16,16 +16,23 @@
   <ng-template [ngIf]="userType == 'teacher'">
     <div class="teacher-rankings">
       <div class="rankings-list">
-        <h1 class="rankings-header">Rankings</h1>
+        <h1 class="rankings-header">Rankings recientes</h1>
         <div class="rankings-wrapper">
-          <div class="ranking-wrapper" *ngFor="let ranking of rankingData">
-            <p class="ranking-title">{{ ranking["name"] }}</p>
-            <p class="ranking-description">{{ ranking["description"] }}</p>
-            <a
-              class="ranking-code"
-              href="home/ranking/{{ ranking['code'] }}"
-            ></a>
-          </div>
+          <ng-template [ngIf]="rankingData.length > 0 && rankingData[0].code != 'no rankings'">
+            <div class="ranking-wrapper" *ngFor="let ranking of rankingData">
+              <p class="ranking-title">{{ ranking["name"] }}</p>
+              <p class="ranking-description">{{ ranking["description"] }}</p>
+              <a
+                class="ranking-code"
+                href="home/ranking/{{ ranking['code'] }}"
+              ></a>
+            </div>
+          </ng-template>
+          <ng-template [ngIf]="rankingData[0].code == 'no rankings'">
+            <div class="no-ranking">
+              <h3>No has creado ningun ranking</h3>
+            </div>
+          </ng-template>
         </div>
       </div>
     </div>

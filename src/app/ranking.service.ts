@@ -8,6 +8,7 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class RankingService {
   private rankingData = {};
+  teacherRankings;
 
   constructor(private http: HttpClient) {}
 
@@ -26,5 +27,14 @@ export class RankingService {
       environment.apiURL + 'app/rankingdata/' + code,
       {}
     )
+  }
+
+
+  saveRecentTeacherRankings(rankings){
+    this.teacherRankings = rankings;
+  }
+
+  getRecentTeacherRankings(){
+    return this.teacherRankings;
   }
 }

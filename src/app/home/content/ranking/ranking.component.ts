@@ -5,6 +5,7 @@ import { RankingService } from 'src/app/ranking.service';
 import { environment } from 'src/environments/environment';
 import { HostListener } from '@angular/core';
 import { SessionDataService } from 'src/app/session-data.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-ranking',
@@ -16,7 +17,8 @@ export class RankingComponent implements OnInit {
     private route: ActivatedRoute,
     private ranking: RankingService,
     private router: Router,
-    private session: SessionDataService
+    private session: SessionDataService,
+    private http: HttpClient
   ) {}
 
   @HostListener('window:popstate', ['$event'])
@@ -35,21 +37,33 @@ export class RankingComponent implements OnInit {
   studentBadged;
   pointsBadged;
   messageBadged;
+  selectedUser;
+
+  teacherName;
+  rankingName;
+  userType;
 
   ngOnInit(): void {
     environment.loading = true;
+    this.userType = this.session.getType();
     this.code = this.route.snapshot.paramMap.get('code');
     this.userId = this.session.getId();
     this.data = this.ranking.loadRankingData(this.code);
     this.data.subscribe((data) => {
       this.rankingData = data['data'];
+      this.rankingName = data['data']['ranking_name'];
+
+      this.http
+        .get(environment.apiURL + 'app/user/' + data['data']['teacher_id'])
+        .subscribe((data) => {
+          this.teacherName = data['data']['nick_name'];
+        });
     });
 
     this.data = this.ranking.loadRanking(this.code);
     this.data
       .subscribe((data) => {
         this.rankingPositionsData = data['data'];
-        console.log(this.rankingData);
       })
       .add(() =>
         setTimeout(() => {
@@ -84,5 +98,10 @@ export class RankingComponent implements OnInit {
         backgroundPosition: 'center',
       };
     }
+  }
+
+  selectUser(id, nickname) {
+    this.studentBadged = id;
+    this.selectedUser = nickname;
   }
 }

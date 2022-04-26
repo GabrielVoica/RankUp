@@ -1,201 +1,310 @@
-.ranking-page{
-    padding: 100px;
-    height: 100%;
-    width: 100%;
-    background: #7700D6;
-    overflow-x: hidden;
+.ranking-page {
+  padding: 100px;
+  height: 100%;
+  width: 100%;
+  background: #7700d6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.ranking-page .ranking-headers {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: space-between;
+  animation: appear 1s forwards;
+  opacity: 0;
+}
+
+.ranking-page .ranking-headers div {
+  height: 100%;
+  width: 33%;
+  background: #3a0074;
+}
+
+.ranking-page .ranking-content {
+  width: 100%;
+  height: 100%;
+  background: #5800b0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  padding: 10px;
+  position: relative;
+  animation: appear 1s forwards;
+  opacity: 0;
+}
+
+.ranking-page .ranking-content > div {
+  width: 50%;
+  height: 100%;
+  background: #1c0058;
+  margin: 5px;
+}
+
+.ranking-page .ranking-content .ranking-content-positions {
+}
+
+.ranking-page
+  .ranking-content
+  .ranking-content-positions
+  .ranking-content-positions-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.ranking-page .ranking-content .ranking-content-positions .data-row {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.ranking-page .ranking-content .ranking-content-positions .data-row .position {
+  height: 100%;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  font-family: "Montserrat";
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.ranking-page
+  .ranking-content
+  .ranking-content-positions
+  .data-row:nth-of-type(1)
+  .position {
+  background: #cbb91a;
+}
+
+.ranking-page
+  .ranking-content
+  .ranking-content-positions
+  .data-row:nth-of-type(2)
+  .position {
+  background: #c9c9c9;
+}
+
+.ranking-page
+  .ranking-content
+  .ranking-content-positions
+  .data-row:nth-of-type(3)
+  .position {
+  background: #cf731e;
+}
+
+.ranking-page
+  .ranking-content
+  .ranking-content-positions
+  .data-row
+  .user-image {
+  height: 40px;
+  border-radius: 100%;
+  background: black;
+  width: 40px;
+  margin: 0px 20px;
+  border: 2px solid rgba(193, 117, 243, 0.89);
+  background-size: 150% !important;
+  background-position: center !important;
+}
+
+.ranking-page
+  .ranking-content
+  .ranking-content-positions
+  .data-row
+  .user-username {
+  font-family: "Montserrat";
+  font-weight: 800;
+  color: white;
+  font-size: 16px;
+  width: 450px;
+}
+
+.ranking-page
+  .ranking-content
+  .ranking-content-positions
+  .data-row
+  .user-points {
+  font-size: 20px;
+  color: white;
+  font-weight: 800;
+  font-family: "Montserrat";
+}
+
+.ranking-page .ranking-content .ranking-content-badges {
+  padding: 15px;
+}
+
+.ranking-page .ranking-content .ranking-content-badges .badges-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ranking-page
+  .ranking-content
+  .ranking-content-badges
+  .badges-wrapper
+  .badge-container {
+  background: #7a11ff;
+  width: 300px;
+  height: 100px;
+  margin: 0px 5px;
+  color: white;
+  font-size: 13px;
+  font-family: "Montserrat";
+  font-weight: 800;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.5s background;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 10px;
+}
+
+.ranking-page
+  .ranking-content
+  .ranking-content-badges
+  .badges-wrapper
+  .badge-container:before {
+  content: "";
+  display: inline-block;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.116);
+  left: 0;
+  transform: rotate(30deg);
+  left: -40px;
+  transition: 1.5s left;
+  position: absolute;
+  width: 40px;
+}
+
+.ranking-page
+  .ranking-content
+  .ranking-content-badges
+  .badges-wrapper
+  .badge-container:hover {
+  background: rgb(201, 78, 231);
+}
+
+.ranking-page
+  .ranking-content
+  .ranking-content-badges
+  .badges-wrapper
+  .badge-container:hover:before {
+  left: 100%;
+}
+
+.ranking-page .ranking-content .ranking-content-badges .select-user {
+  background: #7a11ff;
+  width: 100%;
+  height: 80px;
+  margin-top: 20px;
+  border-radius: 6px;
+}
+
+.ranking-page .ranking-content .ranking-content-badges .points-user {
+  background: white;
+  grid-column: 2/3;
+}
+
+.ranking-page
+  .ranking-content
+  .ranking-content-positions
+  .data-row:nth-of-type(odd) {
+  background: #6d0acf;
+}
+
+.ranking-page
+  .ranking-content
+  .ranking-content-positions
+  .data-row:nth-of-type(even) {
+  background: #9142f5;
+}
+
+.ranking-page .ranking-content .ranking-content-positions .data-row:hover {
+  background: rgba(200, 112, 255, 0.6);
+  cursor: pointer;
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+  }
+}
+
+.teacher-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  background: url("/assets/textures/star-texture.png") !important;
+}
+
+.teacher-info .teacher-info-header {
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.teacher-info .teacher-info-name {
+  color: gold;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.teacher-info .teacher-info-icon {
+}
+
+.ranking-first-position {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: gold;
+  background: url("/assets/textures/star-texture.png") !important;
+}
+
+.ranking-first-position .first-position-user {
+  color: white;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+.ranking-first-position .first-position-data {
+}
+
+.ranking-title-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("/assets/textures/star-texture.png") !important;
+  background-size: 150% !important;
+}
+
+.ranking-title {
+  color: white;
+  text-transform: uppercase;
 }
 
 
-.ranking-page .ranking-headers{
-    width: 100%;
-    height: 200px;
-    display: flex;
-    justify-content: space-between;
-    animation: appear 1s forwards;
-    opacity: 0;
-}
-
-.ranking-page .ranking-headers div{
-    height: 100%;
-    width: 33%;
-    background: #3A0074;
-}
-
-.ranking-page .ranking-content{
-    width: 100%;
-    height: 100%;
-    background: #5800B0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-    padding: 10px;
-    position: relative;
-    animation: appear 1s forwards;
-    opacity: 0;
-}
-
-.ranking-page .ranking-content > div{
-    width: 50%;
-    height: 100%;
-    background: #1C0058;
-    margin: 5px;
-}
-
-.ranking-page .ranking-content .ranking-content-positions{
-
-}
-
-.ranking-page .ranking-content .ranking-content-positions .ranking-content-positions-wrapper{
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    overflow: hidden;
-}
-
-
-
-.ranking-page .ranking-content .ranking-content-positions .data-row{
- width: 100%;
- height: 70px;
- display: flex;
- align-items: center;
-}
-
-.ranking-page .ranking-content .ranking-content-positions .data-row .position{
-    height: 100%;
-    width: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    background: rgba(0,0,0,0.5);
-    font-family: "Montserrat";
-    font-size: 20px;
-    font-weight: 800;
-}
-
-.ranking-page .ranking-content .ranking-content-positions .data-row:nth-of-type(1) .position{
-    background: #CBB91A;
-}
-
-.ranking-page .ranking-content .ranking-content-positions .data-row:nth-of-type(2) .position{
-    background: #C9C9C9;
-}
-
-.ranking-page .ranking-content .ranking-content-positions .data-row:nth-of-type(3) .position{
-    background: #CF731E;
-}
-
-
-.ranking-page .ranking-content .ranking-content-positions .data-row .user-image{
-    height: 40px;
-    border-radius: 100%;
-    background: black;
-    width: 40px;
-    margin: 0px 20px;
-    border: 2px solid rgba(193, 117, 243, 0.89);
-    background-size: 150% !important;
-    background-position: center !important;
-}
-
-.ranking-page .ranking-content .ranking-content-positions .data-row .user-username{
-    font-family: "Montserrat";
-    font-weight: 800;
-    color: white;
-    font-size: 16px;
-    width: 450px;
-}
-
-.ranking-page .ranking-content .ranking-content-positions .data-row .user-points{
-    font-size: 20px;
-    color: white;
-    font-weight: 800;
-    font-family: "Montserrat";
-}
-
-
-.ranking-page .ranking-content .ranking-content-badges{
-    padding: 15px;
-}
-
-.ranking-page .ranking-content .ranking-content-badges .badges-wrapper{
-    display: flex;
-    justify-content: space-between;
-}
-
-.ranking-page .ranking-content .ranking-content-badges .badges-wrapper .badge-container{
-    background: #7A11FF;
-    width: 300px;
-    height: 100px;
-    margin: 0px 5px;
-    color: white;
-    font-size: 13px;
-    font-family: "Montserrat";
-    font-weight: 800;
-    border-radius: 6px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: 0.5s background;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-    padding: 10px;
-}
-
-.ranking-page .ranking-content .ranking-content-badges .badges-wrapper .badge-container:before{
-content: "";
-display: inline-block;
-height: 150px;
-background: rgba(255, 255, 255, 0.116);
-left: 0;
-transform: rotate(30deg);
-left: -40px;
-transition: 1.5s left;
-position: absolute;
-width: 40px;
-}
-
-.ranking-page .ranking-content .ranking-content-badges .badges-wrapper .badge-container:hover{
-    background: rgb(201, 78, 231);
-}
-
-.ranking-page .ranking-content .ranking-content-badges .badges-wrapper .badge-container:hover:before{
-    left: 100%;
-}
-
-
-.ranking-page .ranking-content .ranking-content-badges  .select-user{
-    background: #7A11FF;
-    width: 100%;
-    height: 80px;
-    margin-top: 20px;
-    border-radius: 6px;
-}
-
-.ranking-page .ranking-content .ranking-content-badges  .points-user{
-    background: white;
-    grid-column: 2/3;
-}
-
-.ranking-page .ranking-content .ranking-content-positions .data-row:nth-of-type(odd){
-    background: #6D0ACF;
-}
-
-.ranking-page .ranking-content .ranking-content-positions .data-row:nth-of-type(even){
-    background: #9142F5;
-}
-
-.ranking-page .ranking-content .ranking-content-positions .data-row:hover{
-    background: rgba(200, 112, 255,0.6);
-    cursor: pointer;
-}
-
-@keyframes appear{
-    to{
-        opacity: 1;
-    }
+.teacher-controls{
+    height: 900px;
+    width: 500px;
+    background: #51118b;
+    position: fixed;
+    top: -5px;
+    right: 30px;
+    z-index: 1000;
+    box-shadow: 0px 0px 1px 2px #00000009;
 }
