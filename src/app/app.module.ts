@@ -24,6 +24,8 @@ import { RankingComponent } from './home/content/ranking/ranking.component';
 import { CommonModule } from '@angular/common';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SessionDataService } from './session-data.service';
+import { TeacherRankingsComponent } from './home/content/teacher-rankings/teacher-rankings.component';
+import { AddRankingComponent } from './home/content/add-ranking/add-ranking.component';
 
 const routes: Routes = [
   { path: 'entry', component: EntryComponent },
@@ -31,11 +33,15 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'home', component: HomeComponent, 
+  
   children: [
     {path: 'profile', component: ProfileComponent},
     {path: '',component: DashboardComponent},
     {path: 'rankings', component: RankingsComponent},
-    {path: 'ranking/:code', component: RankingComponent}
+    {path: 'teacherRankings', component: TeacherRankingsComponent},
+    {path: 'ranking/:code', component: RankingComponent},
+    {path: 'add-ranking', component: AddRankingComponent}
+   
   ]},
   {path: '404', component: NotfoundComponent},
   {path: '**', redirectTo: '/404'}
@@ -52,12 +58,14 @@ const routes: Routes = [
     RegisterComponent,
     HomeComponent,
     SidebarComponent,
-    ContentComponent,
+    ContentComponent,                         
     ProfileComponent,
     SpinnerComponent,
     DashboardComponent,
     RankingComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    RankingsComponent,
+    AddRankingComponent
   ],
   imports: [
     BrowserModule,

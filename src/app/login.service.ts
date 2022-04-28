@@ -68,6 +68,8 @@ export class LoginService {
       this.sessionData.setEmail(data['data']['email']);
       this.sessionData.setCenter(data['data']['center']);
       this.sessionData.setImage(data['data']['image']);
+      this.sessionData.setName(data['data']['name']);
+      this.sessionData.setLastname(data['data']['lastname']);
 
       if(data['data']['user_type'] == 1){
        this.sessionData.setType('teacher');

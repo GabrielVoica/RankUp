@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContentComponent } from './content.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { TeacherRankingsComponent } from './teacher-rankings/teacher-rankings.component';
+import { AddRankingComponent } from './add-ranking/add-ranking.component';
 
 
 
@@ -13,7 +14,8 @@ import { TeacherRankingsComponent } from './teacher-rankings/teacher-rankings.co
   declarations: [
     DashboardComponent,
     ContentComponent,
-    TeacherRankingsComponent
+    TeacherRankingsComponent,
+    AddRankingComponent
   ],
   imports: [
     CommonModule,

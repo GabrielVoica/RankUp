@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.http.get(environment.apiURL + "app/user/" + this.session.getId(),{}).subscribe((data) =>{
-      let rankings = data['data']['ranking_name'];
+      let rankings = data['data']['code'];
 
       rankings.forEach(element => {
         this.rankingCodes.push(element);

@@ -102,5 +102,7 @@ export class SessionDataService {
     localStorage.removeItem('center');
     localStorage.removeItem('image');
     localStorage.removeItem('type');
+    localStorage.removeItem('name');
+    localStorage.removeItem('lastname');
   }
 }
