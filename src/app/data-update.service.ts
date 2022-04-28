@@ -14,7 +14,7 @@ export class DataUpdateService {
       this.session.setImage(data['data']['image']);
       this.session.setUsername(data['data']['nick_name']);
       this.session.setEmail(data['data']['email']);
-      location.reload();
+      
       environment.loading = false;
     });
   }

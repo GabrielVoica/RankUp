@@ -29,7 +29,9 @@ export class RankingComponent implements OnInit {
   private code;
   data;
   rankingData;
-  rankingPositionsData;
+  rankingPositionsData = [
+    { id: null, nick_name: null, points: 0, image: null },
+  ];
   userId;
   userPosition;
 
@@ -38,10 +40,12 @@ export class RankingComponent implements OnInit {
   pointsBadged;
   messageBadged;
   selectedUser;
+  pointsAddedFromTeacher;
 
   teacherName;
   rankingName;
   userType;
+  expandedOptions = false;
 
   ngOnInit(): void {
     environment.loading = true;
@@ -103,5 +107,46 @@ export class RankingComponent implements OnInit {
   selectUser(id, nickname) {
     this.studentBadged = id;
     this.selectedUser = nickname;
+  }
+
+  showPoints() {
+    if (this.selectedUser == undefined) {
+      alert('Error');
+    } else if (
+      this.pointsAddedFromTeacher > 10000 ||
+      this.pointsAddedFromTeacher < -10000 ||
+      this.pointsAddedFromTeacher == undefined
+    ) {
+      alert('Error');
+    } else {
+      environment.loading = true;
+      this.http
+        .put(
+          environment.apiURL +
+            'app/ranking?code=' +
+            this.rankingData.code +
+            '&id=' +
+            this.studentBadged +
+            '&points=' +
+            this.pointsAddedFromTeacher,
+          {}
+        )
+        .subscribe((data) => {
+          window.location.reload();
+          environment.loading = false;
+        });
+    }
+  }
+
+  appearOptions() {
+    if (this.expandedOptions == false) {
+      (document.querySelector('.teacher-controls') as HTMLElement).style.right =
+        '0px';
+      this.expandedOptions = true;
+    } else {
+      (document.querySelector('.teacher-controls') as HTMLElement).style.right =
+        '-450px';
+      this.expandedOptions = false;
+    }
   }
 }
