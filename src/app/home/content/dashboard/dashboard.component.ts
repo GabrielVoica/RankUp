@@ -27,44 +27,41 @@ export class DashboardComponent implements OnInit {
   userType = this.session.getType();
   rankingExists: boolean;
   rankingCodes: Array<String> = [];
-  rankingData: Array<{code}> = [];
+  rankingData: Array<{ code }> = [];
 
   @ViewChild('codeInput') codeInput: ElementRef;
 
   ngOnInit(): void {
-    this.http.get(environment.apiURL + "app/user/" + this.session.getId(),{}).subscribe((data) =>{
-      let rankings = data['data']['code'];
+    this.http
+      .get(environment.apiURL + 'app/user/' + this.session.getId(), {})
+      .subscribe((data) => {
+        let rankings = data['data']['code'];
 
-          if (rankings != undefined) {
-            rankings.forEach((element) => {
-              this.rankingCodes.push(element);
-            });
+        if (rankings != undefined) {
+          rankings.forEach((element) => {
+            this.rankingCodes.push(element);
+          });
 
-            this.rankingData = [];
+          this.rankingData = [];
 
-            this.rankingCodes.forEach((code) => {
-              this.http
-                .get(environment.apiURL + 'app/rankingdata/' + code, {})
-                .subscribe((data) => {
-                  let dataArr = { code: null, name: null, description: null };
-                  dataArr.code = data['data']['code'];
-                  dataArr.name = data['data']['ranking_name'];
-                  dataArr.description = data['data']['description'];
-                  this.rankingData.push(dataArr);
-                  this.rankingData = this.rankingData.slice(0, 4);
-                  this.rankings.saveRecentTeacherRankings(this.rankingData);
-                });
-            });
-          }
-          else{
-            this.rankingData[0] = {code: 'no rankings'};
-            this.rankings.saveRecentTeacherRankings(this.rankingData);
-          }
-         
-        });
-    } else {
-      this.rankingData = this.rankings.getRecentTeacherRankings();
-    }
+          this.rankingCodes.forEach((code) => {
+            this.http
+              .get(environment.apiURL + 'app/rankingdata/' + code, {})
+              .subscribe((data) => {
+                let dataArr = { code: null, name: null, description: null };
+                dataArr.code = data['data']['code'];
+                dataArr.name = data['data']['ranking_name'];
+                dataArr.description = data['data']['description'];
+                this.rankingData.push(dataArr);
+                this.rankingData = this.rankingData.slice(0, 4);
+                this.rankings.saveRecentTeacherRankings(this.rankingData);
+              });
+          });
+        } else {
+          this.rankingData[0] = { code: 'no rankings' };
+          this.rankings.saveRecentTeacherRankings(this.rankingData);
+        }
+      });
   }
 
   ngAfterViewInit() {
