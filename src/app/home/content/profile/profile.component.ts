@@ -110,6 +110,7 @@ export class ProfileComponent implements OnInit {
       })
       .subscribe((res) => {
         this.dataUpdate.update(this.id);
+        location.reload();
       });
   }
 }

@@ -30,7 +30,7 @@ export class RankingComponent implements OnInit {
   data;
   rankingData;
   rankingPositionsData = [
-    { id: null, nick_name: null, points: 0, image: null },
+    { id: null, nick_name: null, points: 0, image: null, responsabilidad: 0, cooperacion: 0, autonomia_e_iniciativa: 0, gestion_emocional: 0, habilidades_de_pensamiento: 0  },
   ];
   userId;
   userPosition;
@@ -41,6 +41,7 @@ export class RankingComponent implements OnInit {
   messageBadged;
   selectedUser;
   pointsAddedFromTeacher;
+  pointsGivenByStudent = 0;
 
   teacherName;
   rankingName;
@@ -68,6 +69,7 @@ export class RankingComponent implements OnInit {
     this.data
       .subscribe((data) => {
         this.rankingPositionsData = data['data'];
+        console.log(this.rankingPositionsData[0]);
       })
       .add(() =>
         setTimeout(() => {
@@ -79,7 +81,7 @@ export class RankingComponent implements OnInit {
   loggedUserInRanking(userId, position) {
     if (this.userId == userId) {
       this.userPosition = position;
-      return { background: 'black' };
+      return { background: 'black', cursor: 'default' };
     } else if (this.studentBadged == userId) {
       return { background: 'rgb(201, 78, 231)', transition: '0.3s background' };
     } else {
@@ -87,8 +89,100 @@ export class RankingComponent implements OnInit {
     }
   }
 
-  setBadge(badgeName) {
+  printPoints() {
+    console.log(this.pointsGivenByStudent);
+  }
+
+  setBadge(badgeName, badgeOrder) {
     this.badge = badgeName;
+
+    switch (badgeOrder) {
+      case 1:
+        (document.getElementById('badge-one') as HTMLElement).classList.add(
+          'active'
+        );
+        (document.getElementById('badge-two') as HTMLElement).classList.remove(
+          'active'
+        );
+        (
+          document.getElementById('badge-three') as HTMLElement
+        ).classList.remove('active');
+        (document.getElementById('badge-four') as HTMLElement).classList.remove(
+          'active'
+        );
+        (document.getElementById('badge-five') as HTMLElement).classList.remove(
+          'active'
+        );
+        break;
+      case 2:
+        (document.getElementById('badge-two') as HTMLElement).classList.add(
+          'active'
+        );
+        (document.getElementById('badge-one') as HTMLElement).classList.remove(
+          'active'
+        );
+        (
+          document.getElementById('badge-three') as HTMLElement
+        ).classList.remove('active');
+        (document.getElementById('badge-four') as HTMLElement).classList.remove(
+          'active'
+        );
+        (document.getElementById('badge-five') as HTMLElement).classList.remove(
+          'active'
+        );
+        break;
+      case 3:
+        (document.getElementById('badge-three') as HTMLElement).classList.add(
+          'active'
+        );
+        (document.getElementById('badge-two') as HTMLElement).classList.remove(
+          'active'
+        );
+        (document.getElementById('badge-one') as HTMLElement).classList.remove(
+          'active'
+        );
+        (document.getElementById('badge-four') as HTMLElement).classList.remove(
+          'active'
+        );
+        (document.getElementById('badge-five') as HTMLElement).classList.remove(
+          'active'
+        );
+        break;
+      case 4:
+        (document.getElementById('badge-four') as HTMLElement).classList.add(
+          'active'
+        );
+        (document.getElementById('badge-two') as HTMLElement).classList.remove(
+          'active'
+        );
+        (
+          document.getElementById('badge-three') as HTMLElement
+        ).classList.remove('active');
+        (document.getElementById('badge-one') as HTMLElement).classList.remove(
+          'active'
+        );
+        (document.getElementById('badge-five') as HTMLElement).classList.remove(
+          'active'
+        );
+        break;
+      case 5:
+        (document.getElementById('badge-five') as HTMLElement).classList.add(
+          'active'
+        );
+        (document.getElementById('badge-two') as HTMLElement).classList.remove(
+          'active'
+        );
+        (
+          document.getElementById('badge-three') as HTMLElement
+        ).classList.remove('active');
+        (document.getElementById('badge-four') as HTMLElement).classList.remove(
+          'active'
+        );
+        (document.getElementById('badge-one') as HTMLElement).classList.remove(
+          'active'
+        );
+        break;
+    }
   }
 
   setUserImage(imageLink, nickName) {
@@ -105,8 +199,10 @@ export class RankingComponent implements OnInit {
   }
 
   selectUser(id, nickname) {
-    this.studentBadged = id;
-    this.selectedUser = nickname;
+    if (this.userId !== id) {
+      this.studentBadged = id;
+      this.selectedUser = nickname;
+    }
   }
 
   showPoints() {
@@ -147,6 +243,58 @@ export class RankingComponent implements OnInit {
       (document.querySelector('.teacher-controls') as HTMLElement).style.right =
         '-450px';
       this.expandedOptions = false;
+    }
+  }
+
+  addBadgePoints() {
+    console.log('Hello');
+  }
+
+
+  setBadgeBackground(badgeType,points){
+    
+     let badge = "";
+
+    
+
+    switch(badgeType){
+      case "responsability":
+      badge = "r";
+      break;
+      case "cooperation":
+      badge = "c";
+      break;
+      case "autonomy":
+      badge = "a";
+      break;
+      case "emotional":
+      badge = "g";
+      break;
+      case "thinking":
+      badge = "h";
+      break;
+    }
+
+    console.log(badge);
+
+
+    if(points < 1000){
+      return null;
+    }
+    else if(points >= 1000 && points < 2000){
+      return {background: "url('/assets/badges/" + badge +"_uno.png')"};
+    }
+    else if(points >= 2000 && points < 4000){
+       return {background: "url('/assets/badges/" + badge +"_dos.png')"};
+    }
+    else if(points >= 4000 && points < 7000){
+       return {background: "url('/assets/badges/" + badge +"_tres.png')"};
+    }
+    else if (points >= 7000 && points < 10000){
+       return {background: "url('/assets/badges/" + badge +"_cuatro.png')"};
+    }
+    else{
+       return {background: "url('/assets/badges/" + badge +"_cinco.png')"};
     }
   }
 }
