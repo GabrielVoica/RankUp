@@ -19,5 +19,26 @@
       </div>
     </div>
   </ng-template>
+  <ng-template [ngIf]="userType == 'student'">
+    <div class="container-rankings">
+      <div class="teacher-rankings">
+        <div class="rankings-list">
+          <h1 class="rankings-header">Mis Rankings</h1>
+          <div class="rankings-wrapper">
+            <div class="ranking-wrapper" *ngFor="let ranking of rankingData">
+              <input class="nameRanking"  readonly="readonly"value="{{ this.ranking['name'] }} "/>
+              <input class="descRanking"  readonly="readonly"value="{{ this.ranking['description'] }}"/>
+              <input class="descRanking" readonly="readonly" value="{{ this.ranking['code'] }}"  />
+              <input class="descRanking" readonly="readonly" value="{{ this.ranking['teacher_id'] }}"  />
+              <input class="descRanking" readonly="readonly" value="{{ this.ranking['members'] }}"  />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section_button">
+        <!-- <button class="add" (click)="go()">+</button> -->
+      </div>
+    </div>
+  </ng-template>
 </div>
 <!--  -->

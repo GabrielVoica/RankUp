@@ -49,11 +49,13 @@ export class RankingsComponent implements OnInit {
           this.http
             .get(environment.apiURL + 'app/rankingdata/' + code, {})
             .subscribe((data) => {
-              let dataArr = { code: null, name: null, description: null };
+              let dataArr = { code: null, name: null, description: null, teacher_id: null, members: null };
              this.actualRanking=  dataArr.code = data['data']['code'];
 
               dataArr.name = data['data']['ranking_name'];
               dataArr.description = data['data']['description'];
+              dataArr.teacher_id = data['data']['nick_name'];
+              dataArr.members = data['data']['members'];
               this.rankingData.push(dataArr);
               console.log(this.rankingData);
             });

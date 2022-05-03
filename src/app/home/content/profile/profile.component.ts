@@ -53,7 +53,7 @@ export class ProfileComponent implements OnInit {
       this.http
         .put(
           this.apiURL +
-            `app/user?name=${this.name}&lastname=${this.lastname}&image=image&id=${this.id}`,
+            `app/user?name=${this.name}&lastname=${this.lastname}&id=${this.id}`,
           {
             image: this.imageSrc,
           }
@@ -66,7 +66,7 @@ export class ProfileComponent implements OnInit {
       this.http
         .put(
           this.apiURL +
-            `app/user?nick_name=${this.username}&name=${this.name}&lastname=${this.lastname}&image=image&id=${this.id}`,
+            `app/user?nick_name=${this.username}&name=${this.name}&lastname=${this.lastname}&id=${this.id}`,
           {
             image: this.imageSrc,
           }
@@ -79,7 +79,7 @@ export class ProfileComponent implements OnInit {
       this.http
         .put(
           this.apiURL +
-            `app/user?name=${this.name}&lastname=${this.lastname}&email=${this.email}&image=image&id=${this.id}`,
+            `app/user?name=${this.name}&lastname=${this.lastname}&email=${this.email}&id=${this.id}`,
           {
             image: this.imageSrc,
           }
@@ -91,7 +91,7 @@ export class ProfileComponent implements OnInit {
       this.http
         .put(
           this.apiURL +
-            `app/user?nick_name=${this.username}&name=${this.name}&lastname=${this.lastname}&email=${this.email}&image=image&id=${this.id}`,
+            `app/user?nick_name=${this.username}&name=${this.name}&lastname=${this.lastname}&email=${this.email}&id=${this.id}`,
           {
             image: this.imageSrc,
           }
@@ -104,13 +104,32 @@ export class ProfileComponent implements OnInit {
   }
 
   deleteimage() {
+    environment.loading = true;
     this.http
       .put(this.apiURL + `app/user?image=null&id=${this.id}`, {
         image: this.imageSrc,
       })
       .subscribe((res) => {
+        environment.loading = false;
         this.dataUpdate.update(this.id);
-        location.reload();
+        console.log(res)
       });
+  }
+
+  saveImage() {
+    environment.loading = true;
+    this.http
+    .put(
+      this.apiURL +
+        `app/user?image=image&id=${this.id}&id=${this.id}`,
+      {
+        image: this.imageSrc,
+      }
+    )
+    .subscribe((res) => {
+      this.dataUpdate.update(this.id);
+      console.log(res);
+      environment.loading = false;
+    });
   }
 }
