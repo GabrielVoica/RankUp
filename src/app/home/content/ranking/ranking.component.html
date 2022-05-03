@@ -54,74 +54,102 @@
           <p class="user-username">{{ item.nick_name }}</p>
           <p class="user-points">{{ item.points }}</p>
           <div class="badge-container-wrapper">
-            <div class="badge-item responsability" [ngStyle]="setBadgeBackground('responsability',item.responsabilidad)"></div>
-            <div class="badge-item cooperation" [ngStyle]="setBadgeBackground('cooperation',item.cooperacion)"></div>
-            <div class="badge-item autonomy" [ngStyle]="setBadgeBackground('autonomy',item.autonomia_e_iniciativa)"></div>
-            <div class="badge-item emotional" [ngStyle]="setBadgeBackground('emotional',item.gestion_emocional)"></div>
-            <div class="badge-item thinking" [ngStyle]="setBadgeBackground('thinking',item.habilidades_de_pensamiento)"></div>
+            <div
+              class="badge-item responsability"
+              [ngStyle]="
+                setBadgeBackground('responsability', item.responsabilidad)
+              "
+            ></div>
+            <div
+              class="badge-item cooperation"
+              [ngStyle]="setBadgeBackground('cooperation', item.cooperacion)"
+            ></div>
+            <div
+              class="badge-item autonomy"
+              [ngStyle]="
+                setBadgeBackground('autonomy', item.autonomia_e_iniciativa)
+              "
+            ></div>
+            <div
+              class="badge-item emotional"
+              [ngStyle]="
+                setBadgeBackground('emotional', item.gestion_emocional)
+              "
+            ></div>
+            <div
+              class="badge-item thinking"
+              [ngStyle]="
+                setBadgeBackground('thinking', item.habilidades_de_pensamiento)
+              "
+            ></div>
           </div>
         </div>
       </div>
     </div>
+
     <div class="ranking-content-badges">
-      <div class="select-user">
-        {{ selectedUser }}
-      </div>
-      <div class="badges-wrapper">
-        <div
-          class="badge-container"
-          id="badge-one"
-          (click)="setBadge('responsability', 1)"
-        >
-          Responsabilidad
+      <ng-template [ngIf]="userType == 'student'">
+        <h2>Añadir puntos insignias</h2>
+        <div class="select-user">
+          {{ selectedUser }}
         </div>
-        <div
-          class="badge-container"
-          id="badge-two"
-          (click)="setBadge('cooperation', 2)"
-        >
-          Cooperación
+        <div class="badges-wrapper">
+          <div
+            class="badge-container"
+            id="badge-one"
+            (click)="setBadge('responsability', 1)"
+          >
+            Responsabilidad
+          </div>
+          <div
+            class="badge-container"
+            id="badge-two"
+            (click)="setBadge('cooperation', 2)"
+          >
+            Cooperación
+          </div>
+          <div
+            class="badge-container"
+            id="badge-three"
+            (click)="setBadge('autonomy', 3)"
+          >
+            Autonomía e iniciativa
+          </div>
+          <div
+            class="badge-container"
+            id="badge-four"
+            (click)="setBadge('gestion', 4)"
+          >
+            Gestión emocional
+          </div>
+          <div
+            class="badge-container"
+            id="badge-five"
+            (click)="setBadge('habilidades', 5)"
+          >
+            Habilidades de pensamiento
+          </div>
         </div>
-        <div
-          class="badge-container"
-          id="badge-three"
-          (click)="setBadge('autonomy', 3)"
-        >
-          Autonomía e iniciativa
+        <div class="points-user">
+          <h3>Puntos insignia</h3>
+          <input
+            type="number"
+            value="{{ pointsGivenByStudent }}"
+            style="text-align: center"
+            [(ngModel)]="pointsGivenByStudent"
+          />
+          <input
+            type="range"
+            min="0"
+            max="1000"
+            [(ngModel)]="pointsGivenByStudent"
+            (click)="printPoints()"
+          />
         </div>
-        <div
-          class="badge-container"
-          id="badge-four"
-          (click)="setBadge('gestion', 4)"
-        >
-          Gestión emocional
+        <div class="submit">
+          <button class="btn" (click)="addBadgePoints()">Enviar</button>
         </div>
-        <div
-          class="badge-container"
-          id="badge-five"
-          (click)="setBadge('habilidades', 5)"
-        >
-          Habilidades de pensamiento
-        </div>
-      </div>
-      <div class="points-user">
-        <input
-          type="number"
-          value="{{ pointsGivenByStudent }}"
-          style="text-align: center"
-          [(ngModel)]="pointsGivenByStudent"
-        />
-        <input
-          type="range"
-          min="0"
-          max="1000"
-          [(ngModel)]="pointsGivenByStudent"
-          (click)="printPoints()"
-        />
-      </div>
-      <div class="submit">
-        <button class="btn" (click)="addBadgePoints()">Enviar</button>
-      </div>
+      </ng-template>
     </div>
   </div>
 </div>

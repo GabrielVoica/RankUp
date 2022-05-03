@@ -30,7 +30,17 @@ export class RankingComponent implements OnInit {
   data;
   rankingData;
   rankingPositionsData = [
-    { id: null, nick_name: null, points: 0, image: null, responsabilidad: 0, cooperacion: 0, autonomia_e_iniciativa: 0, gestion_emocional: 0, habilidades_de_pensamiento: 0  },
+    {
+      id: null,
+      nick_name: null,
+      points: 0,
+      image: null,
+      responsabilidad: 0,
+      cooperacion: 0,
+      autonomia_e_iniciativa: 0,
+      gestion_emocional: 0,
+      habilidades_de_pensamiento: 0,
+    },
   ];
   userId;
   userPosition;
@@ -247,54 +257,42 @@ export class RankingComponent implements OnInit {
   }
 
   addBadgePoints() {
-    console.log('Hello');
+    environment.loading = true;
   }
 
+  setBadgeBackground(badgeType, points) {
+    let badge = '';
 
-  setBadgeBackground(badgeType,points){
-    
-     let badge = "";
-
-    
-
-    switch(badgeType){
-      case "responsability":
-      badge = "r";
-      break;
-      case "cooperation":
-      badge = "c";
-      break;
-      case "autonomy":
-      badge = "a";
-      break;
-      case "emotional":
-      badge = "g";
-      break;
-      case "thinking":
-      badge = "h";
-      break;
+    switch (badgeType) {
+      case 'responsability':
+        badge = 'r';
+        break;
+      case 'cooperation':
+        badge = 'c';
+        break;
+      case 'autonomy':
+        badge = 'a';
+        break;
+      case 'emotional':
+        badge = 'g';
+        break;
+      case 'thinking':
+        badge = 'h';
+        break;
     }
 
-    console.log(badge);
-
-
-    if(points < 1000){
+    if (points < 1000) {
       return null;
-    }
-    else if(points >= 1000 && points < 2000){
-      return {background: "url('/assets/badges/" + badge +"_uno.png')"};
-    }
-    else if(points >= 2000 && points < 4000){
-       return {background: "url('/assets/badges/" + badge +"_dos.png')"};
-    }
-    else if(points >= 4000 && points < 7000){
-       return {background: "url('/assets/badges/" + badge +"_tres.png')"};
-    }
-    else if (points >= 7000 && points < 10000){
-       return {background: "url('/assets/badges/" + badge +"_cuatro.png')"};
-    }
-    else{
-       return {background: "url('/assets/badges/" + badge +"_cinco.png')"};
+    } else if (points >= 1000 && points < 2000) {
+      return { background: "url('/assets/badges/" + badge + "_uno.png')" };
+    } else if (points >= 2000 && points < 4000) {
+      return { background: "url('/assets/badges/" + badge + "_dos.png')" };
+    } else if (points >= 4000 && points < 7000) {
+      return { background: "url('/assets/badges/" + badge + "_tres.png')" };
+    } else if (points >= 7000 && points < 10000) {
+      return { background: "url('/assets/badges/" + badge + "_cuatro.png')" };
+    } else {
+      return { background: "url('/assets/badges/" + badge + "_cinco.png')" };
     }
   }
 }
