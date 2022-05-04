@@ -144,10 +144,9 @@
   padding: 15px;
 }
 
-.ranking-content-badges h2{
+.ranking-content-badges h2 {
   color: white;
 }
-
 
 .ranking-page .ranking-content .ranking-content-badges .badges-wrapper {
   display: flex;
@@ -226,13 +225,13 @@
   grid-column: 2/3;
 }
 
-.points-user input{
-  background: none;;
+.points-user input {
+  background: none;
   font-size: 25px;
   color: white;
 }
 
-.points-user h3{
+.points-user h3 {
   color: white;
 }
 
@@ -315,26 +314,24 @@
   text-transform: uppercase;
 }
 
-
-
-.teacher-controls{
-    height: 110vh;
-    width: 500px;
-    background: url('/assets/textures/star-texture.png');
-    position: fixed;
-    top: -5px;
-    right: -450px;
-    z-index: 1000;
-    box-shadow: 0px 0px 1px 2px #00000011;
-    padding: 60px;
-    transition: 0.5s right;
+.teacher-controls {
+  height: 110vh;
+  width: 500px;
+  background: url("/assets/textures/star-texture.png");
+  position: fixed;
+  top: -5px;
+  right: -450px;
+  z-index: 1000;
+  box-shadow: 0px 0px 1px 2px #00000011;
+  padding: 60px;
+  transition: 0.5s right;
 }
 
-.selected-user-wrapper{
+.selected-user-wrapper {
   height: 30px;
 }
 
-.open-options{
+.open-options {
   position: absolute;
   top: 10px;
   left: -50px;
@@ -350,12 +347,11 @@
   border: 2px solid rgba(255, 255, 255, 0.603);
 }
 
-.open-options:before{
+.open-options:before {
   display: none !important;
 }
 
-
-.select-user{
+.select-user {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -364,36 +360,33 @@
   margin-bottom: 20px;
 }
 
-
-.badge-container.active{
+.badge-container.active {
   background: rgb(221, 118, 247) !important;
 }
 
-
-.points-user{
+.points-user {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.submit{
+.submit {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
 }
 
-.submit button{
+.submit button {
   width: 100%;
 }
 
-.badges-wrapper{
+.badges-wrapper {
   margin-bottom: 20px;
 }
 
-
-.badge-container-wrapper{
+.badge-container-wrapper {
   height: 100%;
   margin-left: 30px;
   width: 300px;
@@ -402,7 +395,7 @@
   align-items: center;
 }
 
-.badge-container-wrapper .badge-item{
+.badge-container-wrapper .badge-item {
   height: 100%;
   width: 50px;
   background-size: 35px !important;
@@ -410,30 +403,88 @@
   background-repeat: no-repeat !important;
 }
 
-.badge-container-wrapper .badge-item:nth-of-type(1){
+.badge-container-wrapper .badge-item:nth-of-type(1) {
   background-size: 30px !important;
 }
 
-.badge-container-wrapper .badge-item:nth-of-type(4){
+.badge-container-wrapper .badge-item:nth-of-type(4) {
   background-size: 45px !important;
 }
 
-@keyframes animate-letters{
-  25%{
-   text-shadow: 0px 0px 1px 2px white;
-   color: rgb(132, 56, 218);
-  }
-  50%{
-   text-shadow: 1px 3px 5px 5px white;
-   color: rgb(255, 255, 255);
-  }
-  75%{
-   text-shadow: 3px 1px 2px 2px white;
-   color: rgb(132, 56, 218);
-  }
-  100%{
-   text-shadow: 1px 1px 0px 0px white;
-   color: rgb(255, 255, 255);
-  }
+.options-wrapper {
 }
 
+.options-wrapper .options-div {
+}
+
+.options-wrapper .accept-users {
+  height: 750px;
+  overflow: hidden;
+}
+
+.options-header {
+  margin-bottom: 20px;
+}
+
+.options-wrapper .accept-users .user-accepted {
+  display: flex;
+  background: #250174;
+  border: 1px solid #1c0058;
+  width: 100%;
+  height: 50px;
+  align-items: center;
+  position: relative;
+}
+
+.options-wrapper .accept-users .user-accepted h4 {
+  color: white;
+  margin-left: 10px;
+}
+
+.options-wrapper .accept-users .user-accepted button {
+  cursor: pointer;
+  height: 90%;
+  width: 100px;
+  position: absolute;
+  right: 0;
+  color: white;
+  border-radius: 6px;
+  font-family: Montserrat;
+  transition: 0.5s background;
+}
+
+.options-wrapper .accept-users .user-accepted button.accept:hover{
+  background: rgb(163, 64, 230) !important;
+}
+
+.options-wrapper .accept-users .user-accepted button.deny:hover{
+  background: rgb(60, 8, 102) !important;
+}
+
+.options-wrapper .accept-users .user-accepted button.accept {
+  background: rgb(118, 11, 180);
+  right: 105px;
+}
+
+.options-wrapper .accept-users .user-accepted button.deny {
+  background: rgb(0, 0, 0);
+}
+
+@keyframes animate-letters {
+  25% {
+    text-shadow: 0px 0px 1px 2px white;
+    color: rgb(132, 56, 218);
+  }
+  50% {
+    text-shadow: 1px 3px 5px 5px white;
+    color: rgb(255, 255, 255);
+  }
+  75% {
+    text-shadow: 3px 1px 2px 2px white;
+    color: rgb(132, 56, 218);
+  }
+  100% {
+    text-shadow: 1px 1px 0px 0px white;
+    color: rgb(255, 255, 255);
+  }
+}

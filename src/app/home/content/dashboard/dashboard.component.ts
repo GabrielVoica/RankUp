@@ -74,7 +74,18 @@ export class DashboardComponent implements OnInit {
       let response = this.rankingService.loadRanking(this.rankingCode);
       response.subscribe((data) => {
         if (data['code'] == 200) {
-          this.router.navigate(['home/ranking/', this.rankingCode]);
+          this.http
+            .post(
+              environment.apiURL +
+                'app/ranking?code=' +
+                this.rankingCode +
+                '&id=' +
+                this.session.getId(),
+              {}
+            )
+            .subscribe((data) => {
+              this.router.navigate(['home/ranking/', this.rankingCode]);
+            });
         } else if (data['code'] == 404) {
           environment.loading = false;
           Swal.fire({

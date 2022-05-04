@@ -150,6 +150,19 @@
           <button class="btn" (click)="addBadgePoints()">Enviar</button>
         </div>
       </ng-template>
+      <ng-template [ngIf]="userType == 'teacher'">
+        <h2 class="options-header">Opciones ranking</h2>
+        <div class="options-wrapper">
+          <div class="options-div accept-users">
+            <div class="user-accepted" *ngFor="let user of unacceptedUsers; let indexOfUser = index">
+              <h4>{{ user.nick_name }}</h4>
+              <button class="accept"(click)="acceptUser(user.id )">Aceptar</button>
+              <button class="deny"(click)="rejectUser(user.id)">Rechazar</button>
+            </div>
+          </div>
+          <div class="options-div mark-tasts"></div>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>
