@@ -52,6 +52,7 @@ export class RankingComponent implements OnInit {
   selectedUser;
   pointsAddedFromTeacher;
   pointsGivenByStudent = 0;
+  unacceptedUsers;
 
   teacherName;
   rankingName;
@@ -78,8 +79,12 @@ export class RankingComponent implements OnInit {
     this.data = this.ranking.loadRanking(this.code);
     this.data
       .subscribe((data) => {
-        this.rankingPositionsData = data['data'];
-        console.log(this.rankingPositionsData[0]);
+        console.log(data);
+        this.rankingPositionsData = data['data']['accepted'];
+        console.log(data['data']['unaccepted']);
+        if(data['data']['unaccepted'][0] !== null){
+        this.unacceptedUsers = data['data']['unaccepted'];
+        }
       })
       .add(() =>
         setTimeout(() => {
@@ -257,7 +262,48 @@ export class RankingComponent implements OnInit {
   }
 
   addBadgePoints() {
+    // environment.loading = true;
+    let badge = '';
     environment.loading = true;
+
+    switch (this.badge) {
+      case 'responsability':
+        badge = 'responsabilidad';
+        break;
+      case 'autonomy':
+        badge = 'autonomia_e_iniciativa';
+        break;
+      case 'cooperation':
+        badge = 'cooperacion';
+        break;
+      case 'autonomy':
+        badge = 'autonomia_e_iniciativa';
+        break;
+      case 'gestion':
+        badge = 'gestion_emocional';
+        break;
+      case 'habilidades':
+        badge = 'habilidades_de_pensamiento';
+        break;
+    }
+
+    this.http
+      .put(
+        environment.apiURL +
+          'app/ranking?code=' +
+          this.rankingData['code'] +
+          '&' +
+          badge +
+          '=' +
+          this.pointsGivenByStudent +
+          '&id=' +
+          this.studentBadged,
+        {}
+      )
+      .subscribe((data) => {
+        environment.loading = false;
+        location.reload();
+      });
   }
 
   setBadgeBackground(badgeType, points) {
@@ -294,5 +340,32 @@ export class RankingComponent implements OnInit {
     } else {
       return { background: "url('/assets/badges/" + badge + "_cinco.png')" };
     }
+  }
+
+  acceptUser(id) {
+    environment.loading = true;
+    this.http
+      .put(
+        environment.apiURL +
+          'app/ranking?code=' +
+          this.rankingData['code'] +
+          '&id=' +
+          id +
+          '&status=1',
+        {}
+      )
+      .subscribe((data) => {
+        location.reload();
+        environment.loading = false;
+      });
+  }
+
+
+  rejectUser(id){
+    environment.loading = true;
+    this.http.delete(environment.apiURL + "app/ranking/" + this.rankingData['code'] + "/" + id).subscribe((data)=>{
+      location.reload();
+      environment.loading = false;
+    })
   }
 }
