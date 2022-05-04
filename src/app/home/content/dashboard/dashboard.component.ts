@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
   rankingExists: boolean;
   rankingCodes: Array<String> = [];
   rankingData: Array<{ code }> = [];
-
+// 
   @ViewChild('codeInput') codeInput: ElementRef;
 
   ngOnInit(): void {
