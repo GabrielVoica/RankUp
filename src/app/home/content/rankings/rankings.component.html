@@ -6,16 +6,27 @@
           <h1 class="rankings-header">Edit Rankings</h1>
           <div class="rankings-wrapper">
             <div class="ranking-wrapper" *ngFor="let ranking of rankingData">
-              <input class="nameRanking"  value="{{ this.ranking['name'] }} " [(ngModel)]="rankingName"/>
-              <input class="descRanking"  value="{{ this.ranking['description'] }}"  [(ngModel)]="rankingDesc"/>
-              <input class="descRanking"  value="{{ this.ranking['code'] }}"  />
-              <button (click)="updateRanking()"  class="botonSave">GUARDAR</button>
+              <input
+                class="nameRanking"
+                value="{{ this.ranking['name'] }} "
+                [(ngModel)]="rankingName"
+              />
+              <input
+                class="descRanking"
+                value="{{ this.ranking['description'] }}"
+     [(ngModel)]="rankingDesc"
+              />
+              <div class="random_code_container">
+                <input class="randRanking" value="{{ this.ranking['code'] }}" />
+                <button class="random" (click)="updateCode()">*</button>
+              </div>
+              <button (click)="updateRanking()" class="botonSave">
+                GUARDAR
+              </button>
+              <button (click)="delete()" class="botonSave">DELETE</button>
             </div>
           </div>
         </div>
-      </div>
-      <div class="section_button">
-        <button class="add" (click)="go()">+</button>
       </div>
     </div>
   </ng-template>
@@ -26,11 +37,31 @@
           <h1 class="rankings-header">Mis Rankings</h1>
           <div class="rankings-wrapper">
             <div class="ranking-wrapper" *ngFor="let ranking of rankingData">
-              <input class="nameRanking"  readonly="readonly"value="{{ this.ranking['name'] }} "/>
-              <input class="descRanking"  readonly="readonly"value="{{ this.ranking['description'] }}"/>
-              <input class="descRanking" readonly="readonly" value="{{ this.ranking['code'] }}"  />
-              <input class="descRanking" readonly="readonly" value="{{ this.ranking['teacher_id'] }}"  />
-              <input class="descRanking" readonly="readonly" value="{{ this.ranking['members'] }}"  />
+              <input
+                class="nameRanking"
+                readonly="readonly"
+                value="{{ this.ranking['name'] }} "
+              />
+              <input
+                class="descRanking"
+                readonly="readonly"
+                value="{{ this.ranking['description'] }}"
+              />
+              <input
+                class="descRanking"
+                readonly="readonly"
+                value="{{ this.ranking['code'] }}"
+              />
+              <input
+                class="descRanking"
+                readonly="readonly"
+                value="{{ this.ranking['teacher_id'] }}"
+              />
+              <input
+                class="descRanking"
+                readonly="readonly"
+                value="{{ this.ranking['members'] }}"
+              />
             </div>
           </div>
         </div>

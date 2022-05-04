@@ -61,6 +61,7 @@ export class RankingsComponent implements OnInit {
             });
         });
       });
+
   }
 
   ngAfterViewInit() {
@@ -75,26 +76,57 @@ export class RankingsComponent implements OnInit {
         {}
       )
       .subscribe((res) => {
-        console.log(this.actualRanking);
-        console.log(this.rankingData['code']);
+
       });
   }
   delete() {
     // console.log(this.rankingCodes[0]);
 
+    // this.http
+    // .delete(
+    //   this.apiURL +
+    //     `app/rankingdata/${this.actualRanking}`,
+    //   {}
+    // )
+    // .subscribe((res) => {
+    //   location.reload();
+    //   console.log(res);
+    //   console.log(this.actualRanking);
+      
+    // });
+    console.log(this.rankingCodes[1]);
+  }
+  updateCode() {
+    
+
+    Swal.fire({
+      title: '¿Quieres generar un nuevo código?',
+      text: "El codigo de acceso se generará automaticamente",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Generar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
     this.http
-    .delete(
+    .put(
       this.apiURL +
-        `app/rankingdata/${this.actualRanking}`,
+        `app/rankingdata?code=${this.rankingCodes[1]}&coderandom=random`,
       {}
     )
     .subscribe((res) => {
       console.log(res);
-      console.log(this.actualRanking);
+      console.log(this.rankingCodes[1]);
+      location.reload();
     });
-  }
-  go() {
+      }
+    })
+
+
+
     // console.log(this.actualRanking);
-    document.location.href = 'http://localhost:4200/home/add-ranking';
+    // document.location.href = 'http://localhost:4200/home/add-ranking';
   }
 }

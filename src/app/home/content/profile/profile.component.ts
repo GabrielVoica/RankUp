@@ -55,7 +55,7 @@ export class ProfileComponent implements OnInit {
           this.apiURL +
             `app/user?name=${this.name}&lastname=${this.lastname}&id=${this.id}`,
           {
-            image: this.imageSrc,
+      
           }
         )
         .subscribe((res) => {
@@ -68,7 +68,7 @@ export class ProfileComponent implements OnInit {
           this.apiURL +
             `app/user?nick_name=${this.username}&name=${this.name}&lastname=${this.lastname}&id=${this.id}`,
           {
-            image: this.imageSrc,
+
           }
         )
         .subscribe((res) => {
@@ -81,7 +81,7 @@ export class ProfileComponent implements OnInit {
           this.apiURL +
             `app/user?name=${this.name}&lastname=${this.lastname}&email=${this.email}&id=${this.id}`,
           {
-            image: this.imageSrc,
+         
           }
         )
         .subscribe((res) => {
@@ -93,7 +93,7 @@ export class ProfileComponent implements OnInit {
           this.apiURL +
             `app/user?nick_name=${this.username}&name=${this.name}&lastname=${this.lastname}&email=${this.email}&id=${this.id}`,
           {
-            image: this.imageSrc,
+         
           }
         )
         .subscribe((res) => {
