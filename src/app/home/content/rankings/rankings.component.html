@@ -20,10 +20,10 @@
                 <input class="randRanking" value="{{ this.ranking['code'] }}" />
                 <button class="random" (click)="updateCode()">*</button>
               </div>
-              <button (click)="updateRanking()" class="botonSave">
+              <button (click)="updateRanking()" class="btn botonSave">
                 GUARDAR
               </button>
-              <button (click)="delete()" class="botonSave">DELETE</button>
+              <button (click)="delete()" class="btn botonDelete">DELETE</button>
             </div>
           </div>
         </div>
@@ -37,6 +37,10 @@
           <h1 class="rankings-header">Mis Rankings</h1>
           <div class="rankings-wrapper">
             <div class="ranking-wrapper" *ngFor="let ranking of rankingData">
+              <a
+              class="ranking-code"
+              href="home/ranking/{{ ranking['code'] }}"
+            ></a>
               <input
                 class="nameRanking"
                 readonly="readonly"
@@ -63,6 +67,7 @@
                 value="{{ this.ranking['members'] }}"
               />
             </div>
+            
           </div>
         </div>
       </div>

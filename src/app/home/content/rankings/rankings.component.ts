@@ -72,7 +72,7 @@ export class RankingsComponent implements OnInit {
     this.http
       .put(
         this.apiURL +
-          `app/rankingdata?ranking_name=${this.rankingName}&description=${this.rankingDesc}&code=${this.actualRanking}`,
+          `app/rankingdata?ranking_name=${this.rankingName}&description=${this.rankingDesc}&code=${this.rankingCodes[0]}`,
         {}
       )
       .subscribe((res) => {
@@ -113,7 +113,7 @@ export class RankingsComponent implements OnInit {
     this.http
     .put(
       this.apiURL +
-        `app/rankingdata?code=${this.rankingCodes[1]}&coderandom=random`,
+        `app/rankingdata?code=${this.rankingCodes[0]}&coderandom=random`,
       {}
     )
     .subscribe((res) => {

@@ -159,8 +159,8 @@
     height: 50px;
     border: none;
     outline: none;
-    background: #2f2f2f;
-    color: #fff;
+
+
     font-size: 22px;
     font-weight: 600;
     border-radius: 10px;
@@ -168,6 +168,27 @@
     box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
     overflow: hidden;
     cursor: pointer;
+}
+  .botonDelete {
+    margin-bottom: 6px;
+    position: relative;
+    top: 51%;
+    width: 258px;
+    height: 50px;
+    border: none;
+    outline: none;
+    background: #f00404;
+
+    font-size: 22px;
+    font-weight: 600;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
+    overflow: hidden;
+    cursor: pointer;
+}
+  .botonDelete:hover {
+color: #fff;
 }
 .container-rankings{
   display: flex;
