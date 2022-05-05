@@ -9,21 +9,22 @@
               <input
                 class="nameRanking"
                 value="{{ this.ranking['name'] }} "
-                [(ngModel)]="rankingName"
+           
               />
+        
               <input
                 class="descRanking"
                 value="{{ this.ranking['description'] }}"
-     [(ngModel)]="rankingDesc"
+
               />
               <div class="random_code_container">
-                <input class="randRanking" value="{{ this.ranking['code'] }}" />
-                <button class="random" (click)="updateCode()">*</button>
+                <input class="randRanking" name="code" value="{{ this.ranking['code'] }}"   />
+                <button class="random" (click)="updateCode()"></button>
               </div>
               <button (click)="updateRanking()" class="btn botonSave">
                 GUARDAR
               </button>
-              <button (click)="delete()" class="btn botonDelete">DELETE</button>
+              <button (click)="delete($event)" class="btn botonDelete">DELETE</button>
             </div>
           </div>
         </div>

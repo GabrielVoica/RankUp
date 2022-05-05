@@ -31,6 +31,7 @@ export class RankingsComponent implements OnInit {
   rankingName: string;
   rankingDesc: string;
   actualRanking: string;
+  code: string;
 
   @ViewChild('codeInput') codeInput: ElementRef;
 
@@ -39,7 +40,6 @@ export class RankingsComponent implements OnInit {
       .get(environment.apiURL + 'app/user/' + this.session.getId(), {})
       .subscribe((data) => {
         let rankings = data['data']['code'];
-   
 
         rankings.forEach((element) => {
           this.rankingCodes.push(element);
@@ -49,8 +49,14 @@ export class RankingsComponent implements OnInit {
           this.http
             .get(environment.apiURL + 'app/rankingdata/' + code, {})
             .subscribe((data) => {
-              let dataArr = { code: null, name: null, description: null, teacher_id: null, members: null };
-             this.actualRanking=  dataArr.code = data['data']['code'];
+              let dataArr = {
+                code: null,
+                name: null,
+                description: null,
+                teacher_id: null,
+                members: null,
+              };
+              dataArr.code = data['data']['code'];
 
               dataArr.name = data['data']['ranking_name'];
               dataArr.description = data['data']['description'];
@@ -61,7 +67,7 @@ export class RankingsComponent implements OnInit {
             });
         });
       });
-
+      
   }
 
   ngAfterViewInit() {
@@ -72,14 +78,16 @@ export class RankingsComponent implements OnInit {
     this.http
       .put(
         this.apiURL +
-          `app/rankingdata?ranking_name=${this.rankingName}&description=${this.rankingDesc}&code=${this.rankingCodes[0]}`,
+          `app/rankingdata?ranking_name=${this.rankingName}&description=${
+            this.rankingDesc
+          }&code=${this.rankingCodes[this.code]}`,
         {}
       )
       .subscribe((res) => {
-
+        console.log(res);
       });
   }
-  delete() {
+  delete(event) {
     // console.log(this.rankingCodes[0]);
 
     // this.http
@@ -92,39 +100,37 @@ export class RankingsComponent implements OnInit {
     //   location.reload();
     //   console.log(res);
     //   console.log(this.actualRanking);
-      
+
     // });
-    console.log(this.rankingCodes[1]);
+ 
+
+   
   }
   updateCode() {
-    
-
     Swal.fire({
       title: '¿Quieres generar un nuevo código?',
-      text: "El codigo de acceso se generará automaticamente",
+      text: 'El codigo de acceso se generará automaticamente',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Generar'
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Generar',
     }).then((result) => {
       if (result.isConfirmed) {
-
-    this.http
-    .put(
-      this.apiURL +
-        `app/rankingdata?code=${this.rankingCodes[0]}&coderandom=random`,
-      {}
-    )
-    .subscribe((res) => {
-      console.log(res);
-      console.log(this.rankingCodes[1]);
-      location.reload();
-    });
+        this.http
+          .put(
+            this.apiURL +
+              `app/rankingdata?code=${this.rankingCodes[0]}&coderandom=random`,
+            {}
+          )
+          .subscribe((res) => {
+            console.log(res);
+            console.log(this.rankingCodes[1]);
+            location.reload();
+          });
       }
-    })
-
-
+    });
 
     // console.log(this.actualRanking);
     // document.location.href = 'http://localhost:4200/home/add-ranking';

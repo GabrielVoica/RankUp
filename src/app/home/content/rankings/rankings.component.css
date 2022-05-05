@@ -145,7 +145,7 @@
   .descRanking{
       margin-top: 12px;
       padding: 5px;
-      width: 200px;
+      width: 205px;
       border-radius: 6px;
       text-align: center;
       font-weight: 300;
@@ -222,7 +222,7 @@ margin-top: 12px;
 .randRanking{
 
   padding: 5px;
-  border-radius: 6px;
+  border-radius: 6px 0px 0px 6px ;
   text-align: center;
   font-weight: 300;
   font-size: 14px;
@@ -244,4 +244,11 @@ margin-top: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.random{
+  background-image: url("C:\xampp\htdocs\RankUp\src\assets\icons\rand.png");
+  border-radius: 0px 6px 6px 0px ;
+  width: 100%;
+  padding: 12px;
+  cursor: pointer;
 }
