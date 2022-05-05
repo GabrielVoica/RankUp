@@ -8,23 +8,40 @@
             <div class="ranking-wrapper" *ngFor="let ranking of rankingData">
               <input
                 class="nameRanking"
+                name="name"
                 value="{{ this.ranking['name'] }} "
-           
+                [(ngModel)]="rankingName"
               />
-        
+
               <input
+                name="description"
                 class="descRanking"
                 value="{{ this.ranking['description'] }}"
-
+                [(ngModel)]="rankingDesc"
               />
               <div class="random_code_container">
-                <input class="randRanking" name="code" value="{{ this.ranking['code'] }}"   />
-                <button class="random" (click)="updateCode()"></button>
+                <input
+                  class="randRanking"
+                  name="code"
+                  value="{{ this.ranking['code'] }}"
+                />
+                <button
+                  class="random"
+                  (click)="updateCode(this.ranking['code'])"
+                ></button>
               </div>
-              <button (click)="updateRanking()" class="btn botonSave">
+              <button
+                (click)="updateRanking(this.ranking['code'])"
+                class="btn botonSave"
+              >
                 GUARDAR
               </button>
-              <button (click)="delete($event)" class="btn botonDelete">DELETE</button>
+              <button
+                (click)="delete(this.ranking['code'])"
+                class="btn botonDelete"
+              >
+                DELETE
+              </button>
             </div>
           </div>
         </div>
@@ -39,9 +56,9 @@
           <div class="rankings-wrapper">
             <div class="ranking-wrapper" *ngFor="let ranking of rankingData">
               <a
-              class="ranking-code"
-              href="home/ranking/{{ ranking['code'] }}"
-            ></a>
+                class="ranking-code"
+                href="home/ranking/{{ ranking['code'] }}"
+              ></a>
               <input
                 class="nameRanking"
                 readonly="readonly"
@@ -68,7 +85,6 @@
                 value="{{ this.ranking['members'] }}"
               />
             </div>
-            
           </div>
         </div>
       </div>

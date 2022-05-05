@@ -30,8 +30,9 @@ export class RankingsComponent implements OnInit {
   rankingData: Array<{}> = [];
   rankingName: string;
   rankingDesc: string;
-  actualRanking: string;
   code: string;
+  name: string;
+  description: string;
 
   @ViewChild('codeInput') codeInput: ElementRef;
 
@@ -67,46 +68,57 @@ export class RankingsComponent implements OnInit {
             });
         });
       });
-      
   }
 
   ngAfterViewInit() {
     environment.loading = false;
   }
 
-  updateRanking() {
+  updateRanking(code: string) {
+    environment.loading = true;
     this.http
       .put(
         this.apiURL +
-          `app/rankingdata?ranking_name=${this.rankingName}&description=${
-            this.rankingDesc
-          }&code=${this.rankingCodes[this.code]}`,
+          `app/rankingdata?ranking_name=${this.rankingName}&description=${this.rankingDesc}&code=${code}`,
         {}
       )
       .subscribe((res) => {
         console.log(res);
+        location.reload();
+        environment.loading = false;
       });
   }
-  delete(event) {
-    // console.log(this.rankingCodes[0]);
+  delete(code: string) {
 
-    // this.http
-    // .delete(
-    //   this.apiURL +
-    //     `app/rankingdata/${this.actualRanking}`,
-    //   {}
-    // )
-    // .subscribe((res) => {
-    //   location.reload();
-    //   console.log(res);
-    //   console.log(this.actualRanking);
+    Swal.fire({
+      title: '¿Seguro que quieres borrar este ranking?',
+      text: 'Este ranking no se va a poder recuperar...',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Borrar',
+    }).then((result) => {
+      environment.loading = true;
+      if (result.isConfirmed) {
+        environment.loading = true;
+        this.http
+          .delete(this.apiURL + `app/rankingdata/${code}`, {})
+          .subscribe((res) => {
+            console.log(res);
+            location.reload();
+            environment.loading = false;
+          });
+      } else {
+        environment.loading = false;
+      }
+    });
 
-    // });
- 
 
-   
+
   }
-  updateCode() {
+  updateCode(code: string) {
     Swal.fire({
       title: '¿Quieres generar un nuevo código?',
       text: 'El codigo de acceso se generará automaticamente',
@@ -117,22 +129,21 @@ export class RankingsComponent implements OnInit {
       cancelButtonText: 'Cancelar',
       confirmButtonText: 'Generar',
     }).then((result) => {
+      environment.loading = true;
       if (result.isConfirmed) {
         this.http
           .put(
-            this.apiURL +
-              `app/rankingdata?code=${this.rankingCodes[0]}&coderandom=random`,
+            this.apiURL + `app/rankingdata?code=${code}&coderandom=random`,
             {}
           )
           .subscribe((res) => {
             console.log(res);
-            console.log(this.rankingCodes[1]);
             location.reload();
+            environment.loading = false;
           });
+      } else {
+        environment.loading = false;
       }
     });
-
-    // console.log(this.actualRanking);
-    // document.location.href = 'http://localhost:4200/home/add-ranking';
   }
 }
