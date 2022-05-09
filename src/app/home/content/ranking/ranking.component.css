@@ -343,7 +343,7 @@
   font-size: 14px;
   border-radius: 100%;
   transform: rotate(45deg);
-  animation: animate-letters 1s forwards infinite;
+  animation: animate-letters 5s forwards infinite;
   border: 2px solid rgba(255, 255, 255, 0.603);
 }
 
@@ -487,4 +487,29 @@
     text-shadow: 1px 1px 0px 0px white;
     color: rgb(255, 255, 255);
   }
+}
+
+.tag{
+  position: absolute;
+  right: 20px;
+  background: rgb(122, 26, 167);
+  width: 120px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 15px;
+  cursor: pointer;
+  color: white;
+  font-family: "Montserrat";
+  border-radius: 6px;
+  transition: 0.5s background;
+}
+
+.tag:hover{
+  background: rgb(169, 64, 211);
+}
+
+.tasks-tag{
+  right: 145px;
 }

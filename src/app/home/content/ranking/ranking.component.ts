@@ -34,6 +34,7 @@ export class RankingComponent implements OnInit {
       id: null,
       nick_name: null,
       points: 0,
+      pointsSpend: 0,
       image: null,
       responsabilidad: 0,
       cooperacion: 0,
@@ -44,6 +45,7 @@ export class RankingComponent implements OnInit {
   ];
   userId;
   userPosition;
+  userPointsToSpend;
 
   badge;
   studentBadged;
@@ -58,6 +60,7 @@ export class RankingComponent implements OnInit {
   rankingName;
   userType;
   expandedOptions = false;
+  teacherOptionsMenuTitle = 'Alumnos';
 
   ngOnInit(): void {
     environment.loading = true;
@@ -67,6 +70,7 @@ export class RankingComponent implements OnInit {
     this.data = this.ranking.loadRankingData(this.code);
     this.data.subscribe((data) => {
       this.rankingData = data['data'];
+      console.log(this.rankingData);
       this.rankingName = data['data']['ranking_name'];
 
       this.http
@@ -79,11 +83,24 @@ export class RankingComponent implements OnInit {
     this.data = this.ranking.loadRanking(this.code);
     this.data
       .subscribe((data) => {
-        console.log(data);
-        this.rankingPositionsData = data['data']['accepted'];
-        console.log(data['data']['unaccepted']);
-        if(data['data']['unaccepted'][0] !== null){
-        this.unacceptedUsers = data['data']['unaccepted'];
+        console.log(data['data']['accepted']);
+
+        if (data['data']['accepted'][0] !== null) {
+          this.rankingPositionsData = data['data']['accepted'];
+          console.log('Hello');
+        }
+        else{
+          console.log('Helloooo');
+        }
+
+        this.rankingPositionsData.forEach((row) => {
+          if (row.id == this.userId) {
+            this.userPointsToSpend = row.pointsSpend;
+          }
+        });
+
+        if (data['data']['unaccepted'][0] !== null) {
+          this.unacceptedUsers = data['data']['unaccepted'];
         }
       })
       .add(() =>
@@ -262,48 +279,64 @@ export class RankingComponent implements OnInit {
   }
 
   addBadgePoints() {
-    // environment.loading = true;
-    let badge = '';
-    environment.loading = true;
+    if (this.userPointsToSpend >= this.pointsGivenByStudent) {
+      let badge = '';
+      environment.loading = true;
 
-    switch (this.badge) {
-      case 'responsability':
-        badge = 'responsabilidad';
-        break;
-      case 'autonomy':
-        badge = 'autonomia_e_iniciativa';
-        break;
-      case 'cooperation':
-        badge = 'cooperacion';
-        break;
-      case 'autonomy':
-        badge = 'autonomia_e_iniciativa';
-        break;
-      case 'gestion':
-        badge = 'gestion_emocional';
-        break;
-      case 'habilidades':
-        badge = 'habilidades_de_pensamiento';
-        break;
+      switch (this.badge) {
+        case 'responsability':
+          badge = 'responsabilidad';
+          break;
+        case 'autonomy':
+          badge = 'autonomia_e_iniciativa';
+          break;
+        case 'cooperation':
+          badge = 'cooperacion';
+          break;
+        case 'autonomy':
+          badge = 'autonomia_e_iniciativa';
+          break;
+        case 'gestion':
+          badge = 'gestion_emocional';
+          break;
+        case 'habilidades':
+          badge = 'habilidades_de_pensamiento';
+          break;
+      }
+
+      this.http
+        .put(
+          environment.apiURL +
+            'app/ranking?code=' +
+            this.rankingData['code'] +
+            '&' +
+            badge +
+            '=' +
+            this.pointsGivenByStudent +
+            '&id=' +
+            this.studentBadged,
+          {}
+        )
+        .subscribe((data) => {
+          this.http
+            .put(
+              environment.apiURL +
+                'app/ranking?code=' +
+                this.rankingData['code'] +
+                '&id=' +
+                this.userId +
+                '&pointsSpend=' +
+                -this.pointsGivenByStudent,
+              {}
+            )
+            .subscribe((data) => {
+              location.reload();
+              environment.loading = false;
+            });
+        });
+    } else {
+      alert('No tienes suficientes puntos');
     }
-
-    this.http
-      .put(
-        environment.apiURL +
-          'app/ranking?code=' +
-          this.rankingData['code'] +
-          '&' +
-          badge +
-          '=' +
-          this.pointsGivenByStudent +
-          '&id=' +
-          this.studentBadged,
-        {}
-      )
-      .subscribe((data) => {
-        environment.loading = false;
-        location.reload();
-      });
   }
 
   setBadgeBackground(badgeType, points) {
@@ -360,12 +393,19 @@ export class RankingComponent implements OnInit {
       });
   }
 
-
-  rejectUser(id){
+  rejectUser(id) {
     environment.loading = true;
-    this.http.delete(environment.apiURL + "app/ranking/" + this.rankingData['code'] + "/" + id).subscribe((data)=>{
-      location.reload();
-      environment.loading = false;
-    })
+    this.http
+      .delete(
+        environment.apiURL +
+          'app/ranking/' +
+          this.rankingData['code'] +
+          '/' +
+          id
+      )
+      .subscribe((data) => {
+        location.reload();
+        environment.loading = false;
+      });
   }
 }

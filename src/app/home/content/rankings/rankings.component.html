@@ -6,25 +6,26 @@
           <h1 class="rankings-header">Edit Rankings</h1>
           <div class="rankings-wrapper">
             <div class="ranking-wrapper" *ngFor="let ranking of rankingData">
-              <input
-                class="nameRanking"
-                value="{{ this.ranking['name'] }} "
-           
-              />
-        
+              <input class="nameRanking" value="{{ this.ranking['name'] }} " />
+
               <input
                 class="descRanking"
                 value="{{ this.ranking['description'] }}"
-
               />
               <div class="random_code_container">
-                <input class="randRanking" name="code" value="{{ this.ranking['code'] }}"   />
+                <input
+                  class="randRanking"
+                  name="code"
+                  value="{{ this.ranking['code'] }}"
+                />
                 <button class="random" (click)="updateCode()"></button>
               </div>
               <button (click)="updateRanking()" class="btn botonSave">
                 GUARDAR
               </button>
-              <button (click)="delete($event)" class="btn botonDelete">DELETE</button>
+              <button (click)="delete($event)" class="btn botonDelete">
+                DELETE
+              </button>
             </div>
           </div>
         </div>
@@ -39,9 +40,9 @@
           <div class="rankings-wrapper">
             <div class="ranking-wrapper" *ngFor="let ranking of rankingData">
               <a
-              class="ranking-code"
-              href="home/ranking/{{ ranking['code'] }}"
-            ></a>
+                class="ranking-code"
+                href="home/ranking/{{ ranking['code'] }}"
+              ></a>
               <input
                 class="nameRanking"
                 readonly="readonly"
@@ -68,7 +69,6 @@
                 value="{{ this.ranking['members'] }}"
               />
             </div>
-            
           </div>
         </div>
       </div>

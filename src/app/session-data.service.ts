@@ -21,6 +21,7 @@ export class SessionDataService {
     type: '',
     name: '',
     lastname: '',
+    points: 0,
   };
 
   constructor(private http: HttpClient, private cookie: CookieService) {}
@@ -63,6 +64,11 @@ export class SessionDataService {
     this.userData.lastname = lastname;
   }
 
+  setPoints(points) {
+    localStorage.setItem('points', points);
+    this.userData.points = points;
+  }
+
   getId() {
     return localStorage.getItem('id');
   }
@@ -95,6 +101,10 @@ export class SessionDataService {
     return localStorage.getItem('type');
   }
 
+  getPoints() {
+    return localStorage.getItem('points');
+  }
+
   deleteAll() {
     localStorage.removeItem('id');
     localStorage.removeItem('username');
@@ -104,5 +114,6 @@ export class SessionDataService {
     localStorage.removeItem('type');
     localStorage.removeItem('name');
     localStorage.removeItem('lastname');
+    localStorage.removeItem('points');
   }
 }

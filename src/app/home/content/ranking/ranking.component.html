@@ -151,7 +151,9 @@
         </div>
       </ng-template>
       <ng-template [ngIf]="userType == 'teacher'">
-        <h2 class="options-header">Opciones ranking</h2>
+        <div class="tag student-tag">Tareas</div>
+        <div class="tag tasks-tag">Alumnos</div>
+        <h2 class="options-header">{{ teacherOptionsMenuTitle }}</h2>
         <div class="options-wrapper">
           <div class="options-div accept-users">
             <div class="user-accepted" *ngFor="let user of unacceptedUsers; let indexOfUser = index">
