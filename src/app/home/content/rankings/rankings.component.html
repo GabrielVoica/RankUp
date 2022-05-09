@@ -12,6 +12,7 @@
                 class="descRanking"
                 value="{{ this.ranking['description'] }}"
               />
+
               <div class="random_code_container">
                 <input
                   class="randRanking"
@@ -20,7 +21,10 @@
                 />
                 <button class="random" (click)="updateCode()"></button>
               </div>
-              <button (click)="updateRanking()" class="btn botonSave">
+              <button
+                (click)="updateRanking(this.ranking['code'])"
+                class="btn botonSave"
+              >
                 GUARDAR
               </button>
               <button (click)="delete($event)" class="btn botonDelete">
