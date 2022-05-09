@@ -5,8 +5,13 @@
         <div class="rankings-list">
           <h1 class="rankings-header">Edit Rankings</h1>
           <div class="rankings-wrapper">
-            <div class="ranking-wrapper" *ngFor="let ranking of rankingData">
+            <div
+              class="ranking-wrapper"
+              ng-repeat="rankingData"
+              *ngFor="let ranking of rankingData"
+            >
               <input
+                id="ranking"
                 class="nameRanking"
                 name="name"
                 value="{{ this.ranking['name'] }} "
@@ -14,15 +19,16 @@
               />
 
               <input
-                name="description"
                 class="descRanking"
                 value="{{ this.ranking['description'] }}"
                 [(ngModel)]="rankingDesc"
               />
+
               <div class="random_code_container">
                 <input
                   class="randRanking"
                   name="code"
+                  readonly="readonly"
                   value="{{ this.ranking['code'] }}"
                 />
                 <button

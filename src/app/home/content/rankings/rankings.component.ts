@@ -70,6 +70,9 @@ export class RankingsComponent implements OnInit {
       });
   }
 
+
+
+  
   ngAfterViewInit() {
     environment.loading = false;
   }
