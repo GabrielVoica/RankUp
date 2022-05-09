@@ -5,21 +5,36 @@
         <div class="rankings-list">
           <h1 class="rankings-header">Edit Rankings</h1>
           <div class="rankings-wrapper">
-            <div class="ranking-wrapper" *ngFor="let ranking of rankingData">
-              <input class="nameRanking" value="{{ this.ranking['name'] }} " />
+            <div
+              class="ranking-wrapper"
+              ng-repeat="rankingData"
+              *ngFor="let ranking of rankingData"
+            >
+              <input
+                id="ranking"
+                class="nameRanking"
+                name="name"
+                value="{{ this.ranking['name'] }} "
+                [(ngModel)]="rankingName"
+              />
 
               <input
                 class="descRanking"
                 value="{{ this.ranking['description'] }}"
+                [(ngModel)]="rankingDesc"
               />
 
               <div class="random_code_container">
                 <input
                   class="randRanking"
                   name="code"
+                  readonly="readonly"
                   value="{{ this.ranking['code'] }}"
                 />
-                <button class="random" (click)="updateCode()"></button>
+                <button
+                  class="random"
+                  (click)="updateCode(this.ranking['code'])"
+                ></button>
               </div>
               <button
                 (click)="updateRanking(this.ranking['code'])"
@@ -27,7 +42,10 @@
               >
                 GUARDAR
               </button>
-              <button (click)="delete($event)" class="btn botonDelete">
+              <button
+                (click)="delete(this.ranking['code'])"
+                class="btn botonDelete"
+              >
                 DELETE
               </button>
             </div>
