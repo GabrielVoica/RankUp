@@ -121,6 +121,15 @@ export class RankingsComponent implements OnInit {
 
 
   }
+
+  go(code: string) {
+    // console.log(this.actualRanking);
+    document.location.href = `http://localhost:4200/home/ranking/${code}`;
+  }
+  createRanking() {
+    document.location.href = 'http://localhost:4200/home/add-ranking';
+  }
+
   updateCode(code: string) {
     Swal.fire({
       title: '¿Quieres generar un nuevo código?',
