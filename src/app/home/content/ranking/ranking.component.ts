@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Params } from '@angular/router';
 import { RankingService } from 'src/app/ranking.service';
 import { environment } from 'src/environments/environment';
 import { HostListener } from '@angular/core';
