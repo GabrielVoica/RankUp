@@ -50,6 +50,9 @@ export class LoginService {
       this.http.get(this.apiUrl + 'app/session/' + email ,{}).subscribe(data =>{
         let time = Date.now() + ((3600 * 1000) * 2);
         this.cookie.set('SESSION_ID',data['message']['id'],time);
+
+      }).add(()=>{
+        this.router.navigate(['home']);
       });
 
       this.saveGlobalState(data['data']['id']);
@@ -62,7 +65,6 @@ export class LoginService {
 
 
   saveGlobalState(id) {
-
     this.http.get(this.apiUrl + 'app/user/' + id,{}).subscribe(data =>{
       this.sessionData.setId(data['data']['id']);
       this.sessionData.setUsername(data['data']['nick_name']);
@@ -78,8 +80,7 @@ export class LoginService {
       else if(data['data']['user_type'] == 0){
         this.sessionData.setType('student');
       }
-       this.router.navigate(['/home']);
-       window.location.reload();
-    });
+       
+    })
   }
 }

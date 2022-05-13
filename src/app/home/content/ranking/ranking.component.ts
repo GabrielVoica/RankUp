@@ -62,6 +62,7 @@ export class RankingComponent implements OnInit {
   expandedOptions = false;
   teacherOptionsMenuTitle = 'Alumnos';
   rankingTasks;
+  selectedTask;
 
   ngOnInit(): void {
     environment.loading = true;
@@ -111,15 +112,14 @@ export class RankingComponent implements OnInit {
           this.unacceptedUsers = data['data']['unaccepted'];
         }
 
-
         console.log(this.rankingData.code);
 
-       this.http.get(environment.apiURL + "app/rankingtask/" + this.rankingData.code).subscribe((data)=>{
-          this.rankingTasks = data['data'];
-          console.log(this.rankingTasks);
-       });
-
-
+        this.http
+          .get(environment.apiURL + 'app/rankingtask/' + this.rankingData.code)
+          .subscribe((data) => {
+            this.rankingTasks = data['data'];
+            console.log(this.rankingTasks);
+          });
       })
       .add(() =>
         setTimeout(() => {
@@ -284,14 +284,20 @@ export class RankingComponent implements OnInit {
     }
   }
 
-
-  showUsers(){
-
+  showUsers() {
+    (document.querySelector('.accept-users') as HTMLElement).style.display =
+      'block';
+    (document.querySelector('.mark-tasks') as HTMLElement).style.display =
+      'none';
+    this.teacherOptionsMenuTitle = 'Alumnos';
   }
 
-
-  showTasks(){
-    
+  showTasks() {
+    (document.querySelector('.accept-users') as HTMLElement).style.display =
+      'none';
+    (document.querySelector('.mark-tasks') as HTMLElement).style.display =
+      'block';
+    this.teacherOptionsMenuTitle = 'Tareas';
   }
 
   appearOptions() {

@@ -11,6 +11,7 @@
       <h1 class="teacher-controls-title">Añadir puntos alumno</h1>
       <div class="selected-user-wrapper">
         <h3 class="teacher">Alumno: {{ selectedUser }}</h3>
+        <h3>Tarea: {{ selectedTask }}</h3>
       </div>
       <input
         type="number"
@@ -151,8 +152,8 @@
         </div>
       </ng-template>
       <ng-template [ngIf]="userType == 'teacher'">
-        <div class="tag student-tag">Tareas</div>
-        <div class="tag tasks-tag">Alumnos</div>
+        <div class="tag student-tag" (click)="showTasks()">Tareas</div>
+        <div class="tag tasks-tag" (click)="showUsers()">Alumnos</div>
         <h2 class="options-header">{{ teacherOptionsMenuTitle }}</h2>
         <div class="options-wrapper">
           <div class="options-div accept-users">
@@ -173,6 +174,12 @@
             <div class="task-wrapper" *ngFor="let task of rankingTasks">
               <p>{{ task.task_name }}</p>
               <p>{{ task.description }}</p>
+            </div>
+            <div class="create-task task-wrapper">
+              <p>Crear tarea</p>
+            </div>
+            <div class="create-task task-wrapper">
+              <p>Ver historial</p>
             </div>
           </div>
         </div>
