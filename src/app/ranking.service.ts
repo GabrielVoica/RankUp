@@ -29,6 +29,14 @@ export class RankingService {
     )
   }
 
+  checkStatus(code,id){
+    return this.http.get(
+      environment.apiURL + 'app/ranking/'+code+'/'+id,
+      {}
+    )
+  }
+
+
 
   saveRecentTeacherRankings(rankings){
     this.teacherRankings = rankings;

@@ -28,7 +28,10 @@ export class DashboardComponent implements OnInit {
   rankingExists: boolean;
   rankingCodes: Array<String> = [];
   rankingData: Array<{ code }> = [];
-// 
+  rankinuser: any;
+  status: any;
+  id = this.session.getId();
+  //
   @ViewChild('codeInput') codeInput: ElementRef;
 
   ngOnInit(): void {
@@ -58,16 +61,12 @@ export class DashboardComponent implements OnInit {
 
                 console.log(this.rankingData[0]);
               });
-
           });
         } else {
-          
           this.rankingData[0] = { code: 'no rankings' };
           this.rankings.saveRecentTeacherRankings(this.rankingData);
         }
       });
-
-
   }
 
   ngAfterViewInit() {
@@ -75,38 +74,63 @@ export class DashboardComponent implements OnInit {
   }
 
   viewRanking() {
-    if (!(this.rankingCode == '')) {
-      environment.loading = true;
-      let response = this.rankingService.loadRanking(this.rankingCode);
-      response.subscribe((data) => {
-        if (data['code'] == 200) {
-          this.http
-            .post(
-              environment.apiURL +
-                'app/ranking?code=' +
-                this.rankingCode +
-                '&id=' +
-                this.session.getId(),
-              {}
-            )
-            .subscribe((data) => {
-              this.router.navigate(['home/ranking/', this.rankingCode]);
-            });
-        } else if (data['code'] == 404) {
-          environment.loading = false;
-          Swal.fire({
-            title: 'El ranking no existe',
-            icon: 'error',
-          });
-        }
+    this.rankingService
+      .checkStatus(this.rankingCode, this.id)
+      .subscribe((data) => {
+        this.rankinuser = data;
+        this.status = this.rankinuser.data['status'];
       });
-    } else {
-      this.codeInput.nativeElement.style.animation =
-        'input-error 0.5s forwards';
+    if (this.status == 1) {
+      if (!(this.rankingCode == '')) {
+        environment.loading = true;
+        let response = this.rankingService.loadRanking(this.rankingCode);
+        response.subscribe((data) => {
+          if (data['code'] == 200) {
+            this.http
+              .post(
+                environment.apiURL +
+                  'app/ranking?code=' +
+                  this.rankingCode +
+                  '&id=' +
+                  this.session.getId(),
+                {}
+              )
+              .subscribe((data) => {
+                this.router.navigate(['home/ranking/', this.rankingCode]);
+              });
+          } else if (data['code'] == 404) {
+            environment.loading = false;
+            Swal.fire({
+              title: 'El ranking no existe',
+              icon: 'error',
+            });
+          }
+        });
+      } else {
+        this.codeInput.nativeElement.style.animation =
+          'input-error 0.5s forwards';
 
-      setTimeout(() => {
-        this.codeInput.nativeElement.style.animation = 'none';
-      }, 1000);
+        setTimeout(() => {
+          this.codeInput.nativeElement.style.animation = 'none';
+        }, 1000);
+      }
+    } else {
+      this.http.post(
+        environment.apiURL +
+          'app/ranking?code=' +
+          this.rankingCode +
+          '&id=' +
+          this.session.getId(),
+        {}
+      ) .subscribe((data) => {
+
+      });
+      Swal.fire({
+        title: 'No estas aceptado todavía!',
+        text: 'intentalo mas tarde',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      });
     }
   }
 
