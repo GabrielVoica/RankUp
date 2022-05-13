@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoginService } from '../login.service';
 import { environment } from 'src/environments/environment';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,9 +11,13 @@ import { environment } from 'src/environments/environment';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private cookie: CookieService, private router: Router) { }
 
   ngOnInit(): void {
+    
+    if(this.cookie.get('SESSION_ID')){
+      this.router.navigate(['home']);
+    }
   }
 
   public email: string;

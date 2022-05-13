@@ -7,6 +7,7 @@ import { ContentComponent } from './content.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { TeacherRankingsComponent } from './teacher-rankings/teacher-rankings.component';
 import { AddRankingComponent } from './add-ranking/add-ranking.component';
+import { TasksComponent } from './tasks/tasks.component';
 
 
 
@@ -15,7 +16,8 @@ import { AddRankingComponent } from './add-ranking/add-ranking.component';
     DashboardComponent,
     ContentComponent,
     TeacherRankingsComponent,
-    AddRankingComponent
+    AddRankingComponent,
+    TasksComponent
   ],
   imports: [
     CommonModule,

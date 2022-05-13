@@ -61,6 +61,7 @@ export class RankingComponent implements OnInit {
   userType;
   expandedOptions = false;
   teacherOptionsMenuTitle = 'Alumnos';
+  rankingTasks;
 
   ngOnInit(): void {
     environment.loading = true;
@@ -70,7 +71,13 @@ export class RankingComponent implements OnInit {
     this.data = this.ranking.loadRankingData(this.code);
     this.data.subscribe((data) => {
       this.rankingData = data['data'];
-      console.log(this.rankingData);
+
+      if (
+        this.rankingData.members <= 0 &&
+        this.session.getType() == 'student'
+      ) {
+        this.router.navigate(['home']);
+      }
       this.rankingName = data['data']['ranking_name'];
 
       this.http
@@ -83,13 +90,14 @@ export class RankingComponent implements OnInit {
     this.data = this.ranking.loadRanking(this.code);
     this.data
       .subscribe((data) => {
-        console.log(data['data']['accepted']);
-
         if (data['data']['accepted'][0] !== null) {
           this.rankingPositionsData = data['data']['accepted'];
-          console.log('Hello');
-        }
-        else{
+          console.log(this.rankingPositionsData[0]);
+
+          if (this.rankingPositionsData[0].id == null) {
+            this.router.navigate(['home']);
+          }
+        } else {
           console.log('Helloooo');
         }
 
@@ -102,6 +110,16 @@ export class RankingComponent implements OnInit {
         if (data['data']['unaccepted'][0] !== null) {
           this.unacceptedUsers = data['data']['unaccepted'];
         }
+
+
+        console.log(this.rankingData.code);
+
+       this.http.get(environment.apiURL + "app/rankingtask/" + this.rankingData.code).subscribe((data)=>{
+          this.rankingTasks = data['data'];
+          console.log(this.rankingTasks);
+       });
+
+
       })
       .add(() =>
         setTimeout(() => {
@@ -264,6 +282,16 @@ export class RankingComponent implements OnInit {
           environment.loading = false;
         });
     }
+  }
+
+
+  showUsers(){
+
+  }
+
+
+  showTasks(){
+    
   }
 
   appearOptions() {

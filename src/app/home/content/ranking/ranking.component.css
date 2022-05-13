@@ -412,6 +412,7 @@
 }
 
 .options-wrapper {
+  position: relative;
 }
 
 .options-wrapper .options-div {
@@ -512,4 +513,25 @@
 
 .tasks-tag{
   right: 145px;
+}
+
+.mark-tasks{
+  position: absolute;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.task-wrapper{
+  display: flex;
+  background: rgb(145, 56, 218);
+  padding: 10px;
+  cursor: pointer;
+}
+
+.task-wrapper p{
+  margin-right: 10px;
+  color: white;
+  font-size: 18px;
 }

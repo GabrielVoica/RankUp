@@ -55,13 +55,19 @@ export class DashboardComponent implements OnInit {
                 this.rankingData.push(dataArr);
                 this.rankingData = this.rankingData.slice(0, 4);
                 this.rankings.saveRecentTeacherRankings(this.rankingData);
+
+                console.log(this.rankingData[0]);
               });
+
           });
         } else {
+          
           this.rankingData[0] = { code: 'no rankings' };
           this.rankings.saveRecentTeacherRankings(this.rankingData);
         }
       });
+
+
   }
 
   ngAfterViewInit() {

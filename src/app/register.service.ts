@@ -50,6 +50,7 @@ export class RegisterService {
           this.createSession(data, values.email);
           console.log(data);
         } else {
+          console.log(data);
           environment.loading = false;
         }
       });

@@ -8,6 +8,8 @@ import {
   Renderer2,
   AfterContentInit,
 } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-landing',
@@ -15,7 +17,7 @@ import {
   styleUrls: ['./landing.component.css'],
 })
 export class LandingComponent implements OnInit {
-  constructor(private element: ElementRef, private renderer: Renderer2) {}
+  constructor(private element: ElementRef, private renderer: Renderer2, private cookie: CookieService, private router: Router) {}
 
   @ViewChild('ball') ball: ElementRef;
 
@@ -34,6 +36,9 @@ export class LandingComponent implements OnInit {
   public ballHeight: number = 0;
 
   ngOnInit(): void {
+    if(this.cookie.get("SESSION_ID")){
+      this.router.navigate(["home"]);
+    }
     this.moveBall();
   }
 

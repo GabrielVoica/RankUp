@@ -48,7 +48,8 @@ export class LoginService {
   createSession(data,email){
     if(data['code'] == 200){
       this.http.get(this.apiUrl + 'app/session/' + email ,{}).subscribe(data =>{
-        this.cookie.set('SESSION_ID',data['message']['id']);
+        let time = Date.now() + ((3600 * 1000) * 2);
+        this.cookie.set('SESSION_ID',data['message']['id'],time);
       });
 
       this.saveGlobalState(data['data']['id']);
@@ -77,8 +78,8 @@ export class LoginService {
       else if(data['data']['user_type'] == 0){
         this.sessionData.setType('student');
       }
-
        this.router.navigate(['/home']);
+       window.location.reload();
     });
   }
 }

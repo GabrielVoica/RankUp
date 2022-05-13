@@ -26,6 +26,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { SessionDataService } from './session-data.service';
 import { TeacherRankingsComponent } from './home/content/teacher-rankings/teacher-rankings.component';
 import { AddRankingComponent } from './home/content/add-ranking/add-ranking.component';
+import { TasksComponent } from './home/content/tasks/tasks.component';
 
 const routes: Routes = [
   { path: 'entry', component: EntryComponent },
@@ -40,7 +41,8 @@ const routes: Routes = [
     {path: 'rankings', component: RankingsComponent},
     {path: 'teacherRankings', component: TeacherRankingsComponent},
     {path: 'ranking/:code', component: RankingComponent},
-    {path: 'add-ranking', component: AddRankingComponent}
+    {path: 'add-ranking', component: AddRankingComponent},
+    {path: 'tasks', component: TasksComponent}
    
   ]},
   {path: '404', component: NotfoundComponent},
@@ -65,7 +67,8 @@ const routes: Routes = [
     RankingComponent,
     NotfoundComponent,
     RankingsComponent,
-    AddRankingComponent
+    AddRankingComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,

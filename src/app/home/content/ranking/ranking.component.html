@@ -156,13 +156,25 @@
         <h2 class="options-header">{{ teacherOptionsMenuTitle }}</h2>
         <div class="options-wrapper">
           <div class="options-div accept-users">
-            <div class="user-accepted" *ngFor="let user of unacceptedUsers; let indexOfUser = index">
+            <div
+              class="user-accepted"
+              *ngFor="let user of unacceptedUsers; let indexOfUser = index"
+            >
               <h4>{{ user.nick_name }}</h4>
-              <button class="accept"(click)="acceptUser(user.id )">Aceptar</button>
-              <button class="deny"(click)="rejectUser(user.id)">Rechazar</button>
+              <button class="accept" (click)="acceptUser(user.id)">
+                Aceptar
+              </button>
+              <button class="deny" (click)="rejectUser(user.id)">
+                Rechazar
+              </button>
             </div>
           </div>
-          <div class="options-div mark-tasts"></div>
+          <div class="options-div mark-tasks">
+            <div class="task-wrapper" *ngFor="let task of rankingTasks">
+              <p>{{ task.task_name }}</p>
+              <p>{{ task.description }}</p>
+            </div>
+          </div>
         </div>
       </ng-template>
     </div>

@@ -42,7 +42,9 @@
   }
   
   .rankings-wrapper {
-    display: flex;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    padding: 25px !important;
   }
   
   .rankings-wrapper .ranking-wrapper {
