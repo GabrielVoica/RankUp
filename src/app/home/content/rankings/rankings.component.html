@@ -32,10 +32,12 @@
                   value="{{ this.ranking['code'] }}"
                 />
                 <button
+                  class="descRanking"
                   class="random"
                   (click)="updateCode(this.ranking['code'])"
                 ></button>
               </div>
+              <input  class="btn goRanking" type="button" (click)="go(this.ranking['code'])" value="ACCEDER" />
               <button
                 (click)="updateRanking(this.ranking['code'])"
                 class="btn botonSave"
@@ -52,7 +54,11 @@
           </div>
         </div>
       </div>
+      <div class="section_button">
+        <button class="add" (click)="createRanking()">+</button>
+      </div>
     </div>
+
   </ng-template>
   <ng-template [ngIf]="userType == 'student'">
     <div class="container-rankings">

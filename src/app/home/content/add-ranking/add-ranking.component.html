@@ -1,8 +1,11 @@
-<form>
+<ng-template [ngIf]="userType == 'teacher'">
+  <form class="form">
+    <div class="rankings-wrapper">
     <input type="text" name="nameRanking" [(ngModel)]="rankingName" />
     <input type="text" name="description" [(ngModel)]="rankingDesc" />
     <button class="inputWrapper" type="submit" (click)="addRanking()">
       Guardar
     </button>
+    </div>
   </form>
-  
+</ng-template>

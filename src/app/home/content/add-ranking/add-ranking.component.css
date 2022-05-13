@@ -1,0 +1,267 @@
+.dashboard {
+    width: 100%;
+    background: #9132e9;
+    height: 100%;
+    overflow-x: hidden;
+  }
+  
+  .enter-ranking {
+    width: 100%;
+    height: 600px;
+    background: url("/assets/textures/star-texture.png");
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: move-background 3600s forwards infinite;
+    animation-timing-function: linear;
+    width: 150%;
+    position: relative;
+    left: -25%;
+    height: 800px;
+    bottom: 120px;
+    border-radius: 100%;
+  }
+  
+  .teacher-rankings {
+    margin-left: 200px;
+    padding: 50px 100px;
+    flex: 80%;
+  }
+  
+  .teacher-rankings .rankings-list {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .rankings-list .rankings-header {
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  
+  .rankings-wrapper {
+    display: flex;
+  }
+  
+  .rankings-wrapper .ranking-wrapper {
+    height: 470px;
+    width: 300px !important;
+    background: #6103a9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-right: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 1px 2px #0000000a;
+    color: white;
+    font-family: "Montserrat";
+    font-size: 16px;
+    transition: 0.5s background;
+  }
+  
+  .ranking-wrapper:hover {
+    background: rgb(118, 6, 209) !important;
+  }
+  
+  .ranking-wrapper .ranking-code {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+  
+  @keyframes move-background {
+    to {
+      background-position: -100000px -100000px;
+    }
+  }
+  
+  @keyframes input-error {
+    0% {
+      transform: translate(20px);
+    }
+    20% {
+      transform: translate(-20px);
+    }
+    40% {
+      transform: translate(20px);
+    }
+    60% {
+      transform: translate(-20px);
+    }
+    80% {
+      transform: translate(20px);
+    }
+    100% {
+      transform: translate(0px);
+    }
+  }
+  
+  .enter-ranking input {
+    width: 700px;
+    height: 100px;
+    font-size: 30px;
+    padding: 10px;
+  }
+  
+  .enter-ranking button {
+    margin-top: 20px;
+  }
+  
+  .enter-button {
+    background: rgba(255, 255, 255, 0.877);
+    border: none;
+    border-radius: 20px;
+    transition: 0.5s background;
+    box-shadow: 0px 1px 1px 2px rgba(0, 0, 0, 0.13);
+    font-family: "Montserrat";
+    text-align: center;
+    color: rgb(65, 65, 65);
+  }
+  
+  .enter-button::placeholder {
+    color: rgb(172, 172, 172);
+  }
+  
+  .enter-button:focus,
+  .enter-button:focus-visible {
+    border: none;
+    outline: none;
+    background: white;
+  }
+  .nameRanking{
+      margin-top: 12px;
+      padding: 5px;
+      width:  90%;
+      border-radius: 6px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 18px;
+  }
+  .descRanking{
+      margin-top: 12px;
+      padding: 5px;
+      width: 205px;
+      border-radius: 6px;
+      text-align: center;
+      font-weight: 300;
+      font-size: 14px;
+  }
+  .goRanking{
+      margin-top: 12px;
+      padding: 5px;
+      width: 205px;
+      border-radius: 6px;
+      text-align: center;
+      font-weight: 600;
+      cursor: pointer;
+
+  }
+  .botonSave {
+    margin-bottom: 6px;
+    position: relative;
+    top: 33%;
+    width: 258px;
+    height: 50px;
+    border: none;
+    outline: none;
+
+
+    font-size: 22px;
+    font-weight: 600;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
+    overflow: hidden;
+    cursor: pointer;
+}
+  .botonDelete {
+    margin-bottom: 6px;
+    position: relative;
+    top: 35%;
+    width: 258px;
+    height: 50px;
+    border: none;
+    outline: none;
+    background: #f00404;
+
+    font-size: 22px;
+    font-weight: 600;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
+    overflow: hidden;
+    cursor: pointer;
+}
+  .botonDelete:hover {
+color: #fff;
+}
+.container-rankings{
+  display: flex;
+
+}
+.add{
+  margin-top: 4%;
+  background-color: #6103a9;
+  color: #fff;
+  font-size: 39px;
+  font-weight: 900;
+  align-items: center;
+  width: 23%;
+  justify-content: center;
+  height: 6%;
+  display: flex;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.section_button {
+  flex: 10%;
+  justify-content: center;
+  display: flex;
+  margin: 2.5%;
+}
+
+.random_code_container{
+display: flex;
+margin-top: 12px;
+}
+.randRanking{
+
+  padding: 5px;
+  border-radius: 6px 0px 0px 6px ;
+  text-align: center;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.rankings-wrapper {
+  display: flex;
+  min-height: 600px;
+  align-items: center;
+  justify-content: center;
+
+
+
+}
+.form{
+    display: flex;
+    flex-direction: column;
+}
+.rankings-wrapper .no-ranking {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.random{
+  background-image: url("C:\xampp\htdocs\RankUp\src\assets\icons\rand.png");
+  border-radius: 0px 6px 6px 0px ;
+  width: 100%;
+  padding: 12px;
+  cursor: pointer;
+}
