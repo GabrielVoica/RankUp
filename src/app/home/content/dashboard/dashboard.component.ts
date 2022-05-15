@@ -20,15 +20,18 @@ export class DashboardComponent implements OnInit {
     private session: SessionDataService,
     private rankingService: RankingService,
     private http: HttpClient,
-    private rankings: RankingService
-  ) {}
+    private rankings: RankingService,
 
-  rankingCode: string = '';
+  ) { }
+  private codes: Array<String> = [];
+  rankingCode: any = '';
   userType = this.session.getType();
   rankingExists: boolean;
   rankingCodes: Array<String> = [];
   rankingData: Array<{ code }> = [];
   rankinuser: any;
+  allcodes: any;
+
   status: any;
   id = this.session.getId();
   //
@@ -40,28 +43,51 @@ export class DashboardComponent implements OnInit {
       .subscribe((data) => {
         let rankings = data['data']['code'];
 
+
+        this.http
+        .get(environment.apiURL + 'app/rankingdata', {})
+        .subscribe((data) => {
+        
+          this.allcodes  = data['data'];
+          var arr = [];
+       
+       for(let i = 0; i < this.allcodes.length; i++){
+       arr[i] =  this.allcodes[i]['code'];
+       }
+       this.allcodes=arr;
+console.log(this.allcodes);
+
+ 
+  
+        });
+   
+
         if (rankings != undefined) {
           rankings.forEach((element) => {
             this.rankingCodes.push(element);
           });
-
+     
           this.rankingData = [];
+
+      
+
 
           this.rankingCodes.forEach((code) => {
             this.http
               .get(environment.apiURL + 'app/rankingdata/' + code, {})
               .subscribe((data) => {
                 let dataArr = { code: null, name: null, description: null };
-                dataArr.code = data['data']['code'];
+             dataArr.code = data['data']['code'];
                 dataArr.name = data['data']['ranking_name'];
                 dataArr.description = data['data']['description'];
                 this.rankingData.push(dataArr);
                 this.rankingData = this.rankingData.slice(0, 4);
                 this.rankings.saveRecentTeacherRankings(this.rankingData);
 
-                console.log(this.rankingData[0]);
+
               });
           });
+ 
         } else {
           this.rankingData[0] = { code: 'no rankings' };
           this.rankings.saveRecentTeacherRankings(this.rankingData);
@@ -74,41 +100,70 @@ export class DashboardComponent implements OnInit {
   }
 
   viewRanking() {
-    this.rankingService
+    environment.loading = true;
+    this.rankings
       .checkStatus(this.rankingCode, this.id)
       .subscribe((data) => {
-        if (data['code'] != 404) {
+      
+         
+        if (data['code'] == 404) {
+          environment.loading = false;
+
+          if (this.allcodes.indexOf(this.rankingCode) > -1 == false) {
+            
+            Swal.fire({
+              
+              title: 'Este ranking no existe!',
+              text: 'Revisa el código',
+              icon: 'error',
+              confirmButtonText: 'Ok',
+            });
+          } else {
+
+
+            this.http.post(
+              environment.apiURL +
+              'app/ranking?code=' +
+              this.rankingCode +
+              '&id=' +
+              this.session.getId(),
+              {}
+            ).subscribe((data) => {
+
+            });
+            Swal.fire({
+              title: 'Solicitud enviada!',
+              text: 'Espera mientras un profesor revisa tu petición',
+              icon: 'success',
+              confirmButtonText: 'Ok',
+            });
+          }
+        } else {
+
+
+
           this.rankinuser = data;
           this.status = this.rankinuser.data['status'];
-      console.log(this.status);
-      
 
           if (this.status == 1) {
-            environment.loading = true;
             if (!(this.rankingCode == '')) {
+              environment.loading = true;
               let response = this.rankingService.loadRanking(this.rankingCode);
               response.subscribe((data) => {
                 if (data['code'] == 200) {
                   this.http
                     .post(
                       environment.apiURL +
-                        'app/ranking?code=' +
-                        this.rankingCode +
-                        '&id=' +
-                        this.session.getId(),
+                      'app/ranking?code=' +
+                      this.rankingCode +
+                      '&id=' +
+                      this.session.getId(),
                       {}
                     )
                     .subscribe((data) => {
-                      environment.loading = false;
                       this.router.navigate(['home/ranking/', this.rankingCode]);
                     });
-                } else if (data['code'] == 404) {
-                  environment.loading = false;
-                  Swal.fire({
-                    title: 'El ranking no existe',
-                    icon: 'error',
-                  });
-                }
+                } 
               });
             } else {
               this.codeInput.nativeElement.style.animation =
@@ -119,34 +174,28 @@ export class DashboardComponent implements OnInit {
               }, 1000);
             }
           } else if (this.status == 0) {
-            console.log('aqui');
-            this.http
-              .post(
-                environment.apiURL +
-                  'app/ranking?code=' +
-                  this.rankingCode +
-                  '&id=' +
-                  this.session.getId(),
-                {}
-              )
-              .subscribe((data) => {
-                environment.loading = false;
-              });
-            Swal.fire({
-              title: 'Solicitud para unirse enviada!',
-              text: 'Un profesor esta revisando tu petición, puede tardar unas horas...',
-              icon: 'success',
-              confirmButtonText: 'Ok',
+            environment.loading = false;
+            this.http.post(
+              environment.apiURL +
+              'app/ranking?code=' +
+              this.rankingCode +
+              '&id=' +
+              this.session.getId(),
+              {}
+            ).subscribe((data) => {
+
             });
-          } else {
+            
             Swal.fire({
-              title: 'Este código no existe!',
-              text: 'Pon un código válido para enviar la solicitud',
+              
+              title: 'Aun no has sido aceptado!',
+              text: 'Espera mientras un profesor revisa tu petición',
               icon: 'error',
               confirmButtonText: 'Ok',
             });
           }
         }
+   
       });
   }
 

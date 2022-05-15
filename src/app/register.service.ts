@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 import { SessionDataService } from './session-data.service';
 
 @Injectable({
@@ -24,6 +25,7 @@ export class RegisterService {
   apiUrl = environment.apiURL;
   userSessionData = environment.session;
   userType;
+  message: any;
 
   registerUser({ ...values }) {
     let errors = {};
@@ -51,6 +53,13 @@ export class RegisterService {
           console.log(data);
         } else {
           console.log(data);
+          this.message = data
+          Swal.fire({
+            title: 'Campos erroneos',
+            text: ''+this.message.message,
+            icon: 'error',
+            confirmButtonText: 'Ok',
+          });
           environment.loading = false;
         }
       });
