@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { HostListener } from '@angular/core';
 import { SessionDataService } from 'src/app/session-data.service';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ranking',
@@ -51,6 +52,7 @@ export class RankingComponent implements OnInit {
   pointsBadged;
   messageBadged;
   selectedUser;
+  selectedUserId;
   pointsAddedFromTeacher;
   pointsGivenByStudent = 0;
   unacceptedUsers;
@@ -62,6 +64,10 @@ export class RankingComponent implements OnInit {
   teacherOptionsMenuTitle = 'Alumnos';
   rankingTasks;
   selectedTask;
+  createTaskName;
+  createTaskDescription;
+  selectedTaskId;
+  historyData;
 
   ngOnInit(): void {
     environment.loading = true;
@@ -84,6 +90,10 @@ export class RankingComponent implements OnInit {
         .get(environment.apiURL + 'app/user/' + data['data']['teacher_id'])
         .subscribe((data) => {
           this.teacherName = data['data']['nick_name'];
+
+          this.http.get(environment.apiURL + "app/rankingnote/" + this.rankingData.code).subscribe((data)=>{
+             console.log(data);
+          })
         });
     });
 
@@ -111,8 +121,6 @@ export class RankingComponent implements OnInit {
           this.unacceptedUsers = data['data']['unaccepted'];
         }
 
-        console.log(this.rankingData.code);
-
         this.http
           .get(environment.apiURL + 'app/rankingtask/' + this.rankingData.code)
           .subscribe((data) => {
@@ -125,6 +133,7 @@ export class RankingComponent implements OnInit {
           environment.loading = false;
         }, 500)
       );
+
   }
 
   loggedUserInRanking(userId, position) {
@@ -272,6 +281,7 @@ export class RankingComponent implements OnInit {
       alert('Error');
     } else {
       environment.loading = true;
+      console.log(this.pointsAddedFromTeacher +'fefewfw');
       this.http
         .put(
           environment.apiURL +
@@ -284,8 +294,12 @@ export class RankingComponent implements OnInit {
           {}
         )
         .subscribe((data) => {
-          window.location.reload();
-          environment.loading = false;
+          
+
+          this.http.post(environment.apiURL + "app/rankingnote?code=" + this.rankingData.code + "&id_valued=" + this.studentBadged + "&id_evaluator=" + this.session.getId() + "&type=points&task=" + this.selectedTaskId + "&amount=" + this.pointsAddedFromTeacher + "&creationdate=CURRENT_TIMESTAMP ",{} ).subscribe((data)=>{
+                environment.loading = false;
+               window.location.reload();
+          })
         });
     }
   }
@@ -447,5 +461,47 @@ export class RankingComponent implements OnInit {
         location.reload();
         environment.loading = false;
       });
+  }
+
+
+  selectTask(name,id){
+    this.selectedTask = name;
+    this.selectedTaskId = id;
+  }
+
+  createTask(){
+    Swal.fire({
+      title: 'Crear tarea',
+      text: 'Nombre tarea:',
+      input: 'text',
+    }).then((result) => {
+      this.createTaskName = result.value;
+      Swal.fire({
+        text: 'Descripción:',
+        input: 'text',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          environment.loading = true;
+          this.http
+            .post(
+              environment.apiURL +
+                `app/rankingtask?code=${this.rankingData.code}&task_name=${this.createTaskName}&description=${result.value}&creationdate=CURRENT_TIMESTAMP`,
+              {}
+            )
+            .subscribe((res) => {
+              environment.loading = false;
+              window.location.reload();
+            });
+        }
+      });
+    });
+  }
+
+
+  showHistory(){
+    
   }
 }

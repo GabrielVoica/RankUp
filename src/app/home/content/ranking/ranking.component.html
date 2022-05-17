@@ -1,5 +1,8 @@
 <div class="ranking-page">
   <ng-template [ngIf]="userType == 'teacher'">
+    <div class="history">
+      Hello
+    </div>
     <div class="teacher-controls">
       <button
         class="open-options"
@@ -10,8 +13,8 @@
       </button>
       <h1 class="teacher-controls-title">Añadir puntos alumno</h1>
       <div class="selected-user-wrapper">
-        <h3 class="teacher">Alumno: {{ selectedUser }}</h3>
-        <h3>Tarea: {{ selectedTask }}</h3>
+        <h3 class="teacher" style="color: white;">Alumno: {{ selectedUser }}</h3>
+        <h3 style="color: white;">Tarea: {{ selectedTask }}</h3>
       </div>
       <input
         type="number"
@@ -47,6 +50,7 @@
           *ngFor="let item of rankingPositionsData; let indexOfElement = index"
           [ngStyle]="loggedUserInRanking(item.id, indexOfElement)"
           (click)="selectUser(item.id, item.nick_name)"
+          style="margin-bottom: 1px;"
         >
           <span class="position">{{ indexOfElement + 1 }}</span>
           <div
@@ -86,7 +90,7 @@
             ></div>
           </div>
           <ng-template [ngIf]="userType == 'teacher'">
-          <button class="btn" (click)="deleteMemb(item.id)">Borrar miembro</button>
+          <button class="btn" (click)="deleteMemb(item.id)" style="color: white; background: red; width: 40px; border-radius: 0; height: 100%;">X</button>
           </ng-template>
         </div>
       </div>
@@ -175,14 +179,14 @@
             </div>
           </div>
           <div class="options-div mark-tasks">
-            <div class="task-wrapper" *ngFor="let task of rankingTasks">
+            <div class="task-wrapper" *ngFor="let task of rankingTasks" (click)="selectTask(task.task_name, task.id)">
               <p>{{ task.task_name }}</p>
               <p>{{ task.description }}</p>
             </div>
-            <div class="create-task task-wrapper">
+            <div class="create-task task-wrapper" (click)="createTask()">
               <p>Crear tarea</p>
             </div>
-            <div class="create-task task-wrapper">
+            <div class="create-task task-wrapper" (click)="showHistory()">
               <p>Ver historial</p>
             </div>
           </div>

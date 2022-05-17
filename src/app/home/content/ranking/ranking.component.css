@@ -309,6 +309,8 @@
   background-size: 150% !important;
 }
 
+
+
 .ranking-title {
   color: white;
   text-transform: uppercase;
@@ -568,3 +570,12 @@
   justify-content: center;
   align-items: center;
 }
+
+.history{
+  width: 90%;
+  height: 100%;
+  position: absolute;
+  z-index: 10000;
+  visibility: hidden;
+}
+

@@ -55,10 +55,6 @@ export class DashboardComponent implements OnInit {
        arr[i] =  this.allcodes[i]['code'];
        }
        this.allcodes=arr;
-console.log(this.allcodes);
-
- 
-  
         });
    
 
