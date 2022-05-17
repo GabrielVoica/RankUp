@@ -22,13 +22,13 @@
                 class="nameRanking"
                 name="name"
                 value="{{ this.ranking['name'] }} "
-                [(ngModel)]="rankingName"
+                readonly="readonly"
               />
 
               <input
                 class="descRanking"
                 value="{{ this.ranking['description'] }}"
-                [(ngModel)]="rankingDesc"
+                readonly="readonly"
               />
 
               <div class="random_code_container">
