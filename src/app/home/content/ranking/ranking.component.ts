@@ -92,7 +92,7 @@ export class RankingComponent implements OnInit {
           this.teacherName = data['data']['nick_name'];
 
           this.http.get(environment.apiURL + "app/rankingnote/" + this.rankingData.code).subscribe((data)=>{
-             console.log(data);
+             this.historyData = data['data'];
           })
         });
     });
@@ -502,6 +502,10 @@ export class RankingComponent implements OnInit {
 
 
   showHistory(){
-    
+    (document.querySelector('.history') as HTMLElement).style.visibility = 'visible';
+  }
+
+  closeHistory(){
+    (document.querySelector('.history') as HTMLElement).style.visibility = 'hidden';
   }
 }

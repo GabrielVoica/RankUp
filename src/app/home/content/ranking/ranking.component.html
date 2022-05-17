@@ -1,7 +1,10 @@
 <div class="ranking-page">
   <ng-template [ngIf]="userType == 'teacher'">
     <div class="history">
-      Hello
+      <button class="btn close-history" (click)="closeHistory()">X</button>
+      <div class="history-row" *ngFor="let row of historyData">
+       <p>El usuario con el id  {{ row.id_valued }} ha recibido {{ row.amount }} puntos</p> 
+      </div>
     </div>
     <div class="teacher-controls">
       <button

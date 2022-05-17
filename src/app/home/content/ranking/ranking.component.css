@@ -576,6 +576,32 @@
   height: 100%;
   position: absolute;
   z-index: 10000;
+  background: rgb(63, 36, 144);
+  padding-top: 50px;
+  max-height: 100%;
+  overflow-y: scroll;
   visibility: hidden;
+}
+
+.history .history-row{
+  width: 99.5%;
+  height: 50px;
+  margin: 0.2%;
+  background: rgb(82, 50, 176);
+  color: white;
+  font-family: Montserrat;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.close-history{
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: red;
+  color: white;
+  text-transform: uppercase;
+  width: 50px;
+  height: 50px;
 }
 
