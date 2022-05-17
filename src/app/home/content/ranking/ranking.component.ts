@@ -290,16 +290,11 @@ export class RankingComponent implements OnInit {
             '&id=' +
             this.studentBadged +
             '&points=' +
-            this.pointsAddedFromTeacher,
+        this.pointsAddedFromTeacher,
           {}
         )
         .subscribe((data) => {
-          
-
-          this.http.post(environment.apiURL + "app/rankingnote?code=" + this.rankingData.code + "&id_valued=" + this.studentBadged + "&id_evaluator=" + this.session.getId() + "&type=points&task=" + this.selectedTaskId + "&amount=" + this.pointsAddedFromTeacher + "&creationdate=CURRENT_TIMESTAMP ",{} ).subscribe((data)=>{
-                environment.loading = false;
-               window.location.reload();
-          })
+        
         });
     }
   }
