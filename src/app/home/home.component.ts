@@ -64,5 +64,6 @@ export class HomeComponent implements OnInit {
     environment.loading = true;
     this.cookie.delete('SESSION_ID');
     this.session.deleteAll();
+    this.router.navigate(['/']);
   }
 }
