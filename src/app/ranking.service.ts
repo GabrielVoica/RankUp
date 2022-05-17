@@ -36,6 +36,13 @@ export class RankingService {
     )
   }
 
+  deleteUserRanking(code,id){
+    return this.http.delete(
+      environment.apiURL + 'app/ranking/'+code+'/'+id,
+      {}
+    )
+  }
+
 
 
   saveRecentTeacherRankings(rankings){

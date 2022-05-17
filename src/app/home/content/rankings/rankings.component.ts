@@ -25,6 +25,7 @@ export class RankingsComponent implements OnInit {
   apiURL = environment.apiURL;
   rankingCode: string = '';
   userType = this.session.getType();
+  id = this.session.getId();
   rankingExists: boolean;
   rankingCodes: Array<String> = [];
   rankingData: Array<{}> = [];
@@ -32,6 +33,7 @@ export class RankingsComponent implements OnInit {
   rankingDesc: string;
   code: string;
   name: string;
+  nombre: string;
   description: string;
 
   @ViewChild('codeInput') codeInput: ElementRef;
@@ -70,11 +72,39 @@ export class RankingsComponent implements OnInit {
       });
   }
 
-
-
-  
   ngAfterViewInit() {
     environment.loading = false;
+  }
+  addRanking() {
+    Swal.fire({
+      title: 'Crear rankings',
+      text: 'Nombre ranking:',
+      input: 'text',
+    }).then((result) => {
+      this.nombre = result.value;
+      Swal.fire({
+        text: 'Descripción:',
+        input: 'text',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          environment.loading = true;
+          this.http
+            .post(
+              this.apiURL +
+                `app/rankingdata?ranking_name=${this.nombre}&description=${result.value}&teacher_id=${this.id}&code=random&creationdate=CURRENT_TIMESTAMP`,
+              {}
+            )
+            .subscribe((res) => {
+              environment.loading = false;
+              console.log(res);
+              location.reload;
+            });
+        }
+      });
+    });
   }
 
   updateRanking(code: string) {
@@ -92,7 +122,6 @@ export class RankingsComponent implements OnInit {
       });
   }
   delete(code: string) {
-
     Swal.fire({
       title: '¿Seguro que quieres borrar este ranking?',
       text: 'Este ranking no se va a poder recuperar...',
@@ -117,17 +146,11 @@ export class RankingsComponent implements OnInit {
         environment.loading = false;
       }
     });
-
-
-
   }
 
   go(code: string) {
     // console.log(this.actualRanking);
     document.location.href = `http://localhost:4200/home/ranking/${code}`;
-  }
-  createRanking() {
-    document.location.href = 'http://localhost:4200/home/add-ranking';
   }
 
   updateCode(code: string) {

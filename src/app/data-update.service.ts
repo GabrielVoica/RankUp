@@ -13,9 +13,11 @@ export class DataUpdateService {
     this.http.get(environment.apiURL + 'app/user/' + id, {}).subscribe((data) => {
       this.session.setImage(data['data']['image']);
       this.session.setUsername(data['data']['nick_name']);
+      this.session.setCenter(data['data']['center']);
       this.session.setEmail(data['data']['email']);
       this.session.setName(data['data']['name']);
       this.session.setLastname(data['data']['lastname']);
+
       location.reload();
       environment.loading = false;
     });

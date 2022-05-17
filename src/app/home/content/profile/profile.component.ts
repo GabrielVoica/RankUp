@@ -33,6 +33,8 @@ export class ProfileComponent implements OnInit {
 
   lastname = this.session.getLastname();
   last = this.lastname;
+  centro = this.session.getCenter();
+  center = this.centro;
 
   ngOnInit(): void {}
   onFileChange(event: any) {
@@ -53,7 +55,33 @@ export class ProfileComponent implements OnInit {
       this.http
         .put(
           this.apiURL +
-            `app/user?name=${this.name}&lastname=${this.lastname}&id=${this.id}`,
+            `app/user?name=${this.name}&lastname=${this.lastname}&id=${this.id}&center=${this.centro}`,
+          {
+      
+          }
+        )
+        .subscribe((res) => {
+          this.dataUpdate.update(this.id);
+        });
+    }
+    if (this.username == this.nickname && this.centro == this.center) {
+      this.http
+        .put(
+          this.apiURL +
+            `app/user?name=${this.name}&lastname=${this.lastname}&id=${this.id}&email=${this.email}`,
+          {
+      
+          }
+        )
+        .subscribe((res) => {
+          this.dataUpdate.update(this.id);
+        });
+    }
+    if (this.centro == this.center && this.email == this.mail) {
+      this.http
+        .put(
+          this.apiURL +
+            `app/user?name=${this.name}&lastname=${this.lastname}&id=${this.id}&nick_name=${this.username}`,
           {
       
           }
@@ -66,8 +94,21 @@ export class ProfileComponent implements OnInit {
       this.http
         .put(
           this.apiURL +
-            `app/user?nick_name=${this.username}&name=${this.name}&lastname=${this.lastname}&id=${this.id}`,
+            `app/user?nick_name=${this.username}&name=${this.name}&lastname=${this.lastname}&id=${this.id}&center=${this.centro}`,
           {
+
+          }
+        )
+        .subscribe((res) => {
+          this.dataUpdate.update(this.id);
+        });
+    }
+    if (this.centro == this.center) {
+      this.http
+      .put(
+        this.apiURL +
+          `app/user?nick_name=${this.username}&name=${this.name}&lastname=${this.lastname}&email=${this.email}&id=${this.id}`,
+        {
 
           }
         )
@@ -79,7 +120,7 @@ export class ProfileComponent implements OnInit {
       this.http
         .put(
           this.apiURL +
-            `app/user?name=${this.name}&lastname=${this.lastname}&email=${this.email}&id=${this.id}`,
+            `app/user?name=${this.name}&lastname=${this.lastname}&email=${this.email}&id=${this.id}&center=${this.centro}`,
           {
          
           }
@@ -91,7 +132,7 @@ export class ProfileComponent implements OnInit {
       this.http
         .put(
           this.apiURL +
-            `app/user?nick_name=${this.username}&name=${this.name}&lastname=${this.lastname}&email=${this.email}&id=${this.id}`,
+            `app/user?nick_name=${this.username}&name=${this.name}&lastname=${this.lastname}&email=${this.email}&center=${this.centro}&id=${this.id}`,
           {
          
           }

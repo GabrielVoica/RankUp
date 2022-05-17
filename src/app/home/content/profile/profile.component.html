@@ -13,6 +13,7 @@
               <div class="user_info">
                 <p class="username">Usuario: {{username}}</p>
                 <p class="username"> {{email}}</p>
+                <p class="username"> Centro: {{centro}}</p>
                 <div class="inputWrapper">
                   Seleccionar archivo <input class="fileInput" (change)="onFileChange($event)" type="file" />
                 </div>
@@ -54,6 +55,10 @@
         <div class="input_s">
           <label for="email">Email</label>
           <input type="email"  value="{{this.email}}" name="email"  [(ngModel)]="email">
+        </div>
+        <div class="input_s">
+          <label for="email">Centro</label>
+          <input type="text"  value="{{this.centro}}" name="center"  [(ngModel)]="centro">
         </div>
         <button class="inputWrapper" type="submit" (click)="submit()"> Guardar </button>
       </div>

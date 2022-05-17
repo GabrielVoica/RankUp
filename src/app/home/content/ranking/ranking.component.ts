@@ -253,6 +253,13 @@ export class RankingComponent implements OnInit {
       this.selectedUser = nickname;
     }
   }
+  deleteMemb(id){
+    environment.loading = true;
+    this.ranking.deleteUserRanking(this.code,id).subscribe(res =>{
+      environment.loading = false;
+      location.reload();
+    })
+  }
 
   showPoints() {
     if (this.selectedUser == undefined) {
