@@ -20,6 +20,7 @@
         max="10000"
       />
       <button class="btn" (click)="showPoints()">Añadir puntos</button>
+
     </div>
   </ng-template>
   <div class="ranking-headers">
@@ -84,6 +85,9 @@
               "
             ></div>
           </div>
+          <ng-template [ngIf]="userType == 'teacher'">
+          <button class="btn" (click)="deleteMemb(item.id)">Borrar miembro</button>
+          </ng-template>
         </div>
       </div>
     </div>
