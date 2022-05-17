@@ -102,6 +102,7 @@
     <div class="ranking-content-badges">
       <ng-template [ngIf]="userType == 'student'">
         <h2>Añadir puntos insignias</h2>
+        <h2>Puntos restantes: {{ userPointsToSpend }}</h2>
         <div class="select-user">
           {{ selectedUser }}
         </div>

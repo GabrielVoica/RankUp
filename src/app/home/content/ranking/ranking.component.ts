@@ -108,7 +108,7 @@ export class RankingComponent implements OnInit {
             this.router.navigate(['home']);
           }
         } else {
-          console.log('Helloooo');
+         
         }
 
         this.rankingPositionsData.forEach((row) => {
@@ -294,7 +294,7 @@ export class RankingComponent implements OnInit {
           {}
         )
         .subscribe((data) => {
-        
+        window.location.reload();
         });
     }
   }
