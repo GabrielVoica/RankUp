@@ -2,8 +2,9 @@
   <ng-template [ngIf]="userType == 'teacher'">
     <div class="history">
       <button class="btn close-history" (click)="closeHistory()">X</button>
-      <div class="history-row" *ngFor="let row of historyData">
-       <p>El usuario con el id  {{ row.id_valued }} ha recibido {{ row.amount }} puntos</p> 
+      <div class="history-row" *ngFor="let row of historyData" style="display: flex;">
+       <p style="margin-right: 50px;">El usuario con el id  {{ row.id_valued }} ha recibido {{ row.amount }} puntos</p> 
+       <p>{{ row.creationdate }}</p>
       </div>
     </div>
     <div class="teacher-controls">
